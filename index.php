@@ -1,5 +1,5 @@
 <?php require_once 'app/init.php';  
-if (!Auth::check()) redirect_to('main_dashboard.php'); 
+if (Auth::check()) redirect_to('main_dashboard.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
