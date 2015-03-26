@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name=".DS_Store" server="23.229.152.226" local="130500502801950190" remote="130505953800000000" Dst="2" />
+<file name="Exceptions.php" server="23.229.152.226" local="130500502800980134" remote="130505953800000000" Dst="2" />
+<file name="Inbound.php" server="23.229.152.226" local="130500502798039966" remote="130505953800000000" Dst="2" />
+<file name="Exports.php" server="23.229.152.226" local="130500502797889958" remote="130505953800000000" Dst="2" />
+<file name="Internal.php" server="23.229.152.226" local="130500502795329811" remote="130505953800000000" Dst="2" />
+<file name="Ips.php" server="23.229.152.226" local="130500502795119799" remote="130505953800000000" Dst="2" />
+<file name="Metadata.php" server="23.229.152.226" local="130500502792249635" remote="130505953800000000" Dst="2" />
+<file name="Messages.php" server="23.229.152.226" local="130500502792759664" remote="130505953800000000" Dst="2" />
+<file name="Rejects.php" server="23.229.152.226" local="130500502789899501" remote="130505953800000000" Dst="2" />
+<file name="Senders.php" server="23.229.152.226" local="130500502789039451" remote="130505953800000000" Dst="2" />
+<file name="Subaccounts.php" server="23.229.152.226" local="130500502787239349" remote="130505953800000000" Dst="2" />
+<file name="Tags.php" server="23.229.152.226" local="130500502786159287" remote="130505953800000000" Dst="2" />
+<file name="Templates.php" server="23.229.152.226" local="130500502784589197" remote="130505953800000000" Dst="2" />
+<file name="Urls.php" server="23.229.152.226" local="130500502783299123" remote="130505953800000000" Dst="2" />
+<file name="Users.php" server="23.229.152.226" local="130500502781359012" remote="130505953800000000" Dst="2" />
+<file name="Webhooks.php" server="23.229.152.226" local="130500502780468961" remote="130505953800000000" Dst="2" />
+<file name="Whitelists.php" server="23.229.152.226" local="130500502778738862" remote="130505953800000000" Dst="2" />
+</dwsync>

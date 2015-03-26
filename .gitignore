@@ -1,0 +1,11 @@
+vendor
+app/config/dev
+_releases
+releases
+_docs
+docs
+TODO
+elp.sublime-project
+elp.sublime-workspace
+!assets/css/vendor
+!assets/js/vendor

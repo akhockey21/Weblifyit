@@ -1,0 +1,18 @@
+page_id = dcc9e42c-dbd2-11e3-b6ba-22000ac50a0f
+page_name = m_final
+variant = f
+page_url = http://www.speedfixit.com/m_final
+data_json = {"name":["Kylie"],"email":["Kelsiewalters@yahoo.com"],"phone_number":["3522553155"],"zip_code":["34711"],"device":["phone"],"brand":["apple"],"damage":["Screen Repair"],"model":["iphone5c"],"ip_address":["50.89.249.47"],"time_submitted":["02:01 AM UTC"]}
+data_xml = <?xml version='1.0'?>
+<form_data>
+  <name>Kylie</name>
+  <email>Kelsiewalters@yahoo.com</email>
+  <phone_number>3522553155</phone_number>
+  <zip_code>34711</zip_code>
+  <device>phone</device>
+  <brand>apple</brand>
+  <damage>Screen Repair</damage>
+  <model>iphone5c</model>
+  <ip_address>50.89.249.47</ip_address>
+  <time_submitted>02:01 AM UTC</time_submitted>
+</form_data>

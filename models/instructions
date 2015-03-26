@@ -1,0 +1,1 @@
+This models folder is where we will store all of the dashboard models. They are all in bootstrap format. Some models will not be used right now. If you need to add a peice of code then use the sub folder models>app.
