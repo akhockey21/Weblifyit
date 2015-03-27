@@ -30,11 +30,10 @@ foreach($pagesall as $filter_result){
             <div class="form-group">
 <label class="control-label" for="example-chosen">Page Layout:</label>
 <select id="example-chosen" name="pagestyle" class="select-chosen" data-placeholder="Public">
-<option value="tallheader">Tall Header</option>
-<option value="shortheader">Short Header</option>
-    <option value="noheader">No Header</option>
+<option value="tallheader">About Us</option>
+<option value="shortheader">Services/Products</option><option value="shortheader">Information</option>
     <option value="landingpage">Landing Page</option>
-    <option value="titlepage">Title Page</option>
+    <option value="noheader">No Header</option>
 </select>
             </div>
             <div class="form-group">

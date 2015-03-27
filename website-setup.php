@@ -1,16 +1,10 @@
 <?php require_once 'app/init.php'; 
 if (!Auth::check()) redirect_to(App::url()); 
 
-use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
-$category = Userwebsite::get(Auth::user()->id, 'category', true);
-$domainsetup = Userwebsite::get(Auth::user()->id, 'domainsetup', true);
-$usesdomain = Userwebsite::get(Auth::user()->id, 'usesdomain', true);
-$step = Userwebsite::get(Auth::user()->id, 'step', true);
 if (isset($_POST['submit']) && csrf_filter()) {
     if (isset($_POST['category'])) {
-        $category = $_POST['category'];
-        Userwebsite::update(Auth::user()->id, 'category', true);
+        $category = str_replace(" ", "-", $_POST['category']);
+        Userwebsite::update(Auth::user()->id, 'category', $category);
         Userwebsite::update(Auth::user()->id, 'step', 1);
 }
  } 
@@ -23,6 +17,15 @@ if (isset($_POST['confirm']) && csrf_filter()) {
         header("Location: website-setup2.php");
 }
  } 
+
+
+use Hazzard\Support\MessageBag;
+$user = User::find(Auth::user()->id);
+$category = Userwebsite::get(Auth::user()->id, 'category', true);
+$domainsetup = Userwebsite::get(Auth::user()->id, 'domainsetup', true);
+$usesdomain = Userwebsite::get(Auth::user()->id, 'usesdomain', true);
+$step = Userwebsite::get(Auth::user()->id, 'step', true);
+
 if($step>=2){
     header("Location: website-setup2.php");
 }
@@ -42,11 +45,11 @@ if($step>=2){
 <div class="col-md-6">
 <select id="example-chosen" name="category" class="select-chosen" data-placeholder="Your Business' Main Product or Service.." style="width: 250px; display: none;">
 <option></option>
-<option value="Plumbing">Plumbing</option>
-<option value="AC & Heating">AC & Heating</option>
-<option value="Computer Repair">Computer Repair</option>
-<option value="Bycicle Shop">Bycicle Shop</option>
-<option value="Auto Shop">Auto Shop</option>
+<option value="plumber">Plumbing</option>
+<option value="AC-&-Heating">AC & Heating</option>
+<option value="Computer-Repair">Computer Repair</option>
+<option value="Bycicle-Shop">Bycicle Shop</option>
+<option value="Auto Shop">Auto-Shop</option>
 </select><div class="chosen-container chosen-container-single" style="width: 100%;" title="" id="example_chosen_chosen"><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"><li class="active-result" data-option-array-index="1">Plumbing</li><li class="active-result" data-option-array-index="2">AC & Heating</li><li class="active-result" data-option-array-index="3">Computer Repair</li><li class="active-result" data-option-array-index="4">Bycicle Shop</li><li class="active-result" data-option-array-index="5">Auto Shop</li><li class="active-result" data-option-array-index="6">Construction</li></ul></div></div>
 </div>
 </div>

@@ -86,8 +86,24 @@ else {
             </table>
         </div>
                 </div>
-    <?php  } ?>
+    <?php  } elseif ($leadtest==false){?>
         <!-- END Responsive Full Content -->
 
 
             </div>
+<div class="block block-alt-noborder">
+<div class="row">
+<div class="col-md-12">
+<div class="block-section">
+<h3 class="sub-header text-center"><strong>Sorry, You Do Not Have Any Leads!</strong></h3>
+<h4 class="clearfix text-center">Make sure you <span class="text-success"><strong>Setup Your Lead Automation!</strong></span> Allowing you to get instant updates, and instantly send customers an SMS and/or email.</h4>
+    <p class="clearfix text-center"><i class="fa fa-user fa-5x text-danger animation-pulse"></i></p>
+    <h4 class="clearfix text-center"><span class="text-success"><strong>Or add a custom lead here.</strong></span></h4>
+<p>
+<a href="#addlead" data-toggle="modal" data-placement="bottom" title="Add a Lead" class="btn btn-lg btn-info btn-block">Add a Lead</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<?php  } ?>

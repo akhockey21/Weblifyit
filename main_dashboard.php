@@ -12,6 +12,23 @@ Usermodels::update(Auth::user()->id, 'leads', 1);
  Usermodels::update(Auth::user()->id, 'payment', 1);
  Usermodels::update(Auth::user()->id, 'website', 1);
  Usermodels::update(Auth::user()->id, 'analytics', 1);
+//update default web settings
+    //homepage setup
+Userpages::update(Auth::user()->id, 1, 'pagename', "Homepage");
+Userpages::update(Auth::user()->id, 1, 'navhide', 1);
+Userpages::update(Auth::user()->id, 1, 'visibility', "public");
+Userpages::update(Auth::user()->id, 1, 'style', "landingpage");
+    //aboutus page setup
+Userpages::update(Auth::user()->id, 2, 'pagename', "About Us");
+Userpages::update(Auth::user()->id, 2, 'navhide', 1);
+Userpages::update(Auth::user()->id, 2, 'visibility', "public");
+Userpages::update(Auth::user()->id, 2, 'style', "tallheader");
+    //contactus page setup
+Userpages::update(Auth::user()->id, 3, 'pagename', "Contact Us");
+Userpages::update(Auth::user()->id, 3, 'navhide', 1);
+Userpages::update(Auth::user()->id, 3, 'visibility', "public");
+Userpages::update(Auth::user()->id, 3, 'style', "shortheader");
+    
  Usermodels::update(Auth::user()->id, 'setup_complete', 1);
 }
 ?>
