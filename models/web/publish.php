@@ -1,4 +1,7 @@
 <?php
+
+$path = Userwebsite::get(Auth::user()->id, 'path', true);
+$path = $path . "index.html";
 // Start output buffering
 ob_start();
 // run code in x.php file
@@ -29,8 +32,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et ultrices leo. 
 </div>
 <?php
 // saving captured output to file
+file_put_contents("$path", ob_get_contents());
 file_put_contents('filename.html', ob_get_contents());
 // end buffering and displaying page
 ob_end_clean();
 
 ?>
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="AutoPagingIterator.php" server="23.229.152.226" local="130500502827641659" remote="130505953800000000" Dst="2" />
+<file name="Capability.php" server="23.229.152.226" local="130500502826881616" remote="130505953800000000" Dst="2" />
+<file name="HttpException.php" server="23.229.152.226" local="130500502824871501" remote="130505953800000000" Dst="2" />
+<file name="HttpStream.php" server="23.229.152.226" local="130500502824001451" remote="130505953800000000" Dst="2" />
+<file name="InstanceResource.php" server="23.229.152.226" local="130500502822401360" remote="130505953800000000" Dst="2" />
+<file name="ListResource.php" server="23.229.152.226" local="130500502821211292" remote="130505953800000000" Dst="2" />
+<file name="NumberType.php" server="23.229.152.226" local="130500502819901217" remote="130505953800000000" Dst="2" />
+<file name="Page.php" server="23.229.152.226" local="130500502818261123" remote="130505953800000000" Dst="2" />
+<file name="PartialApplicationHelper.php" server="23.229.152.226" local="130500502817131058" remote="130505953800000000" Dst="2" />
+<file name="RequestValidator.php" server="23.229.152.226" local="130500502815220949" remote="130505953800000000" Dst="2" />
+<file name="Resource.php" server="23.229.152.226" local="130500502814570912" remote="130505953800000000" Dst="2" />
+<file name="RestException.php" server="23.229.152.226" local="130500502812530795" remote="130505953800000000" Dst="2" />
+<file name="SIPListResource.php" server="23.229.152.226" local="130500502810770694" remote="130505953800000000" Dst="2" />
+<file name="TimeRangeResource.php" server="23.229.152.226" local="130500502809650630" remote="130505953800000000" Dst="2" />
+<file name="TinyHttp.php" server="23.229.152.226" local="130500502808290553" remote="130505953800000000" Dst="2" />
+<file name="Twiml.php" server="23.229.152.226" local="130500502806910474" remote="130505953800000000" Dst="2" />
+<file name="UsageResource.php" server="23.229.152.226" local="130500502805650402" remote="130505953800000000" Dst="2" />
+</dwsync>

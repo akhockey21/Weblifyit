@@ -38,25 +38,31 @@ if($step>=2){
 <div id="page-content">
                         <?php 
                         if($category==false){ ?>
-                    <div class="block">
-                <form action="" class="form-bordered" method="post">
+<div class="block block-alt-noborder">
+<div class="row">
+<div class="col-md-12">
+<div class="block-section">
+<h3 class="sub-header text-center"><strong>Choose Your Business Type</strong></h3>
+<h4 class="clearfix text-center">Simply choose your business type. Then choose from many of our customized <span class="text-success"><strong>Website Templates That Match Your Business Type.</strong></span></h4>
+<form action="" class="form-bordered" method="post">
 <div class="form-group">
-<label class="col-md-4 control-label" for="example-chosen">Type of Business</label>
-<div class="col-md-6">
-<select id="example-chosen" name="category" class="select-chosen" data-placeholder="Your Business' Main Product or Service.." style="width: 250px; display: none;">
+<select id="example-chosen" name="category" class="select-select2" data-placeholder="Your Business Type.." style="width: 100%;">
 <option></option>
 <option value="plumber">Plumbing</option>
 <option value="AC-&-Heating">AC & Heating</option>
 <option value="Computer-Repair">Computer Repair</option>
 <option value="Bycicle-Shop">Bycicle Shop</option>
 <option value="Auto Shop">Auto-Shop</option>
-</select><div class="chosen-container chosen-container-single" style="width: 100%;" title="" id="example_chosen_chosen"><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off"></div><ul class="chosen-results"><li class="active-result" data-option-array-index="1">Plumbing</li><li class="active-result" data-option-array-index="2">AC & Heating</li><li class="active-result" data-option-array-index="3">Computer Repair</li><li class="active-result" data-option-array-index="4">Bycicle Shop</li><li class="active-result" data-option-array-index="5">Auto Shop</li><li class="active-result" data-option-array-index="6">Construction</li></ul></div></div>
+</select>
 </div>
-</div>
-                    <div class="form-group form-actions">
-                        <button type="submit" class="btn btn-sm btn-success" name="submit">Save Website Settings</button>
+<div class="form-group form-actions text-center">
+                        <button type="submit" class="btn btn-lg btn-info btn-block" name="submit">Next</button>
                     </div>
-                </form>  </div>
+                </form> 
+</div>
+</div>
+</div>
+</div>
         <?php
                         }elseif($category==true && $step==1){
                             $templates = DB::table('webtemplates')->get();

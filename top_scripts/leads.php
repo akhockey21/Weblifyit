@@ -9,7 +9,7 @@ $name = str_replace(",",";", $name);
 $email_address = str_replace(","," ", $email_address);
 $phone_number = str_replace(","," ", $phone_number);
     
-$name = str_replace(";",";", $name);
+$name = str_replace(";"," ", $name);
 $email_address = str_replace(";"," ", $email_address);
 $phone_number = str_replace(";"," ", $phone_number);
 
@@ -26,7 +26,7 @@ $firstleadrow = Userleads::get(Auth::user()->id, 'userlead', true);
 Userleads::add(Auth::user()->id, 'userleadbackup', $firstleadrow ,true);
 
 //DO final Combine With new Lead and Old leads
-$finalcombine = "$firstleadrow;$combineinfo";
+$finalcombine = "$combineinfo;$firstleadrow";
 $finalcombine = rtrim($finalcombine, ';');
 //Insert Into User Leads appending combined data to end of field
 Userleads::update(Auth::user()->id, 'userlead', $finalcombine);   
@@ -56,8 +56,9 @@ if (isset($_POST['deleteleadbtn']) && csrf_filter()) {
         //Start Delete Lead Process
         
         $getleads = Userleads::get(Auth::user()->id, 'userlead', true);
-        $newdeletedlead = ";$newdeletedlead";
+        $newdeletedlead = "$newdeletedlead";
         $updateleads = str_replace($newdeletedlead, "", $getleads);
+        $updateleads = str_replace(";;", ";", $updateleads);
         $updateleads = rtrim($updateleads, ";");
         Userleads::update(Auth::user()->id, 'userlead', $updateleads);
         }

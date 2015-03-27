@@ -1,11 +1,13 @@
-<div class="widget">
+
 <!-- Responsive Full Content -->
 <?php 
 $leadtest = Userleads::get(Auth::user()->id, 'userlead', true);
 if ($leadtest==true){
             $leadsales = Userleads::get(Auth::user()->id, 'lead_sales', true);
      $row = explode(";", $leadtest);
-    ?><div class="block">
+    ?>
+<div class="widget">
+<div class="block">
         <!-- Responsive Full Title -->
         <div class="block-title">
             <h2><strong>Your Leads</strong> Summary</h2>
@@ -86,11 +88,12 @@ else {
             </table>
         </div>
                 </div>
+    </div>
     <?php  } elseif ($leadtest==false){?>
         <!-- END Responsive Full Content -->
 
 
-            </div>
+            
 <div class="block block-alt-noborder">
 <div class="row">
 <div class="col-md-12">

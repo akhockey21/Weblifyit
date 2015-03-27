@@ -68,28 +68,35 @@ var App = function() {
         $('[data-toggle="lightbox-image"]').magnificPopup({type: 'image', image: {titleSrc: 'title'}});
 
         // Initialize image gallery lightbox
-        $('[data-toggle="lightbox-gallery"]').magnificPopup({
-            delegate: 'a.gallery-link',
-            type: 'image',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                arrowMarkup: '<button type="button" class="mfp-arrow mfp-arrow-%dir%" title="%title%"></button>',
-                tPrev: 'Previous',
-                tNext: 'Next',
-                tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
-            },
-            image: {titleSrc: 'title'}
+        $('[data-toggle="lightbox-gallery"]').each(function(){
+            $(this).magnificPopup({
+                delegate: 'a.gallery-link',
+                type: 'image',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    arrowMarkup: '<button type="button" class="mfp-arrow mfp-arrow-%dir%" title="%title%"></button>',
+                    tPrev: 'Previous',
+                    tNext: 'Next',
+                    tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
+                },
+                image: {titleSrc: 'title'}
+            });
         });
 
-        // Initialize Editor
-        $('.textarea-editor').wysihtml5();
+        // Initialize Typeahead - Example with countries
+        var exampleTypeheadData = ["Afghanistan","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antarctica","Antigua and Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Bouvet Island","Brazil","British Indian Ocean Territory","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","CΓ΄te d'Ivoire","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central African Republic","Chad","Chile","China","Christmas Island","Cocos (Keeling) Islands","Colombia","Comoros","Congo","Cook Islands","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Democratic Republic of the Congo","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Faeroe Islands","Falkland Islands","Fiji","Finland","Former Yugoslav Republic of Macedonia","France","French Guiana","French Polynesia","French Southern Territories","Gabon","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guadeloupe","Guam","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Heard Island and McDonald Islands","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Martinique","Mauritania","Mauritius","Mayotte","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Niue","Norfolk Island","North Korea","Northern Marianas","Norway","Oman","Pakistan","Palau","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Pitcairn Islands","Poland","Portugal","Puerto Rico","Qatar","RΓ©union","Romania","Russia","Rwanda","SΓ£o TomΓ© and PrΓ­ncipe","Saint Helena","Saint Kitts and Nevis","Saint Lucia","Saint Pierre and Miquelon","Saint Vincent and the Grenadines","Samoa","San Marino","Saudi Arabia","Senegal","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Georgia and the South Sandwich Islands","South Korea","Spain","Sri Lanka","Sudan","Suriname","Svalbard and Jan Mayen","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","The Bahamas","The Gambia","Togo","Tokelau","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Turks and Caicos Islands","Tuvalu","US Virgin Islands","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","United States Minor Outlying Islands","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Wallis and Futuna","Western Sahara","Yemen","Yugoslavia","Zambia","Zimbabwe"];
+        $('.input-typeahead').typeahead({ source: exampleTypeheadData });
 
         // Initialize Chosen
         $('.select-chosen').chosen({width: "100%"});
 
         // Initialize Select2
         $('.select-select2').select2();
+
+        // Initialize Bootstrap Colorpicker
+        $('.input-colorpicker').colorpicker({format: 'hex'});
+        $('.input-colorpicker-rgba').colorpicker({format: 'rgba'});
 
         // Initialize Slider for Bootstrap
         $('.input-slider').slider();
@@ -546,36 +553,70 @@ var App = function() {
         /*
          * Color Themes
          */
-        var colorList = $('.sidebar-themes');
-        var themeLink = $('#theme-link');
-        var theme;
+        var colorList   = $('.sidebar-themes');
+        var themeLink   = $('#theme-link');
 
-        if (themeLink.length) {
-            theme = themeLink.attr('href');
+        var themeColor  = themeLink.length ? themeLink.attr('href') : 'default';
+        var cookies     = page.hasClass('enable-cookies') ? true : false;
 
-            $('li', colorList).removeClass('active');
-            $('a[data-theme="' + theme + '"]', colorList).parent('li').addClass('active');
+        var themeColorCke;
+
+        // If cookies have been enabled
+        if (cookies) {
+            themeColorCke = $.cookie('optionThemeColor') ? $.cookie('optionThemeColor') : false;
+
+            // Update color theme
+            if (themeColorCke) {
+                if (themeColorCke === 'default') {
+                    if (themeLink.length) {
+                        themeLink.remove();
+                        themeLink = $('#theme-link');
+                    }
+                } else {
+                    if (themeLink.length) {
+                        themeLink.attr('href', themeColorCke);
+                    } else {
+                        $('link[href="css/themes.css"]')
+                            .before('<link id="theme-link" rel="stylesheet" href="' + themeColorCke + '">');
+
+                        themeLink = $('#theme-link');
+                    }
+                }
+            }
+
+            themeColor = themeColorCke ? themeColorCke : themeColor;
         }
 
+        // Set the active color theme link as active
+        $('a[data-theme="' + themeColor + '"]', colorList)
+            .parent('li')
+            .addClass('active');
+
+        // When a color theme link is clicked
         $('a', colorList).click(function(e){
             // Get theme name
-            theme = $(this).data('theme');
+            themeColor = $(this).data('theme');
 
             $('li', colorList).removeClass('active');
             $(this).parent('li').addClass('active');
 
-            if (theme === 'default') {
+            if (themeColor === 'default') {
                 if (themeLink.length) {
                     themeLink.remove();
                     themeLink = $('#theme-link');
                 }
             } else {
                 if (themeLink.length) {
-                    themeLink.attr('href', theme);
+                    themeLink.attr('href', themeColor);
                 } else {
-                    $('link[href="css/themes.css"]').before('<link id="theme-link" rel="stylesheet" href="' + theme + '">');
+                    $('link[href="css/themes.css"]').before('<link id="theme-link" rel="stylesheet" href="' + themeColor + '">');
                     themeLink = $('#theme-link');
                 }
+            }
+
+            // If cookies have been enabled, save the new options
+            if (cookies) {
+                $.cookie('optionThemeColor', themeColor, {expires: 7});
             }
         });
 
@@ -649,6 +690,21 @@ var App = function() {
         });
     };
 
+    /* Print functionality - Hides all sidebars, prints the page and then restores them (To fix an issue with CSS print styles in webkit browsers)  */
+    var handlePrint = function() {
+        // Store all #page-container classes
+        var pageCls = page.prop('class');
+
+        // Remove all classes from #page-container
+        page.prop('class', '');
+
+        // Print the page
+        window.print();
+
+        // Restore all #page-container classes
+        page.prop('class', pageCls);
+    };
+
     return {
         init: function() {
             uiInit(); // Initialize UI Code
@@ -659,6 +715,9 @@ var App = function() {
         },
         datatables: function() {
             dtIntegration(); // Datatables Bootstrap integration
+        },
+        pagePrint: function() {
+            handlePrint(); // Print functionality
         }
     };
 }();
