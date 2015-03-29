@@ -21,6 +21,7 @@ switch ($page) {
 		require_once 'models/web/settings_top.php';
 	break;
 }
+
 ?> 
 <?php include 'inc/config.php'; ?>
 <?php include 'inc/template_start_web.php'; ?>
@@ -74,5 +75,7 @@ switch ($page) {
 <script>$(function(){ FormsWizard.init(); });</script>
 <script src="js/custom.js"></script>
 <script src="js/plugins.js"></script>
+<script src="js/pages/uiDraggable.js"></script>
+<script>$(function(){ UiDraggable.init(); });</script>
 
 <?php include 'inc/template_end.php'; ?>
