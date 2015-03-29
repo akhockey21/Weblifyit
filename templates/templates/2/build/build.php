@@ -18,12 +18,26 @@ $bizCity = Usermeta::get(Auth::user()->id, 'company_address_city', true);
 $bizState = Usermeta::get(Auth::user()->id, 'company_address_state', true);
 $bizZip = Usermeta::get(Auth::user()->id, 'company_address_zip', true);
 $bizYears = Usermeta::get(Auth::user()->id, 'company_years_in_business', true);
-
+$content = Userpages::get(Auth::user()->id, $fpage, 'pagedesign', true);
+$categoryname = Userwebsite::get(Auth::user()->id, 'category', true); 
+$category = DB::table('webcategories')->where('meta_value', $categoryname)->pluck('cat_id');
 $pagesall = DB::table('userpages')->where('user_id', Auth::user()->id)->get();
 ?>
 <?php include 'parts/head.php'; ?>
 
 <?php include 'parts/header.php'; ?>
 <?php include 'parts/afterheader.php'; ?>
-<?php include 'parts/content.php'; ?>
+
+<?php
+// for each template in the page settings, load it.
+$blocks = explode(";", $content);
+foreach($blocks as $block){
+    $path = "../../blocks/$block";
+    include $path; 
+}
+?>
+
+            </div>
+
+        </section><!-- #content end -->
 <?php include 'parts/footer.php'; ?>

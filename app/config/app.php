@@ -135,6 +135,9 @@ return array(
         'Hazzard\User\BillingServiceProvider',
         'Hazzard\User\TemplatetextServiceProvider',
         'Hazzard\User\PagesServiceProvider',
+        'Hazzard\User\UserWebsiteTextServiceProvider',
+        'Hazzard\User\UserdefaulttextServiceProvider',
+        'Hazzard\User\CategoriesServiceProvider',
 	),
 
 	'manifest' => storage_path(),
@@ -175,5 +178,8 @@ return array(
         'Userbilling'   => 'Hazzard\Support\Facades\Userbilling',
         'Templatetext'   => 'Hazzard\Support\Facades\Templatetext',
         'Userpages'   => 'Hazzard\Support\Facades\Userpages',
+        'Userwebsitetext'   => 'Hazzard\Support\Facades\Userwebsitetext',
+        'Userdefaulttext'   => 'Hazzard\Support\Facades\Userdefaulttext',
+        'Categories'   => 'Hazzard\Support\Facades\Categories',
 	)
 );

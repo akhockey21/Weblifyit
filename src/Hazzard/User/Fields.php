@@ -9,7 +9,7 @@ class Fields {
 	 *
 	 * @var \Hazzard\Translation\Translator
 	 */
-	protected $translator;
+	protected $translator; 
 
 	/**
 	 * The fields.
