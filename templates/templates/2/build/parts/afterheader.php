@@ -30,6 +30,18 @@ if($fpage==1){
 
             </div>
         </section>
+        <!-- Content
+        ============================================= -->
+        <section id="content" style="overflow: visible;">
+
+            <div class="content-wrap">
+
+                <div class="promo promo-dark promo-full landing-promo header-stick">
+                    <div class="container clearfix">
+                        <h3>Beautiful Landing Page designs waiting for you inside <i class="icon-circle-arrow-right" style="position:relative;top:2px;"></i></h3>
+                        <span>You'll love our beautiful &amp; interactive builder that makes your build process easier &amp; fun.</span>
+                    </div>
+                </div>
 <?php
     //contact page
 }elseif($fpage==2){
@@ -181,3 +193,4 @@ if($fpage==1){
 <?php
 }
 ?>
+
