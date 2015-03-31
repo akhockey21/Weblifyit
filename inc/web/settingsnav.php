@@ -1,45 +1,23 @@
-<h3>Website Settings:</h3> 
+<div class="sidebar-section clearfix sidebar-nav-mini-hide themed-background">
+
+<div style="text-align: center;"><h3>Design</h3></div>
+
+</div>
                     <ul class="sidebar-nav animation-slideRight" id="sidebarnav"> 
                        
 <li>
-<a href="#" id="logobtn">Logo & Title</a>
+<a href="#" id="logobtn">About Us</a>
 </li>
 <li>
-<a href="#" id="colorbtn">Color & Style</a>
+<a href="#" id="colorbtn">Contact Us</a>
 </li>  
 <li>
-<a href="#" class="sidebar-nav-submenu"><i class="fa fa-angle-left sidebar-nav-indicator"></i>Business Information</a>
-<ul style="display: none;">
-<li>
-<a href="#" id="bizcontactbtn">Contact Info</a>
+<a href="#" id="colorbtn">Services/Products</a>
 </li>
 <li>
-<a href="#" id="bizaddressbtn">Address</a>
-</li>
-</ul>
+<a href="#" id="colorbtn">Text</a>
 </li> 
- 
 <li>
-<a href="#" class="sidebar-nav-submenu"><i class="fa fa-angle-left sidebar-nav-indicator"></i>Website Content</a>
-<ul style="display: none;">
-<li>
-<a href="#" id="webhomepagebtn">Homepage</a>
+<a href="#" id="colorbtn">Other</a>
 </li>
-<li>
-<a href="#" id="webaboutbtn">About Us</a>
-</li>
-    <li>
-<a href="#" id="webservicebtn">Service/Products</a>
-</li>
-    <li>
-<a href="#" id="webcontactbtn">Conact Us</a>
-</li>
-</ul>
-</li>
-  <li>
-<a href="#" id="webimagesbtn">Website Images</a>
-</li>  
-<li>
-</li>
-
                     </ul>
