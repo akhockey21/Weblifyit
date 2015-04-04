@@ -4,6 +4,27 @@ use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
 $page = isset($_GET['p']) ? $_GET['page'] : '1';
 $pagesall = DB::table('userpages')->where('user_id', Auth::user()->id)->get();
+$category = Userwebsite::get(Auth::user()->id, 'category', true);
+$domainsetup = Userwebsite::get(Auth::user()->id, 'domainsetup', true);
+$usesdomain = Userwebsite::get(Auth::user()->id, 'usesdomain', true);
+$step = Userwebsite::get(Auth::user()->id, 'step', true);
+
+//get website info
+$bizName = Usermeta::get(Auth::user()->id, 'business_name', true);
+$bizPhone = Usermeta::get(Auth::user()->id, 'company_busines_phone', true);
+$bizEmail = Usermeta::get(Auth::user()->id, 'company_email', true);
+$bizSt = Usermeta::get(Auth::user()->id, 'company_address_st', true);
+$bizCity = Usermeta::get(Auth::user()->id, 'company_address_city', true);
+$bizState = Usermeta::get(Auth::user()->id, 'company_address_state', true);
+$bizZip = Usermeta::get(Auth::user()->id, 'company_address_zip', true);
+$bizYears = Usermeta::get(Auth::user()->id, 'company_years_in_business', true);
+
+$logotext = Userwebsite::get(Auth::user()->id, 'logotext', true);
+$uselogo = Userwebsite::get(Auth::user()->id, 'uselogo', true);
+$webdescription = Userwebsite::get(Auth::user()->id, 'meta_description', true);
+$webtitle = Userwebsite::get(Auth::user()->id, 'title', true); 
+$maincolor = Userwebsite::get(Auth::user()->id, 'main_color', true); 
+$sidecolor = Userwebsite::get(Auth::user()->id, 'side_color', true);
 ?> 
 <?php include 'inc/configweb.php'; ?>
 <?php include 'inc/template_start_web.php'; ?>

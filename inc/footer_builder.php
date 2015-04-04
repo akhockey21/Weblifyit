@@ -55,6 +55,7 @@
 </div>
                 <form action="" method="post"  class="form-horizontal form-bordered">
                     <input id="template-id" type="text" name="templateid" value="" hidden>
+                    
                     <div class="form-group form-actions">
                         <div class="col-xs-12 text-center">
                             <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Go Back</button>
@@ -149,7 +150,10 @@
             <div class="modal-body">
                 <form action="" method="post"  class="form-horizontal form-bordered">
 <input type="text" id="newpageidval1" name="page" hidden> 
-                    
+                    <?php //use if statements, to build the correct form, based on the page style. ex. the about us page will have a form specific to it.. first create the page layouts, so that way you can come up with the questions.
+
+
+?>
                     <div class="form-group form-actions">
                         <div class="col-xs-12 text-right">
                             <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
@@ -178,18 +182,120 @@
 </ul>
     <form action="" method="post"  class="form-horizontal"> 
 <div class="tab-content">
-<div class="tab-pane active" id="modal-tabs-profile">Profile..</div>
+<div class="tab-pane active" id="modal-tabs-profile">
+    
+  <form method="post" action=""> 
+<div class="form-group">
+                            <div class="col-md-12">
+        
+                            <label class="control-label" for="maincolor">Main Website Color</label>
+                                <input type="text" id="example-colorpicker" name="maincolor" class="form-control input-colorpicker colorpicker-element" value="<?php echo $maincolor?>">
+                            </div>
+                        </div>
+<div class="form-group">
+                            <div class="col-md-12">
+        
+                            <label class="control-label" for="sidecolor">Side Website Color</label>
+                                <input type="text" id="example-colorpicker" name="sidecolor" class="form-control input-colorpicker colorpicker-element" value="<?php echo $sidecolor ?>"> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            
+                            <div class="col-md-12">
+                            <label class="control-label">Use Logo?</label>
+                                <label class="switch switch-primary" for="uselogo">
+                                    <input type="checkbox" id="uselogo" name="uselogo" value="1">
+                                    <span data-toggle="tooltip" title="Yes, use my logo rather than text."></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="logotext">Logo Text</label>
+                                <input type="text" id="logotext" name="logotext" class="form-control" placeholder="Logo Text" value="<?php echo $logotext ?>">
+                            </div> 
+                    </div>
+  <div class="form-group form-actions text-center">
+                        <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
+                    </div>
+</form>
+    <form class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here</span></div>
+    </form>
+    </div>
 <div class="tab-pane" id="modal-tabs-settings">Settings..</div>
-<div class="tab-pane" id="modal-tabs-businesss">Business Info..</div>
-<div class="tab-pane" id="modal-tabs-seo">Search Engine Info..</div>
+<div class="tab-pane" id="modal-tabs-businesss"><form method="post" action=""> 
+<div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizname">Business Name</label>
+                                <input type="text" id="bizname" name="bizname" class="form-control" placeholder="Enter Your Business' Name" value="<?php echo $bizName ?>">
+                            </div>
+                        </div>
+  <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizphone">Business Phone</label>
+                                <input type="text" id="bizphone" name="bizphone" class="form-control" placeholder="Enter Your Business' Phone" value="<?php echo $bizPhone ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizemail">Business Email</label>
+                                <input type="text" id="bizemail" name="bizemail" class="form-control" placeholder="Enter Your Business' Email" value="<?php echo $bizEmail ?>">
+                            </div>
+                    </div>
+    <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizst">Street Name</label>
+                                <input type="text" id="bizst" name="bizst" class="form-control" placeholder="Enter Your Business' Street Name" value="<?php echo $bizSt ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizcity">City</label>
+                                <input type="text" id="bizcity" name="bizcity" class="form-control" placeholder="Enter Your Business' City" value="<?php echo $bizCity ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizstate">State</label>
+                                <input type="text" id="bizstate" name="bizstate" class="form-control" placeholder="Enter Your Business State" value="<?php echo $bizState ?>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizzip">Zip Code</label>
+                                <input type="text" id="bizzip" name="bizzip" class="form-control" placeholder="Enter Your Business Zip Code" value="<?php echo $bizZip ?>">
+                            </div>
+                        </div>
+  <div class="form-group form-actions text-center">
+                        <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
+                    </div>
+</form></div>
+<div class="tab-pane" id="modal-tabs-seo"> <form method="post" action=""> 
+<div class="form-group"> 
+                            
+                            <div class="col-md-12">
+                                <label class="control-label" for="webtitle">Website Title</label>
+                                <input type="text" id="webtitle" name="webtitle" class="form-control" placeholder="Website Name" value="<?php echo $webtitle ?>"> 
+                            </div>
+                        </div>
+  <div class="form-group">
+                            
+                            <div class="col-md-12">
+                            <label class="control-label" for="webdescription">Website Description</label>
+                                <textarea id="webdescription" name="webdescription" class="form-control" placeholder="Enter Your Website Description"><?php echo $webdescription ?></textarea>
+                            </div>
+                        </div>
+  <div class="form-group form-actions text-center">
+                        <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
+                    </div>
+</form></div>
 <div class="tab-pane" id="modal-tabs-domain">domain Info..</div>
 </div>
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-<button type="button" class="btn btn-sm btn-primary">Save changes</button>
 </div>
-    </form>
 </div>
     </div>
 </div>
