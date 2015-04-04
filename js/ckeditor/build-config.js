@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
@@ -75,8 +75,8 @@ var CKBUILDER_CONFIG = {
 		'image' : 1,
 		'indentblock' : 1,
 		'indentlist' : 1,
-		'justify' : 1,
-		'language' : 1,
+		'justify' : 0,
+		'language' : 0,
 		'link' : 1,
 		'list' : 1,
 		'liststyle' : 1,

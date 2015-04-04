@@ -100,10 +100,11 @@
 <label class="control-label" for="example-chosen">Page Layout:</label>
 <select id="example-chosen" name="pagestyle" class="select-chosen" data-placeholder="Public">
 <option value="contactus">Contact Us</option>
-<option value="specific-product">Specfic Service</option>
+<option value="specificservice">Specfic Service</option>
 <option value="aboutus">About Us</option>
-<option value="services">Services/Products</option><option value="shortheader">Information</option>
-    <option value="landingpage">Home Page</option>
+<option value="services">Services/Products</option>
+<option value="informational">Information</option>
+<option value="homepage">Home Page</option>
 </select>
             </div>
             <div class="form-group">
@@ -141,28 +142,37 @@
 <div id="pagetext" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog"> 
         <div class="modal-content">
+            
+<ul class="nav nav-tabs" data-toggle="tabs">
+<li class="active"><a href="#modal-tabs-pagewizard">Page Text Wizard</a></li>
+<li class=""><a href="#modal-tabs-advancedpageedit" data-toggle="tooltip" title=""><i class="fa fa-cogs"></i> Advanced Text Editor</a></li>
+</ul>
+        
+<div class="tab-content">
+    <div class="tab-pane active" id="modal-tabs-pagewizard">
             <!-- Modal Header -->
             <div class="modal-header text-center">
-                <h2 class="modal-title"><i class="fa fa-user"></i> Page Text Wizard</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button> 
+                <h2 class="modal-title"><i class="fa fa-user"></i> Page Text Wizard: <strong><?php echo Userpages::get(Auth::user()->id, $page, 'pagename', true); ?></strong></h2>
             </div>
             <!-- END Modal Header -->
             <!-- Modal Body -->
             <div class="modal-body">
-                <form action="" method="post"  class="form-horizontal form-bordered">
-<input type="text" id="newpageidval1" name="page" hidden> 
-                    <?php //use if statements, to build the correct form, based on the page style. ex. the about us page will have a form specific to it.. first create the page layouts, so that way you can come up with the questions.
-
-
-?>
-                    <div class="form-group form-actions">
-                        <div class="col-xs-12 text-right">
-                            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
-                        </div>
-                    </div>
-                </form>
+                <?php include 'web/pagetextedit.php'; ?> 
             </div>
-            <!-- END Modal Body -->
+            <!-- END Modal Body --></div>
+    <div class="tab-pane" id="modal-tabs-advancedpageedit">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button> 
+                <h2 class="modal-title"><i class="fa fa-user"></i> Advanced Page Text Editor: <strong><?php echo Userpages::get(Auth::user()->id, $page, 'pagename', true); ?></strong></h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+            </div>
+            <!-- END Modal Body --></div>
+            </div>
         </div>
     </div>
 </div>
