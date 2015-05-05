@@ -127,7 +127,7 @@
                     <div class="form-group form-actions">
                         <div class="col-xs-12 text-right">
                             <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
+                            <button type="submit" class="btn btn-sm btn-primary" name="submitNewPage">Save Changes</button>
                         </div>
                     </div>
                 </form>
@@ -229,7 +229,7 @@
                         <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
                     </div>
 </form>
-    <form class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here</span></div>
+    <form action="models/web/upload.php" class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here Or click To Upload</span></div>
     </form>
     </div>
 <div class="tab-pane" id="modal-tabs-settings">Settings..</div>
@@ -312,4 +312,88 @@
 
 
 
+<!-- END User Settings -->
+<div id="publish" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"> 
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button> 
+                <h2 class="modal-title"><i class="fa fa-user"></i> Publish Website</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body"><?php
+                if($domainsetup==false){
+                include 'web/domainsetup.php';
+                }else{
+                include 'web/publishwebsite.php';
+                }
+                ?>
+            </div>
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>
 
+    <!-- END User Settings -->
+<div id="pagelayout" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog"> 
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button> 
+                <h2 class="modal-title">Choose Page Layout</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div class="row">
+                    
+<?php
+//number of page layouts for each style of page
+$pagelayouts = array('homepage' => 1, 'aboutus' => 3, 'contactus' => 3, 'services' => 3, 'informational' =>3);
+
+//image start name for each page style
+$styleImageName = array('homepage' => 'homepage', 'aboutus' => 'aboutus', 'contactus' => 'contactus', 'services' => 'services', 'informational' => 'infopage');
+
+foreach($pagelayouts as $layout => $layoutValue){
+    if($layout==$pagestyle){
+        for ($x = 0; $x + 1 <= $layoutValue; $x++) {
+            $pageLayoutsCount = $x + 1;
+            ?>
+<div class="col-md-4 col-xs-4">
+                <div class="content-header">
+<ul class="nav-horizontal text-center">
+<li class="<?php if($pageStyleLayout==$pageLayoutsCount){echo 'active';}?>">
+<a><img src="img/pagelayouts/<?php echo $styleImageName["$pagestyle"] . $pageLayoutsCount; ?>.png" style="width: 75%;"></a>
+</li>
+</ul>
+</div>
+                </div>
+                    
+                    <?php
+        }
+    }
+}
+?>               
+                </div>
+                <form method="post" action="">
+                <input type="text" id="pagestylename" name="page" value="<?php echo $page; ?>" hidden> 
+            <div class="form-group"> 
+<label class="control-label" for="example-chosen">Page Layout:</label>
+<select id="example-chosen" name="pagelayout" class="select-chosen" data-placeholder="Public">
+<option value="1">Page Layout 1</option>
+<option value="2">Page Layout 2</option>
+<option value="3">Page Layout 3</option>
+</select>
+            </div>
+  <div class="form-group form-actions text-center">
+                        <button type="submit" class="btn btn-sm btn-primary" name="submit">Save Changes</button>
+                    </div>
+</form>
+            </div>
+            <!-- END Modal Body -->
+        </div>
+    </div>
+</div>

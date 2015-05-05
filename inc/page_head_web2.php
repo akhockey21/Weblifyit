@@ -354,7 +354,7 @@
                     <!-- Change Options functionality can be found in js/app.js - templateOptions() -->
                     <li class="dropdown">
                         <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="gi gi-settings"></i>   Pages 
+                            <i class="gi gi-more_items"></i>   Pages 
                         </a>
                         <ul class="dropdown-menu text-left">
                             <li class="dropdown-header">Change Page:</li>
@@ -366,12 +366,12 @@ foreach($pagesall as $filter_result){
         continue;
     }
     $pageids[] = $filter_result->page_id; ?>
-<li>
+<li <?php if($page==$filter_result->page_id){echo "class=\"active\"";} ?>>
 <a href="?page=<?php echo $filter_result->page_id; ?>" id="<?php echo $filter_result->page_id; ?>"><?php echo Userpages::get(Auth::user()->id, $filter_result->page_id, 'pagename', true); ?></a>
 </li>
                         <?php
 }
-$tot = count($pageids);
+$tot = end($pageids);
 $total = $tot + 1;
 ?> 
 <li class="divider"></li>
@@ -380,16 +380,7 @@ $total = $tot + 1;
 </li>  
 </ul>
                     </li>
-                    <li>
-                        <a href="#pagetext" data-toggle="modal" data-placement="bottom" onclick="getElementById('newpageidval1').value='<?php echo "$total"; ?>'">
-                            <i class="fa fa-bars fa-fw"></i> Edit Page Text
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#websitesettings" data-toggle="modal" data-placement="bottom">
-                            <i class="fa fa-bars fa-fw"></i> Website Settings
-                        </a>
-                    </li>
+                    <li><a href="#pagelayout" data-toggle="modal" data-placement="bottom" class="active"><i class="gi gi-share"></i> Page Layout</a></li>
                     <!-- END Template Options -->
                 </ul>
                 <!-- END Left Header Navigation -->
@@ -413,8 +404,8 @@ $total = $tot + 1;
                       
                     </li>
                     <!-- END Alternative Sidebar Toggle Button -->
-                    <li><a>Preview</a></li>
-                    <li><a>Publish</a></li>
+                    <li><a href="/web-preview/" target="_blank"><i class="gi gi-eye_open"></i> Preview</a></li>
+                    <li><a href="#publish" data-toggle="modal" data-placement="bottom" class="active"><i class="gi gi-share"></i> Publish</a></li>
                     
                     <!-- END User Dropdown -->
                 </ul>

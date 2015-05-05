@@ -12,7 +12,7 @@
                 <!-- Progress Wizard Content -->
                 <form id="progress-wizard" action="" method="post" class="form-horizontal">
                     
-<input type="text" id="pageidval" name="page" value="<?php echo $page ?>" hidden>
+<input type="text" name="pagestyle" value="<?php echo $pagestyle ?>" hidden>
                     <?php
 
     $questions = DB::table('templatetextquestions')->where('style', $pagestyle)->get(); 
@@ -31,7 +31,7 @@
             $usertxt = Userwebsitetext::get(Auth::user()->id, $pagestyle, true);
             $defaulttxt = Userdefaulttext::get($categoryid, $pagestyle, true);
         if($usertxt==true){
-            $countQ_m = $countQ - 1;
+            $countQ_m = $countQ - 1; 
             $usertxt_e = explode(';' , $usertxt);
             echo $usertxt_e[$countQ_m];
         }elseif($defaulttxt==true){
@@ -56,7 +56,7 @@
                     <div class="form-group form-actions">
                         <div class="col-md-8 col-md-offset-4">
                             <input type="reset" class="btn btn-sm btn-warning" id="back3" value="Back">
-                            <input type="submit" class="btn btn-sm btn-primary" id="next3" value="Next" name="submit">
+                            <input type="submit" class="btn btn-sm btn-primary" id="next3" value="Next" name="submitPageTextEdit">
                         </div>
                     </div>
                     <!-- END Form Buttons -->

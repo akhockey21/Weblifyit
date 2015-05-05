@@ -49,7 +49,7 @@ function page_restricted() {
             		<span class="icon-bar"></span>
             		<span class="icon-bar"></span>
           		</button>
-          		<a href="<?php echo App::url() ?>" class="navbar-brand">WEBLIFY<sup>IT</sup></a>
+          		<a href="<?php echo App::url() ?>" class="navbar-brand">WEBLIFYIT</a>
         	</div>
         	<div class="navbar-collapse collapse">
 	          	<ul class="nav navbar-nav">

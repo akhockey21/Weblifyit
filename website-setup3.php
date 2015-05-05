@@ -23,7 +23,7 @@ switch ($page) {
 }
 
 ?> 
-<?php include 'inc/config.php'; ?>
+<?php include 'inc/config.php'; ?> 
 <?php include 'inc/template_start_web.php'; ?>
 <?php include 'inc/page_head_web.php'; ?>
 

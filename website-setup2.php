@@ -1,6 +1,9 @@
 <?php require_once 'app/init.php'; 
 if (!Auth::check()) redirect_to(App::url()); 
 use Hazzard\Support\MessageBag;
+
+include 'models/website.php';
+ 
 $user = User::find(Auth::user()->id);
 $page = isset($_GET['page']) ? $_GET['page'] : '1';
 $pagesall = DB::table('userpages')->where('user_id', Auth::user()->id)->get();
@@ -9,7 +12,8 @@ $categoryid = DB::table('webcategories')->where('meta_value', $category)->pluck(
 $domainsetup = Userwebsite::get(Auth::user()->id, 'domainsetup', true);
 $usesdomain = Userwebsite::get(Auth::user()->id, 'usesdomain', true);
 $step = Userwebsite::get(Auth::user()->id, 'step', true);
-$pagestyle = Userpages::get(Auth::user()->id, $page, 'style', true);
+$pagestyle = Userpages::get(Auth::user()->id, $page, 'style', true); 
+$pageStyleLayout = Userpages::get(Auth::user()->id, $page, 'pagelayout', true);
 
 //get website info
 $bizName = Usermeta::get(Auth::user()->id, 'business_name', true);
@@ -27,6 +31,7 @@ $webdescription = Userwebsite::get(Auth::user()->id, 'meta_description', true);
 $webtitle = Userwebsite::get(Auth::user()->id, 'title', true); 
 $maincolor = Userwebsite::get(Auth::user()->id, 'main_color', true); 
 $sidecolor = Userwebsite::get(Auth::user()->id, 'side_color', true);
+$todoList = Userwebsite::get(Auth::user()->id, 'todo', true);
 ?> 
 <?php include 'inc/configweb.php'; ?>
 <?php include 'inc/template_start_web.php'; ?>
@@ -34,7 +39,382 @@ $sidecolor = Userwebsite::get(Auth::user()->id, 'side_color', true);
 
 <!-- Page content -->
 <div id="page-content">
+<div class="content-header">
+<ul class="nav-horizontal text-center" data-toggle="tabs">
+<li class="active">
+<a href="#dashboard"><i class="gi gi-home"></i> Main Dashboard</a>
+</li>
+<li>
+<a href="#edit-page-text" onclick="getElementById('newpageidval1').value='<?php echo "$total"; ?>'"><i class="gi gi-edit"></i> Edit Page Text</a>
+</li>
+<li>
+<a href="#logo-color-options"><i class="gi gi-show_big_thumbnails"></i> Logo & Color options</a>
+</li>
+<li>
+<a href="#business-information"><i class="gi gi-shop"></i> Business Information</a>
+</li>
+<li>
+<a href="#search-engine-settings"><i class="gi gi-zoom_out"></i> Search Engine Settings</a>
+</li>
+<li>
+<a href="#domain-settings"><i class="gi gi-cogwheels"></i> Domain Settings</a>
+</li>
+<li>
+<a href="#change-page-images"><i class="gi gi-picture"></i> Change Page Images</a>
+</li>
+</ul>
+</div>
+    
+<div class="row">
+<div class="tab-content">
+<div class="tab-pane active" id="dashboard">
+<div class="col-md-2">
+<img src="img/arrow-web.png" class="pull-right" style="width: 60%;">
+</div>
+<div class="col-md-7">
+<div class="block">
+<div class="modal-header text-center"> 
+    <h2 class="modal-title"><strong>Welcome To Your New Website</strong></h2>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-md-6">
+    <p>Morbi et nibh at nisi pretium ultricies. Praesent nec est vel mauris lobortis luctus quis in libero. Quisque et lacus quis mauris mattis molestie. Pellentesque purus orci, malesuada a ex eu, scelerisque sollicitudin nulla. In hac habitasse platea dictumst. Aliquam nec laoreet arcu. In dictum quam non nisi porttitor, sit amet lobortis sem cursus. Aliquam sodales nunc eget magna consectetur, in rhoncus massa mollis. Sed tempus scelerisque ipsum, ut posuere neque porttitor interdum. Nunc sit amet dui magna. Donec ullamcorper nulla nec velit luctus, eget sollicitudin ex dapibus. Ut sit amet leo efficitur, sodales metus non, feugiat erat. In in blandit diam.</p>
+    <button type="button" class="btn btn-primary btn-lg">Start Building Your Website Here</button>
+    </div>
+<div class="col-md-6"><iframe width="100%" height="315" src="https://www.youtube.com/embed/e-ORhEE9VVg" frameborder="0" allowfullscreen></iframe>
+    </div>
+    </div>
+</div>
+</div>
+<div class="block">
+<div class="modal-header"> 
+    <h4 class="modal-title">Your Website:</h4>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-md-12">
+    <p>Change Template     Search Engine Visibility Wizard</p>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane" id="edit-page-text">
+<div class="col-md-3">
+<div class="block">
+<h4 class="sub-header">Change Page:</h4>
+<ul class="nav nav-pills nav-stacked">    
+<?php
 
+$pageids = array();
+foreach($pagesall as $filter_result){
+    if ( in_array($filter_result->page_id, $pageids) ) {
+        continue;
+    }
+    $pageids[] = $filter_result->page_id; ?>
+<li <?php if($page==$filter_result->page_id){echo "class=\"active\"";} ?>>
+<a href="?page=<?php echo $filter_result->page_id; ?>" id="<?php echo $filter_result->page_id; ?>"><span class="text-center"><?php echo Userpages::get(Auth::user()->id, $filter_result->page_id, 'pagename', true); ?></span></a>
+</li>
+                        <?php
+}
+$tot = end($pageids);
+$total = $tot + 1;
+?>    
+</ul>
+</div>  
+</div>
+<div class="col-md-6">
+<div class="tab-pane active">
+<div class="block">
+<div class="modal-header text-center"> 
+<h2 class="modal-title">Page Text Wizard: <strong><?php echo Userpages::get(Auth::user()->id, $page, 'pagename', true); ?></strong></h2>
+</div>
+<div class="modal-body">
+<?php include 'inc/web/pagetextedit.php'; ?> 
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane" id="logo-color-options">
+<div class="col-md-1">
+<img src="img/arrow-web.png" class="pull-right" style="width: 60%;">
+</div>
+<div class="col-md-4">
+<div class="block">
+<h2 class="modal-title sub-header text-center">Color options</h2>
+<form action="" method="post" class="form-horizontal">
+<div class="form-group">
+                            <div class="col-md-12">
+        
+                            <label class="control-label" for="maincolor">Main Website Color</label>
+                                <input type="text" id="example-colorpicker" name="maincolor" class="form-control input-colorpicker colorpicker-element" value="<?php echo $maincolor?>">
+                            </div>
+                        </div>
+<div class="form-group">
+                            <div class="col-md-12">
+        
+                            <label class="control-label" for="sidecolor">Side Website Color</label>
+                                <input type="text" id="example-colorpicker" name="sidecolor" class="form-control input-colorpicker colorpicker-element" value="<?php echo $sidecolor ?>"> 
+                            </div>
+                        </div>
+<div class="form-group form-actions">
+<div class="col-md-9 col-md-offset-3">
+<button type="submit" class="btn btn-sm btn-primary" name="submit"><i class="fa fa-user"></i> Save Changes</button>
+<button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="col-md-4">
+<div class="tab-pane active">
+<div class="block"> 
+<h2 class="modal-title sub-header text-center">Logo Settings</h2>
+<form action="" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label">Use Logo Text Instead of Logo Image?</label>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="switch switch-primary" for="uselogo">
+                                    <input type="checkbox" id="uselogo" name="uselogo" value="1">
+                                    <span data-toggle="tooltip"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="logotext">Logo Text</label>
+                                <input type="text" id="logotext" name="logotext" class="form-control" placeholder="Logo Text" value="<?php echo $logotext ?>">
+                            </div> 
+                    </div>
+<div class="form-group form-actions">
+<div class="col-md-9 col-md-offset-3">
+<button type="submit" class="btn btn-sm btn-primary" name="submit"><i class="fa fa-user"></i> Save Changes</button>
+<button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+</div>
+</div>
+</form>
+</div>
+    
+    <form action="models/web/upload.php" class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here or click To Upload</span></div>
+    </form></div></div></div>
+<div class="tab-pane" id="business-information">
+<div class="col-md-offset-1 col-md-2">
+<img src="img/arrow-web.png" class="pull-right" style="width: 60%;">
+</div>
+<div class="col-md-6">
+<div class="block">
+<h2 class="modal-title sub-header text-center">Business Information</h2>
+<form action="" method="post" class="form-horizontal">
+<div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizname">Business Name</label>
+                                <input type="text" id="bizname" name="bizname" class="form-control" placeholder="Enter Your Business' Name" value="<?php echo $bizName ?>">
+                            </div>
+                        </div>
+  <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizphone">Business Phone</label>
+                                <input type="text" id="bizphone" name="bizphone" class="form-control" placeholder="Enter Your Business' Phone" value="<?php echo $bizPhone ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizemail">Business Email</label>
+                                <input type="text" id="bizemail" name="bizemail" class="form-control" placeholder="Enter Your Business' Email" value="<?php echo $bizEmail ?>">
+                            </div>
+                    </div>
+    <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizst">Street Name</label>
+                                <input type="text" id="bizst" name="bizst" class="form-control" placeholder="Enter Your Business' Street Name" value="<?php echo $bizSt ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizcity">City</label>
+                                <input type="text" id="bizcity" name="bizcity" class="form-control" placeholder="Enter Your Business' City" value="<?php echo $bizCity ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizstate">State</label>
+                                <input type="text" id="bizstate" name="bizstate" class="form-control" placeholder="Enter Your Business State" value="<?php echo $bizState ?>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-12">
+                            <label class="control-label" for="bizzip">Zip Code</label>
+                                <input type="text" id="bizzip" name="bizzip" class="form-control" placeholder="Enter Your Business Zip Code" value="<?php echo $bizZip ?>">
+                            </div>
+                        </div>
+<div class="form-group form-actions">
+<div class="col-md-9 col-md-offset-3">
+<button type="submit" class="btn btn-sm btn-primary" name="submit"><i class="fa fa-user"></i> Save Changes</button>
+<button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+</div>
+</div>
+</form>
+</div></div></div>
+<div class="tab-pane" id="search-engine-settings">
+<div class="col-md-offset-1 col-md-2">
+<img src="img/arrow-web.png" class="pull-right" style="width: 60%;">
+</div>
+<div class="col-md-6"><div class="block">
+<h2 class="modal-title sub-header text-center">Search Engine Settings</h2>
+<form action="" method="post" class="form-horizontal">
+<div class="form-group"> 
+                            
+                            <div class="col-md-12">
+                                <label class="control-label" for="webtitle">Website Title</label>
+                                <input type="text" id="webtitle" name="webtitle" class="form-control" placeholder="Website Name" value="<?php echo $webtitle ?>"> 
+                            </div>
+                        </div>
+  <div class="form-group">
+                            
+                            <div class="col-md-12">
+                            <label class="control-label" for="webdescription">Website Description</label>
+                                <textarea id="webdescription" name="webdescription" class="form-control" placeholder="Enter Your Website Description"><?php echo $webdescription ?></textarea>
+                            </div>
+                        </div>
+<div class="form-group form-actions">
+<div class="col-md-9 col-md-offset-3">
+<button type="submit" class="btn btn-sm btn-primary" name="submit"><i class="fa fa-user"></i> Save Changes</button>
+<button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+</div>
+</div>
+</form>
+</div></div></div>
+<div class="tab-pane" id="domain-settings">
+<div class="col-md-offset-1 col-md-2">
+<img src="img/arrow-web.png" class="pull-right" style="width: 60%;">
+</div>
+<div class="col-md-6">
+<div class="block">
+            <div class="modal-header text-center">
+                <h2 class="modal-title">Publish Website</h2>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body"><?php
+                if($domainsetup==false){
+                include 'inc/web/domainsetup.php';
+                }else{
+                include 'inc/web/publishwebsite.php';
+                }
+                ?> 
+    </div></div></div></div>
+<div class="tab-pane" id="change-page-images">
+<div class="col-md-2">
+<div class="block">
+<h4 class="sub-header">Change Page:</h4>
+<ul class="nav nav-pills nav-stacked">    
+<?php
+
+$pageids = array();
+foreach($pagesall as $filter_result){
+    if ( in_array($filter_result->page_id, $pageids) ) {
+        continue;
+    }
+    $pageids[] = $filter_result->page_id; ?>
+<li <?php if($page==$filter_result->page_id){echo "class=\"active\"";} ?>>
+<a href="?page=<?php echo $filter_result->page_id; ?>" id="<?php echo $filter_result->page_id; ?>"><span class="text-center"><?php echo Userpages::get(Auth::user()->id, $filter_result->page_id, 'pagename', true); ?></span></a>
+</li>
+                        <?php
+}
+$tot = end($pageids);
+$total = $tot + 1;
+?>    
+</ul>
+</div>  
+</div>
+<div class="col-md-7">
+<div class="block">
+<div class="modal-header text-center"> 
+    <h2 class="modal-title">Change Page Images:</h2>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-md-4">
+    <h4><strong>Image Location</strong></h4>
+    <p>Morbi et nibh at nisi pretium ultricies. Praesent nec est vel mauris lobortis luctus quis in libero. Quisque et lacus quis mauris mattis molestie. Pellentesque purus orci, malesuada a ex eu, scelerisque sollicitudin nulla. In hac habitasse platea dictumst.</p>
+    </div>
+<div class="col-md-8">
+    <img src="http://mgaaaronsplumbing.com/wp-content/uploads/2012/05/Exceptional-sewer-drain-cleaning.jpg" style="width: 100%;">
+    </div>
+    </div>
+<div class="row">
+<div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-md">Upload Image</button>
+    <button type="button" class="btn btn-primary btn-md">Revert To Template Image</button>
+    <button type="button" class="btn btn-primary btn-md">Choose Image</button>
+    </div>
+    </div>
+    <hr>
+<div class="row">
+<div class="col-md-4">
+    <h4><strong>Image Location</strong></h4>
+    <p>Morbi et nibh at nisi pretium ultricies. Praesent nec est vel mauris lobortis luctus quis in libero. Quisque et lacus quis mauris mattis molestie. Pellentesque purus orci, malesuada a ex eu, scelerisque sollicitudin nulla. In hac habitasse platea dictumst.</p>
+    </div>
+<div class="col-md-8">
+    <img src="http://mgaaaronsplumbing.com/wp-content/uploads/2012/05/Exceptional-sewer-drain-cleaning.jpg" style="width: 100%;">
+    </div>
+    </div>
+<div class="row">
+<div class="col-md-12">
+    <button type="button" class="btn btn-primary btn-md">Upload Image</button>
+    <button type="button" class="btn btn-primary btn-md">Revert To Template Image</button>
+    <button type="button" class="btn btn-primary btn-md">Choose Image</button>
+    </div>
+    </div>
+</div>
+</div>
+</div></div>
+</div>
+<?php if($todoList==true){?>
+<div class="col-md-3 pull-right">
+<div class="block">
+<div class="block-title">
+<h2><strong>To-Do</strong> List</h2>
+</div>
+<div class="list-group" data-toggle="tabs">
+<?php
+    $listItems = explode(";", $todoList);
+    foreach ($listItems as $listItem){
+       $listItem = explode(",", $listItem);
+        ?>
+    <a href="#logo-color-options" class="list-group-item">
+<span class="badge"><i class="hi hi-ok"></i></span>
+<h4 class="list-group-item-heading"><?php 
+        if($listItem[1]==1){
+            echo '<strike>' . $listItem[0] . '</strike>';
+        }else{
+           echo $listItem[0]; 
+        }
+        
+?></h4>
+</a>
+    <?php
+    }
+    
+
+?>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+<h2><i class="gi gi-circle_question_mark"></i><strong>Need Help On This Page?</strong></h2>
+</div>
+</div>
+</div><?php } ?>
+</div>
+    
+    
 </div>
 <!-- END Page Content -->
 

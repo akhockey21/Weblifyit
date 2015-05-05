@@ -81,7 +81,7 @@ return array(
 	|
 	*/
 
-	'login_redirect' => 'main_dashboard.php',
+	'login_redirect' => 'weblifyit.php',
 
 	/*
 	|--------------------------------------------------------------------------

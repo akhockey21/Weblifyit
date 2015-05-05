@@ -12,7 +12,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
         if (file_exists($path)) {
    //make message pop up saying the domain is taken.
 } else {
-    Userwebsite::update(Auth::user()->id, 'domain_name', $domain);
+    Userwebsite::update(Auth::user()->id, 'sub_domain_name', $domain);
     Userwebsite::update(Auth::user()->id, 'path', $path);
     mkdir("$path"); 
 }

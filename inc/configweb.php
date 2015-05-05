@@ -24,7 +24,7 @@ $template = array(
     'menu_scroll'       => true,
     // 'navbar-default'         for a light header
     // 'navbar-inverse'         for a dark header
-    'header_navbar'     => 'navbar-default',
+    'header_navbar'     => 'navbar-default navbar-inverse',
     // ''                       empty for a static layout
     // 'navbar-fixed-top'       for a top fixed header / fixed sidebars
     // 'navbar-fixed-bottom'    for a bottom fixed header / fixed sidebars

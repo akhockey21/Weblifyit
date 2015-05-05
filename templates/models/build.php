@@ -1,10 +1,6 @@
-<?php require_once '../../app/init.php'; 
-if (!Auth::check()) redirect_to(App::url()); 
-use Hazzard\Support\MessageBag;
-?>
 <?php
 //get build info from database
-$fpage= $_GET['pageid'];
+$fpage = isset($exportpageid) ? $exportpageid : '1';
 $pagename = Userpages::get(Auth::user()->id, $fpage, 'pagename', true);  
 $navhide =   Userpages::get(Auth::user()->id, $fpage, 'navhide', true); 
 $style = Userpages::get(Auth::user()->id, $fpage, 'style', true); 
@@ -24,29 +20,36 @@ $categoryname = Userwebsite::get(Auth::user()->id, 'category', true);
 $category = DB::table('webcategories')->where('meta_value', $categoryname)->pluck('cat_id');
 $pagesall = DB::table('userpages')->where('user_id', Auth::user()->id)->get();
 $templateid = Userwebsite::get(Auth::user()->id, 'template_id', true);
+$pageStyleLayout = Userpages::get(Auth::user()->id, $fpage, 'pagelayout', true);
+
+if($pageStyleLayout==false){
+    $pageStyleLayout = 1;
+}
 
 $pagestyle = $style;
-include "../templates/$templateid/build/parts/head.php"; 
+include "templates/templates/$templateid/head.php"; 
 
 //edit these to match each pagestyle.
-include "../templates/$templateid/build/parts/header.php"; 
-include "../templates/$templateid/build/parts/afterheader.php"; 
+include "templates/templates/$templateid/header.php"; 
+include "templates/templates/$templateid/afterheader.php"; 
 
+
+//GET PAGE STYLE BODY
 if($pagestyle=="homepage"){
-    include '../templates/styles/homepage.php';
+    include "templates/templates/styles/homepage/$pageStyleLayout.php";
 }elseif($pagestyle=="contactus"){
-    include '../templates/styles/contactus.php';
+    include "templates/templates/styles/contactus/$pageStyleLayout.php";
 }elseif($pagestyle=="aboutus"){
-    include '../templates/styles/aboutus.php';
+    include "templates/templates/styles/about-us/$pageStyleLayout.php";
 }elseif($pagestyle=="services"){
-    include '../templates/styles/services.php';
+    include "templates/templates/styles/services/$pageStyleLayout.php";
 }elseif($pagestyle=="specificservice"){
-    include '../templates/styles/specificservice.php';
+    include "templates/templates/styles/specificservice/$pageStyleLayout.php";
 }elseif($pagestyle=="informational"){
-    include '../templates/styles/informational.php';
+    include "templates/templates/styles/informational/$pageStyleLayout.php";
 }else{
     //There is an error, no page style. Maybe show warning?
 }
 
 ?>
-<?php include "../templates/$templateid/build/parts/footer.php"; ?>
+<?php include "templates/templates/$templateid/footer.php"; ?>

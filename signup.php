@@ -63,8 +63,8 @@ if (isset($_POST['submit']) && csrf_filter()) {
                     </div>
                     <?php endif ?>
                 </div>
+                <div class="col-xs-12"> 
                 <div class="input-group">
-                <div class="col-xs-12">
                     <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
                     <input type="text" id="signup-email" name="email" class="form-control input-lg" value="<?php echo set_value('email') ?>">
                 </div>
