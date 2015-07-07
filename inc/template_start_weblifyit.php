@@ -50,6 +50,8 @@
 
         <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
         <link rel="stylesheet" href="css/main-weblifyit.css"> 
+        
+        <link rel="stylesheet" href="css/bootstrap-iconpicker.min.css"/>
 
         <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
         <?php if ($template['theme']) { ?><link id="theme-link" rel="stylesheet" href="css/themes/<?php echo $template['theme']; ?>.css"><?php } ?>
