@@ -24,34 +24,19 @@ $user = User::find(Auth::user()->id);
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="header-code">Head Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="header-code" class="form-control" rows="6" placeholder="Enter meta description.." data-gramm="true" data-txt_gramm_id="51977e42-62ce-eb40-b0ae-bf7c5fe37a38" data-gramm_id="51977e42-62ce-eb40-b0ae-bf7c5fe37a38" data-gramm_editor="true" style="z-index: 1; position: relative; line-height: 18.5714302062988px; font-size: 13px; -webkit-transition: none; transition: none; overflow: auto; background: transparent !important;"></textarea>
-                            <div>
-                                <div style="z-index: 2; opacity: 1; margin-left: 541px; margin-top: 92px;" class="gr-textarea-btn " data-reactid=".6">
-                                    <div title="Protected by Grammarly" class="gr-textarea-btn_status" data-reactid=".6.0">&nbsp;</div>
-                                </div>
-                            </div>
+                            <textarea class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="footer-code">Footer Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="footer-code" class="form-control" rows="6" placeholder="Enter meta description.." data-gramm="true" data-txt_gramm_id="51977e42-62ce-eb40-b0ae-bf7c5fe37a38" data-gramm_id="51977e42-62ce-eb40-b0ae-bf7c5fe37a38" data-gramm_editor="true" style="z-index: 1; position: relative; line-height: 18.5714302062988px; font-size: 13px; -webkit-transition: none; transition: none; overflow: auto; background: transparent !important;"></textarea>
-                            <div>
-                                <div style="z-index: 2; opacity: 1; margin-left: 541px; margin-top: 92px;" class="gr-textarea-btn " data-reactid=".6">
-                                    <div title="Protected by Grammarly" class="gr-textarea-btn_status" data-reactid=".6.0">&nbsp;</div>
-                                </div>
-                            </div>
+                            <textarea id="product-meta-description" name="footer-code" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="css-code">Custom CSS Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="css-code" class="form-control" rows="6" placeholder="Enter meta description.." data-gramm="true" data-txt_gramm_id="51977e42-62ce-eb40-b0ae-bf7c5fe37a38" data-gramm_id="51977e42-62ce-eb40-b0ae-bf7c5fe37a38" data-gramm_editor="true" style="z-index: 1; position: relative; line-height: 18.5714302062988px; font-size: 13px; -webkit-transition: none; transition: none; overflow: auto; background: transparent !important;"></textarea>
-                            <div>
-                                <div style="z-index: 2; opacity: 1; margin-left: 541px; margin-top: 92px;" class="gr-textarea-btn " data-reactid=".6">
-                                    <div title="Protected by Grammarly" class="gr-textarea-btn_status" data-reactid=".6.0">&nbsp;</div>
-                                </div>
-                            </div>
+                            <textarea id="product-meta-description" name="css-code" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                         </div>
                     </div>
                     <div class="form-group form-actions">

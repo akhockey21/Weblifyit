@@ -86,8 +86,12 @@ $primary_nav = array(
                 'url'   => 'appearance-footer.php'
             ),
             array(
-                'name'  => 'Colors & Font',
-                'url'   => 'appearance-color-font.php'
+                'name'  => 'Colors',
+                'url'   => 'appearance-color.php'
+            ),
+            array(
+                'name'  => 'Font',
+                'url'   => 'appearance-font.php'
             ),
             
             array(
