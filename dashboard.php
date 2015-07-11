@@ -14,6 +14,117 @@ $user = User::find(Auth::user()->id);
 
 <!-- Page content -->
 <div id="page-content">
+    <div class="block block-alt-noborder">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="widget">
+                    <div class="widget-extra-full themed-background-modern">
+                        <div id="widget-carousel3" class="carousel slide remove-margin">
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <img class="img-rounded" src="img/desktop.png" alt="image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="block-section">
+                    <h3 class="sub-header"><strong>Your Website Is Not Published!</strong></h3>
+                    <p class="clearfix"><i class="fa fa-clock-o fa-5x text-danger pull-left animation-pulse"></i>Your site is not published live? Go to the Editor and Click Publish. <span class="text-success"><strong>theme name.</strong></span></p>
+                    <p>
+                <button type="button" class="btn btn-lg btn-info"><i class="hi hi-pencil"></i> Edit Site</button>
+                <button type="button" class="btn btn-lg btn-success">Choose Domain</button>
+                    </p>
+                </div> 
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 pull-right">
+        <div class="list-group" data-toggle="tabs">
+            <a href="#logo-color-options" class="list-group-item active">
+                <h3 class="list-group-item-heading text-center">Your Website <strong>Todo List</strong></h3>
+            </a>
+            <a href="#logo-color-options" class="list-group-item">
+                <span class="badge"><i class="hi hi-ok"></i></span>
+                <h4 class="list-group-item-heading">Setup Color &amp; Logo Options</h4>
+            </a>
+            <a href="#logo-color-options" class="list-group-item">
+                <span class="badge"><i class="hi hi-ok"></i></span>
+                <h4 class="list-group-item-heading">Review/Edit Homepage Text</h4>
+            </a>
+            <a href="#logo-color-options" class="list-group-item">
+                <span class="badge"><i class="hi hi-ok"></i></span>
+                <h4 class="list-group-item-heading">Review/Edit About Us Page Text</h4>
+            </a>
+            <a href="#logo-color-options" class="list-group-item">
+                <span class="badge"><i class="hi hi-ok"></i></span>
+                <h4 class="list-group-item-heading">Review/Edit Contact Us Page Text</h4>
+            </a>
+            <a href="#logo-color-options" class="list-group-item">
+                <span class="badge"><i class="hi hi-ok"></i></span>
+                <h4 class="list-group-item-heading">Complete Search Engine Settings</h4>
+            </a>
+    
+    </div>
+</div>
+        <div class="col-md-4">
+            <a href="page_ready_article.php" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+Create New <strong>Article</strong><br>
+<small>Setup Blog</small>
+</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="page_comp_charts.php" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-spring animation-fadeIn">
+                        <i class="gi gi-more_items"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+Create New <strong>Page</strong><br>
+<small>Manage Pages</small>
+</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="page_ready_inbox.php" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-fire animation-fadeIn">
+                        <i class="gi gi-shopping_cart"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+Set Up An<strong>Online Store</strong>
+<small>Start eCommerce</small>
+</h3>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="page_comp_gallery.php" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-amethyst animation-fadeIn">
+                        <i class="gi gi-picture"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+Manage Your <strong>Media</strong>
+<small>Website Images & Files</small>
+</h3>
+                </div>
+            </a>
+        </div>
+    </div>
         <div class="row">
             <div class="col-md-2">
                 <img src="img/desktop.png" class="img-rounded" style="width: 250px; hieght: 100%;">

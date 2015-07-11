@@ -174,6 +174,36 @@ $primary_nav = array(
         'icon'  => 'gi gi-picture'
     ),
     array(
+        'name'  => 'eCommerce',
+        'icon'  => 'gi gi-shopping_cart',
+        'sub'   => array(
+            array(
+                'name'  => 'Dashboard',
+                'url'   => 'page_ecom_dashboard.php'
+            ),
+            array(
+                'name'  => 'Orders',
+                'url'   => 'page_ecom_orders.php'
+            ),
+            array(
+                'name'  => 'Order View',
+                'url'   => 'page_ecom_order_view.php'
+            ),
+            array(
+                'name'  => 'Products',
+                'url'   => 'page_ecom_products.php'
+            ),
+            array(
+                'name'  => 'Product Edit',
+                'url'   => 'page_ecom_product_edit.php'
+            ),
+            array(
+                'name'  => 'Customer View',
+                'url'   => 'page_ecom_customer_view.php'
+            )
+        )
+    ),
+    array(
         'name'  => 'Marketing Tools',
         'opt'   => '<a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a>',
         'url'   => 'header'

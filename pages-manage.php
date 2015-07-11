@@ -14,7 +14,51 @@ $user = User::find(Auth::user()->id);
 
 <!-- Page content -->
 <div id="page-content">
-    
+    <ul class="breadcrumb breadcrumb-top">
+<li>Pages</li>
+<li><a href="">Manage Pages</a></li>
+</ul>
+        <div class="table-responsive">
+            <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>SEO</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $labels['0']['class'] = "label-success";
+                    $labels['0']['text'] = "VIP";
+                    $labels['1']['class'] = "label-info";
+                    $labels['1']['text'] = "Business";
+                    $labels['2']['class'] = "label-primary";
+                    $labels['2']['text'] = "Personal";
+                    $labels['3']['class'] = "label-warning";
+                    $labels['3']['text'] = "Trial";
+                    ?>
+                    <?php for($i=1; $i<61; $i++) { ?>
+                    <tr>
+                        <td class="text-center"><?php echo $i; ?></td>
+                        <td><a href="javascript:void(0)">Title<?php echo $i; ?></a></td>
+                        <td>Published</td>
+                        <td>Green Circle</td>
+                        <td>Date</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a href="javascript:void(0)" data-toggle="tooltip" title="Edit" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i> Edit Page</a>
+                                <a href="javascript:void(0)" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Delete Page</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
 </div>
 <!-- END Page Content -->
 
@@ -25,12 +69,8 @@ $user = User::find(Auth::user()->id);
 
 <?php include 'inc/template_scripts.php'; ?>
 
-<!-- Google Maps API + Gmaps Plugin, must be loaded in the page you would like to use maps (Remove 'http:' if you have SSL) -->
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script src="js/helpers/gmaps.min.js"></script>
 
-<!-- Load and execute javascript code used only in this page -->
-<script src="js/pages/formWizardWeblifyit.js"></script> 
-<script>$(function(){ FormsWizard.init(); });</script>
+<script src="js/pages/tablesDatatables.js"></script>
+<script>$(function(){ TablesDatatables.init(); });</script>
 
 <?php include 'inc/template_end.php'; ?>

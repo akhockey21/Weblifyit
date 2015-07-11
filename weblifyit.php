@@ -195,7 +195,7 @@ if($step>=3){
 </div>
     <div class="row">
 <div class="block-section">
-<h2 class="sub-header text-center"><strong>Choose Your Website Template</strong></h2>
+<h2 class="sub-header text-center"><strong>Choose Your Website's Theme</strong></h2>
 <h4 class="clearfix text-center">Don't worry, you can change it later.</h4>
     <?php
 foreach ($templates as $web) {
@@ -221,8 +221,8 @@ foreach ($templates as $web) {
 </div>
 <div class="widget-simple">
     <div class="widget-content form-group form-actions text-center">
-<a class="btn btn-sm btn-warning" href="<?php echo $tempss ?>" target="_blank">Preview Template</a>
-<a class="btn btn-sm btn-primary" href="#confirmtemplate" data-toggle="modal" data-placement="bottom" onclick="getElementById('template-id').value='<?php echo "$tempid"; ?>'">Choose Template</a>
+<a class="btn btn-sm btn-warning" href="<?php echo $tempss ?>" target="_blank">Preview Theme</a>
+<a class="btn btn-sm btn-primary" href="#confirmtemplate" data-toggle="modal" data-placement="bottom" onclick="getElementById('template-id').value='<?php echo "$tempid"; ?>'">Choose Theme</a>
 </div>
 </div>
 </div>

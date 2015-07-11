@@ -19,34 +19,49 @@ $user = User::find(Auth::user()->id);
             <h2>Working Tabs <small>Block and Simple</small></h2>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="block full">
-                    <div class="block-title">
-                        <ul class="nav nav-tabs" data-toggle="tabs">
-                            <li class="active"><a href="#example-tabs2-activity">Activity</a></li>
-                            <li><a href="#example-tabs2-profile">Profile</a></li>
-                            <li><a href="#example-tabs2-options" data-toggle="tooltip" title="" data-original-title="Settings"><i class="fa fa-cogs"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="example-tabs2-activity">Block tabs..</div>
-                        <div class="tab-pane" id="example-tabs2-profile">Profile..</div>
-                        <div class="tab-pane" id="example-tabs2-options">Settings..</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <ul class="nav nav-tabs push" data-toggle="tabs">
-                    <li class="active"><a href="#example-tabs-news">Activity</a></li>
-                    <li><a href="#example-tabs-profile">Profile</a></li>
-                    <li><a href="#example-tabs-messages" data-toggle="tooltip" title="" data-original-title="Messages"><i class="fa fa-envelope-o"></i></a></li>
-                    <li><a href="#example-tabs-settings" data-toggle="tooltip" title="" data-original-title="Settings"><i class="fa fa-cog"></i></a></li>
+                    <li class="active"><a href="#general"><h4>General</h4></a></li>
+                    <li><a href="#header"><h4>Header</h4></a></li>
+                    <li><a href="#menu"><h4>Menu & Action Bar</h4></a></li>
+                    <li><a href="#content"><h4>Content</h4></a></li>
+                    <li><a href="#footer"><h4>Footer</h4></a></li>
+                    <li><a href="#headings"><h4>Headings</h4></a></li>
+                    <li><a href="#shortcodes"><h4>Shortcodes</h4></a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="example-tabs-news">News..</div>
-                    <div class="tab-pane" id="example-tabs-profile">Profile..</div>
-                    <div class="tab-pane" id="example-tabs-messages">Messages..</div>
-                    <div class="tab-pane" id="example-tabs-settings">Settings..</div>
+                    <div class="tab-pane active" id="general">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="theme-kin"><h4>Theme Skin<h4></h4><p>Choose one of the predefined styles or set your own colors.</p></label>
+            <div class="col-md-9">
+                <select id="theme-skin" name="theme-skin" class="form-control" size="1">
+                    <optgroup label="Theme Skins"><option value="Arial">- Custom Skin -</option><option value="Georgia">Blue</option><option value="Tahoma">Brown</option><option value="Times">Chocolate</option><option value="Trebuchet">Gold</option>
+                        <option value="Verdana">Green</option><option value="Verdana">Olive</option><option value="Verdana">Orange</option><option value="Verdana">Pink</option><option value="Verdana">Red</option><option value="Verdana">Seagreen</option><option value="Verdana">Violet</option><option value="Verdana">Yellow</option></optgroup>
+                </select>
+            </div>
+        </div>
+                    
+        <div class="form-group form-actions">
+            <div class="col-md-9 col-md-offset-3">
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>
+                <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+            </div>
+        </div>
+    </form>
+</div>
+                    <div class="tab-pane active" id="header">
+                        </div>
+                    <div class="tab-pane active" id="menu">
+                        </div>
+                    <div class="tab-pane active" id="content">
+                        </div>
+                    <div class="tab-pane active" id="footer">
+                        </div>
+                    <div class="tab-pane active" id="headings">
+                        </div>
+                    <div class="tab-pane active" id="shortcodes">
+                        </div>
                 </div>
             </div>
         </div>
