@@ -125,22 +125,6 @@ Manage Your <strong>Media</strong>
             </a>
         </div>
     </div>
-        <div class="row">
-            <div class="col-md-2">
-                <img src="img/desktop.png" class="img-rounded" style="width: 250px; hieght: 100%;">
-            </div>
-            <div class="col-md-3">
-                <h2>Your Website Name</h2>
-                <p>Your site is not published live? Go to the Editor and Click Publish.</p>
-                <button type="button" class="btn btn-info"><i class="hi hi-pencil"></i> Edit Site</button>
-                <button type="button" class="btn btn-success">Upgrade</button>
-            </div> 
-        </div>
-        <div class="row">
-            <div class="col-md-7">
-                <img src="img/promo.png" class="img-rounded" style="width: 100%; hieght: 100%;">
-            </div> 
-        </div>
 </div>
 <!-- END Page Content -->
 

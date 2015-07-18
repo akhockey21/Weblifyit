@@ -40,7 +40,7 @@ $template = array(
     // 'sidebar-alt-partial sidebar-alt-visible-lg'     for a partial alternative sidebar which opens on mouse hover, visible by default (> 991px)
     // 'sidebar-partial sidebar-alt-partial'            for both sidebars partial which open on mouse hover, hidden by default (> 991px)
     // 'sidebar-no-animations'                          add this as extra for disabling sidebar animations on large screens (> 991px) - Better performance with heavy pages!
-    'sidebar'           => 'sidebar-mini sidebar-visible-lg-mini sidebar-no-animations',
+    'sidebar'           => 'sidebar-mini sidebar-visible-lg sidebar-no-animations',
     // ''                       empty for a static footer
     // 'footer-fixed'           for a fixed footer
     'footer'            => '',
