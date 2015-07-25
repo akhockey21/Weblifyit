@@ -37,7 +37,7 @@ class PagesManage {
 	 * @param  bool 	$unique 	Optional, default is false. Whether the same key should not be added.
 	 * @return int|false 			Meta ID on success, false on failure.
 	 */
-	public function add($userId, $metaKey, $metaValue, $unique = false)
+	public function add($userId, $pageId, $metaKey, $metaValue, $unique = false)
 	{
 		if (!$this->isNumeric($userId)) return false;
 
@@ -45,10 +45,11 @@ class PagesManage {
 
 		$metaValue = maybe_serialize($metaValue);
 
-		if ($unique && $this->has($userId, $metaKey)) return false;
+		if ($unique && $this->has($userId, $pageId, $metaKey)) return false;
 
 		$data = array(
 			'user_id' => $userId,
+            'page_id' => $pageId,
 			'meta_key' => $metaKey,
 			'meta_value' => $metaValue
 		);
@@ -64,13 +65,13 @@ class PagesManage {
 	 * @param  bool 	$single 	Whether to return a single value.
 	 * @return mixed 				Will be an array if $single is false. Will be value of meta data field if $single is true.
 	 */
-	public function get($userId, $metaKey = '', $single = false)
+	public function get($userId, $pageId, $metaKey = '', $single = false)
 	{
 		if (!$this->isNumeric($userId)) return false;
 
 		$metaKey = sanitize_key($metaKey);
 
-		$query = $this->newQuery()->where('user_id', $userId);
+		$query = $this->newQuery()->where('user_id', $userId)->where('page_id', $pageId);
 
 		if ($metaKey == '') {
 			$meta = $query->get();
@@ -116,7 +117,7 @@ class PagesManage {
 	 * @param  mixed 	$prevValue  Optional. Previous value to check before removing.
 	 * @return int|bool 			Meta ID if the key didn't exist, true on successful update, false on failure.
 	 */
-	public function update($userId, $metaKey, $metaValue, $prevValue = '')
+	public function update($userId, $pageId, $metaKey, $metaValue, $prevValue = '')
 	{
 		if (!$this->isNumeric($userId)) return false;
 
@@ -126,11 +127,11 @@ class PagesManage {
 
 		$prevValue = maybe_serialize($prevValue);
 
-		if (!$this->has($userId, $metaKey)) {
-			return $this->add($userId, $metaKey, $metaValue);
+		if (!$this->has($userId, $pageId, $metaKey)) {
+			return $this->add($userId, $pageId, $metaKey, $metaValue);
 		}
 
-		$query = $this->newQuery()->where('user_id', $userId)->where('meta_key', $metaKey);
+		$query = $this->newQuery()->where('user_id', $userId)->where('page_id', $pageId)->where('meta_key', $metaKey);
 
 		if ($prevValue != '') $query->where('meta_value', $prevValue);
 
@@ -145,11 +146,11 @@ class PagesManage {
 	* @param  mixed   $metaValue  Optional. Metadata value.
 	* @return bool  			  True on success, false on failure.
 	*/
-	public function delete($userId, $metaKey = '', $metaValue = '')
+	public function delete($userId, $pageId, $metaKey = '', $metaValue = '')
 	{
 		$metaKey = sanitize_key($metaKey);
 
-		$query = $this->newQuery()->where('user_id', $userId);
+		$query = $this->newQuery()->where('user_id', $userId)->where('page_id', $pageId);
 
 		if ($metaKey != '') {
 			$query->where('meta_key', $metaKey);
@@ -171,9 +172,9 @@ class PagesManage {
 	* @param  string  $metaKey
 	* @return bool
 	*/
-	protected function has($userId, $metaKey)
+	protected function has($userId, $pageId, $metaKey)
 	{
-		return $this->newQuery()->where('user_id', $userId)->where('meta_key', $metaKey)->pluck('id');	
+		return $this->newQuery()->where('user_id', $userId)->where('page_id', $pageId)->where('meta_key', $metaKey)->pluck('id');	
 	}
 
 	/**
