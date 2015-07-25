@@ -9,5 +9,5 @@ class WebsiteSettings extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.websitesettings'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.WebsiteSettings'; }
 }

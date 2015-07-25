@@ -9,5 +9,5 @@ class GlobalThemes extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.globalthemes'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.GlobalThemes'; }
 }

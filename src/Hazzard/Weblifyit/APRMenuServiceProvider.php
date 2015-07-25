@@ -2,7 +2,7 @@
 
 use Hazzard\Support\ServiceProvider;
 
-class APRGeneralServiceProvider extends ServiceProvider {
+class APRMenuServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,8 +18,8 @@ class APRGeneralServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bindShared('weblifyit.APRGeneral', function($app) {
-			return new APRGeneral($app['db']);
+		$this->app->bindShared('weblifyit.APRMenu', function($app) {
+			return new APRMenu($app['db']);
 		});
 	}
 
@@ -30,6 +30,6 @@ class APRGeneralServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array('weblifyit.APRGeneral');
+		return array('weblifyit.APRMenu');
 	}
 }

@@ -9,5 +9,5 @@ class Media extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.media'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.Media'; }
 }

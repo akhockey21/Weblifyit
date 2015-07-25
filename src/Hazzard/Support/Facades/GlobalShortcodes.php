@@ -9,5 +9,5 @@ class GlobalShortcodes extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.globalshortcodes'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.GlobalShortcodes'; }
 }

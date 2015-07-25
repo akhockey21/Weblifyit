@@ -9,5 +9,5 @@ class APRMenu extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprmenu'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRMenu'; }
 }

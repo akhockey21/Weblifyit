@@ -9,5 +9,5 @@ class BlogManage extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.blogmanage'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.BlogManage'; }
 }

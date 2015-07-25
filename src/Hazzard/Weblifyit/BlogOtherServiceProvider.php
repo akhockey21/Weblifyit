@@ -1,4 +1,4 @@
-<?php namespace Hazzard\User;
+<?php namespace Hazzard\Weblifyit;
 
 use Hazzard\Support\ServiceProvider;
 

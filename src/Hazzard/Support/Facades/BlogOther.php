@@ -9,5 +9,5 @@ class BlogOther extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.blogother'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.BlogOther'; }
 }

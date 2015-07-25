@@ -9,5 +9,5 @@ class BusinessInfo extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.businessinfo'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.BusinessInfo'; }
 }

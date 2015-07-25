@@ -2,7 +2,7 @@
 
 use Hazzard\Database\Connection;
 
-class APRThemes {
+class APRMenu {
 
 	/**
 	 * Database connection instance.
@@ -16,7 +16,7 @@ class APRThemes {
 	 * 
 	 * @var string
 	 */
-	protected $table = 'appearance_themes';
+	protected $table = 'appearance_menu';
 
 	/**
 	 * Create a new user meta instance.

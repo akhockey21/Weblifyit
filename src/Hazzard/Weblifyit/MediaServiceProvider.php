@@ -1,8 +1,8 @@
-<?php namespace Hazzard\User;
+<?php namespace Hazzard\Weblifyit;
 
 use Hazzard\Support\ServiceProvider;
 
-class MediaServiceServiceProvider extends ServiceProvider {
+class MediaServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.

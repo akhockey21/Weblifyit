@@ -9,5 +9,5 @@ class PagesManage extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.pagesmanage'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.PagesManage'; }
 }

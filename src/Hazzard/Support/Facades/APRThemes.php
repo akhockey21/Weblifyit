@@ -9,5 +9,5 @@ class APRThemes extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprthemes'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRThemes'; }
 }

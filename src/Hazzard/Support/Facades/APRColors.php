@@ -9,5 +9,5 @@ class APRColors extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprcolors'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRColors'; }
 }

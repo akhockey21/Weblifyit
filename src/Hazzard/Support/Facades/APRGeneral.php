@@ -9,5 +9,5 @@ class APRGeneral extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprgeneral'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRGeneral'; }
 }

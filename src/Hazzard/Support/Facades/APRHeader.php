@@ -9,5 +9,5 @@ class APRHeader extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprheader'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRHeader'; }
 }

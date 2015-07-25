@@ -9,5 +9,5 @@ class APRFooter extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprfooter'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRFooter'; }
 }

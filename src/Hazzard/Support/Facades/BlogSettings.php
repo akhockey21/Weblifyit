@@ -9,5 +9,5 @@ class BlogSettings extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.blogsettings'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.BlogSettings'; }
 }

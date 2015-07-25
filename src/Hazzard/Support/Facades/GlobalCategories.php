@@ -9,5 +9,5 @@ class GlobalCategories extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.globalcategories'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.GlobalCategories'; }
 }

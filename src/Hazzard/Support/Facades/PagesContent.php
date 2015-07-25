@@ -9,5 +9,5 @@ class PagesContent extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.pagescontent'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.PagesContent'; }
 }

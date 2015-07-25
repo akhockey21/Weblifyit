@@ -9,5 +9,5 @@ class APRCustomCssJs extends Facade {
 	 *
 	 * @return string
 	 */
-	protected static function getFacadeAccessor() { return 'weblifyit.aprcustomcssjs'; }
+	protected static function getFacadeAccessor() { return 'weblifyit.APRCustomCssJs'; }
 }
