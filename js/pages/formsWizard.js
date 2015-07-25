@@ -19,36 +19,29 @@ var FormsWizard = function() {
             // Get the progress bar and change its width when a step is shown
             var progressBar = $('#progress-bar-wizard');
             progressBar
-                .css('width', '25%')
-                .attr('aria-valuenow', '25');
+                .css('width', '33%')
+                .attr('aria-valuenow', '33');
 
             $("#progress-wizard").bind('step_shown', function(event, data){
 		if (data.currentStep === 'progress-first') {
                     progressBar
-                        .css('width', '25%')
-                        .attr('aria-valuenow', '25')
-                        .removeClass('progress-bar-warning progress-bar-success progress-bar-info')
+                        .css('width', '33%')
+                        .attr('aria-valuenow', '33')
+                        .removeClass('progress-bar-warning progress-bar-success')
                         .addClass('progress-bar-danger');
                 }
                 else if (data.currentStep === 'progress-second') {
                     progressBar
-                        .css('width', '50%')
-                        .attr('aria-valuenow', '50')
-                        .removeClass('progress-bar-danger progress-bar-success progress-bar-info')
+                        .css('width', '66%')
+                        .attr('aria-valuenow', '66')
+                        .removeClass('progress-bar-danger progress-bar-success')
                         .addClass('progress-bar-warning');
                 }
                 else if (data.currentStep === 'progress-third') {
                     progressBar
-                        .css('width', '75%')
-                        .attr('aria-valuenow', '75')
-                        .removeClass('progress-bar-danger progress-bar-warning progress-bar-info')
-                        .addClass('progress-bar-info');
-                }
-                else if (data.currentStep === 'progress-fourth') {
-                    progressBar
                         .css('width', '100%')
                         .attr('aria-valuenow', '100')
-                        .removeClass('progress-bar-danger progress-bar-warning progress-bar-info')
+                        .removeClass('progress-bar-danger progress-bar-warning')
                         .addClass('progress-bar-success');
                 }
             });

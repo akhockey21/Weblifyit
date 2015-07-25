@@ -24,7 +24,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://weblify.it/',
+	'url' => 'http://104.236.61.190/',
     
 
 	/*
@@ -90,7 +90,7 @@ return array(
 	|
 	*/
 
-	'key' => 'aENY3yxuTmCjvRwYna73Y2gicdkfSkEz',
+	'key' => 'vTedDIeMe58N57WuhuEzou1S3pxwh2fw',
 
 	/*
 	|--------------------------------------------------------------------------

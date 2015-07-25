@@ -22,12 +22,7 @@
         <meta name="robots" content="<?php echo $template['robots'] ?>">
 
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
-        
-        <!-- CSRF Token -->
-	<meta name="csrf-token" content="<?php echo csrf_token() ?>">
-        
-	<script src="<?php echo asset_url('js/vendor/jquery-1.11.1.min.js') ?>"></script>
-	<script src="<?php echo asset_url('js/easylogin.js') ?>"></script>
+
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
         <link rel="shortcut icon" href="img/favicon.png">
@@ -58,14 +53,7 @@
         <link rel="stylesheet" href="css/themes.css">
         <!-- END Stylesheets -->
 
-        <!-- Modernizr (browser feature detection library) & Respond.js (Enable responsive CSS code on browsers that don't support it, eg IE8) -->
-        <script src="js/vendor/modernizr-2.7.1-respond-1.4.2.min.js"></script>
-        	<script>
-		EasyLogin.options = {
-			ajaxUrl: '<?php echo App::url("ajax.php") ?>',
-			lang: <?php echo json_encode(trans('main.js')) ?>,
-			debug: <?php echo Config::get('app.debug')?1:0; ?>,
-		};
-	</script>
+        <!-- Modernizr (browser feature detection library) & Respond.js (enables responsive CSS code on browsers that don't support it, eg IE8) -->
+        <script src="js/vendor/modernizr-respond.min.js"></script>
     </head>
     <body>

@@ -56,10 +56,6 @@ var FormsValidation = function() {
                         required: true,
                         url: true
                     },
-                    val_credit_card: {
-                        required: true,
-                        creditcard: true
-                    },
                     val_digits: {
                         required: true,
                         digits: true
@@ -94,7 +90,6 @@ var FormsValidation = function() {
                     val_bio: 'Don\'t be shy, share something with us :-)',
                     val_skill: 'Please select a skill!',
                     val_website: 'Please enter your website!',
-                    val_credit_card: 'Please enter a valid credit card! Try 446-667-651!',
                     val_digits: 'Please enter only digits!',
                     val_number: 'Please enter a number!',
                     val_range: 'Please enter a number between 1 and 1000!',
