@@ -32,50 +32,91 @@ $user = User::find(Auth::user()->id);
             <div class="col-md-7">
                 <div class="block-section">
                     <h3 class="sub-header"><strong>Your Website Is Not Published!</strong></h3>
-                    <p class="clearfix"><i class="fa fa-clock-o fa-5x text-danger pull-left animation-pulse"></i>Your site is not published live? Go to the Editor and Click Publish. <span class="text-success"><strong>theme name.</strong></span></p>
+                    <p class="clearfix"><i class="fa fa-exclamation-triangle fa-5x text-danger pull-left animation-pulse"></i>Your site is not published live? Go to the Editor and Click Publish. <span class="text-success"><strong>theme name.</strong></span></p>
                     <p>
-                <button type="button" class="btn btn-lg btn-info"><i class="hi hi-pencil"></i> Edit Site</button>
-                <button type="button" class="btn btn-lg btn-success">Choose Domain</button>
+                        <button type="button" class="btn btn-lg btn-warning"><i class="hi hi-pencil"></i> Edit Site</button>
+                        <button type="button" class="btn btn-lg btn-info"><i class="fa fa-arrow-right"></i> Choose Domain</button>
                     </p>
-                </div> 
+                </div>
             </div>
 
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-4 pull-right">
-        <div class="list-group" data-toggle="tabs">
-            <a href="#logo-color-options" class="list-group-item active">
-                <h3 class="list-group-item-heading text-center">Your Website <strong>Todo List</strong></h3> 
-            </a>
-            <a href="#logo-color-options" class="list-group-item">
-                <span class="badge"><i class="hi hi-ok"></i></span>
-                <h4 class="list-group-item-heading">Setup Color &amp; Logo Options</h4>
-            </a>
-            <a href="#logo-color-options" class="list-group-item">
-                <span class="badge"><i class="hi hi-ok"></i></span>
-                <h4 class="list-group-item-heading">Review/Edit Homepage Text</h4>
-            </a>
-            <a href="#logo-color-options" class="list-group-item">
-                <span class="badge"><i class="hi hi-ok"></i></span>
-                <h4 class="list-group-item-heading">Review/Edit About Us Page Text</h4>
-            </a>
-            <a href="#logo-color-options" class="list-group-item">
-                <span class="badge"><i class="hi hi-ok"></i></span>
-                <h4 class="list-group-item-heading">Review/Edit Contact Us Page Text</h4>
-            </a>
-            <a href="#logo-color-options" class="list-group-item">
-                <span class="badge"><i class="hi hi-ok"></i></span>
-                <h4 class="list-group-item-heading">Complete Search Engine Settings</h4>
-            </a>
-    
-    </div>
-</div>
+            <div class="list-group" data-toggle="tabs">
+                <a href="#logo-color-options" class="list-group-item active">
+                    <h3 class="list-group-item-heading text-center">Your Website <strong>Todo List</strong></h3>
+                </a>
+                <a href="#logo-color-options" class="list-group-item">
+                    <span class="badge"><i class="hi hi-ok"></i></span>
+                    <h4 class="list-group-item-heading">Setup Color &amp; Logo Options</h4>
+                </a>
+                <a href="#logo-color-options" class="list-group-item">
+                    <span class="badge"><i class="hi hi-ok"></i></span>
+                    <h4 class="list-group-item-heading">Review/Edit Homepage Text</h4>
+                </a>
+                <a href="#logo-color-options" class="list-group-item">
+                    <span class="badge"><i class="hi hi-ok"></i></span>
+                    <h4 class="list-group-item-heading">Review/Edit About Us Page Text</h4>
+                </a>
+                <a href="#logo-color-options" class="list-group-item">
+                    <span class="badge"><i class="hi hi-ok"></i></span>
+                    <h4 class="list-group-item-heading">Review/Edit Contact Us Page Text</h4>
+                </a>
+                <a href="#logo-color-options" class="list-group-item">
+                    <span class="badge"><i class="hi hi-ok"></i></span>
+                    <h4 class="list-group-item-heading">Complete Search Engine Settings</h4>
+                </a>
+
+            </div>
+            <div class="block">
+                <div class="block-title">
+                    <h2><strong>Account</strong> Status</h2>
+                </div>
+                <div class="block-section">
+                    <table class="table table-borderless table-striped table-vcenter">
+                        <tbody>
+                            <tr>
+                                <td class="text-right">Account</td>
+                                <td>
+                                    <strong>Basic</strong> <a href="page_ready_pricing_tables.php">Upgrade?</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Domain</td>
+                                <td>
+                                    <strong>weblifyit.com</strong> <a href="page_ready_pricing_tables.php">Edit or Buy One?</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Blog</td>
+                                <td>
+                                    <strong>Not Active</strong> <a href="page_ready_pricing_tables.php">Setup?</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Online Store</td>
+                                <td>
+                                    <strong>Not Active</strong> <a href="page_ready_pricing_tables.php">Setup?</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Marketing Tools Suite</td>
+                                <td>
+                                    <strong>Not Enrolled</strong> <a href="page_ready_pricing_tables.php">Enroll?</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="col-md-4">
             <a href="page_ready_article.php" class="widget widget-hover-effect1">
                 <div class="widget-simple">
-                    <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
+                    <div class="widget-icon pull-left themed-background-default animation-fadeIn">
                         <i class="fa fa-file-text"></i>
                     </div>
                     <h3 class="widget-content text-right animation-pullDown">
@@ -88,7 +129,7 @@ Create New <strong>Article</strong><br>
         <div class="col-md-4">
             <a href="page_comp_charts.php" class="widget widget-hover-effect1">
                 <div class="widget-simple">
-                    <div class="widget-icon pull-left themed-background-spring animation-fadeIn">
+                    <div class="widget-icon pull-left themed-background-default animation-fadeIn">
                         <i class="gi gi-more_items"></i>
                     </div>
                     <h3 class="widget-content text-right animation-pullDown">
@@ -101,11 +142,11 @@ Create New <strong>Page</strong><br>
         <div class="col-md-4">
             <a href="page_ready_inbox.php" class="widget widget-hover-effect1">
                 <div class="widget-simple">
-                    <div class="widget-icon pull-left themed-background-fire animation-fadeIn">
+                    <div class="widget-icon pull-left themed-background-default animation-fadeIn">
                         <i class="gi gi-shopping_cart"></i>
                     </div>
                     <h3 class="widget-content text-right animation-pullDown">
-Set Up An<strong>Online Store</strong>
+Set Up a <strong> Online Store</strong>
 <small>Start eCommerce</small>
 </h3>
                 </div>
@@ -114,7 +155,7 @@ Set Up An<strong>Online Store</strong>
         <div class="col-md-4">
             <a href="page_comp_gallery.php" class="widget widget-hover-effect1">
                 <div class="widget-simple">
-                    <div class="widget-icon pull-left themed-background-amethyst animation-fadeIn">
+                    <div class="widget-icon pull-left themed-background-default animation-fadeIn">
                         <i class="gi gi-picture"></i>
                     </div>
                     <h3 class="widget-content text-right animation-pullDown">
@@ -124,6 +165,7 @@ Manage Your <strong>Media</strong>
                 </div>
             </a>
         </div>
+        <div class="col-md-8"></div>
     </div>
 </div>
 <!-- END Page Content -->
