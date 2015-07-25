@@ -47,7 +47,7 @@ $user = User::find(Auth::user()->id);
         <div class="col-md-4 pull-right">
         <div class="list-group" data-toggle="tabs">
             <a href="#logo-color-options" class="list-group-item active">
-                <h3 class="list-group-item-heading text-center">Your Website <strong>Todo List</strong></h3>
+                <h3 class="list-group-item-heading text-center">Your Website <strong>Todo List</strong></h3> 
             </a>
             <a href="#logo-color-options" class="list-group-item">
                 <span class="badge"><i class="hi hi-ok"></i></span>
