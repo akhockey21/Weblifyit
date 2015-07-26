@@ -86,6 +86,10 @@ $primary_nav = array(
                 'url'   => 'appearance-footer.php'
             ),
             array(
+                'name'  => 'Social Icons',
+                'url'   => 'appearance-social-icons.php'
+            ),
+            array(
                 'name'  => 'Colors',
                 'url'   => 'appearance-color.php'
             ),
@@ -116,7 +120,7 @@ $primary_nav = array(
     ),
     array(
         'name'  => 'Business Info Wizard',
-        'opt'   => '<a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a>' .
+        'opt'   => '<a href="business-info.php" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a>' .
                    '<a href="javascript:void(0)" data-toggle="tooltip" title="Quickly update your websites business information with our fast business info wizard!"><i class="gi gi-lightbulb"></i></a>',
         'url'   => 'header',
     ),

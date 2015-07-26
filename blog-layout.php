@@ -15,7 +15,109 @@ $user = User::find(Auth::user()->id);
 <!-- Page content -->
 <div id="page-content">
     
+    <div class="block full">
+        <div class="block-title">
+            <h2>Working Tabs <small>Block and Simple</small></h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="content-font"><h4>Posts Per Page</h4><p>Number of Blog Posts Per Page.</p></label>
+<div class="col-md-9">
+    <input type="text">
 </div>
+
+        </div>  
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="content-font"><h4>Blog Layout</h4><p>Layout for The Blog Page.</p></label>
+<div class="col-md-9">
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Classic
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Masonry
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Timeline
+        </label>
+    </div>
+</div>
+
+        </div>  
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="content-font"><h4>Excerpt Length</h4><p>Word Length of Article Previews.</p></label>
+<div class="col-md-9">
+    <input type="text">
+            </div></div>
+        <div class="form-group">
+                                <label class="col-md-3 control-label" for="theme-kin">
+                                    <h4>Post Title</h4><p>Show Post Title</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary"><input type="checkbox" checked=""><span></span></label>
+                                </div>
+                            </div>
+        <div class="form-group">
+                                <label class="col-md-3 control-label" for="theme-kin">
+                                    <h4>Post Meta</h4><p>Show Post Meta</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary"><input type="checkbox" checked=""><span></span></label>
+                                </div>
+                            </div>
+        <div class="form-group">
+                                <label class="col-md-3 control-label" for="theme-kin">
+                                    <h4>Author Box</h4><p>Show Author Box</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary"><input type="checkbox" checked=""><span></span></label>
+                                </div>
+                            </div>
+        <div class="form-group">
+                                <label class="col-md-3 control-label" for="theme-kin">
+                                    <h4>Related Posts</h4><p>Show Related Posts</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary"><input type="checkbox" checked=""><span></span></label>
+                                </div>
+                            </div>
+        <div class="form-group">
+                                <label class="col-md-3 control-label" for="theme-kin">
+                                    <h4>Comments</h4><p>Show Comments On Blog Post</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary"><input type="checkbox" checked=""><span></span></label>
+                                </div>
+                            </div>
+        <div class="form-group">
+                                <label class="col-md-3 control-label" for="theme-kin">
+                                    <h4>Zoom Image On Post</h4><p>Zoom the Featured Image When Clicked</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary"><input type="checkbox" checked=""><span></span></label>
+                                </div>
+                            </div>
+
+           
+        <div class="form-group form-actions">
+            <div class="col-md-9 col-md-offset-3">
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>
+                <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+            </div>
+        </div>
+    </form>                   
+            
+            
+            </div>
+                </div>
+            </div>
+        </div>
 <!-- END Page Content -->
 
 <?php include 'inc/footer_website.php'; ?>

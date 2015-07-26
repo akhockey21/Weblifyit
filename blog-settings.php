@@ -14,7 +14,37 @@ $user = User::find(Auth::user()->id);
 
 <!-- Page content -->
 <div id="page-content">
-    
+    <ul class="breadcrumb breadcrumb-top">
+<li>Blog</li>
+<li><a href="">Blog Settings</a></li>
+</ul>
+    <div class="row">
+    <div class="col-md-4">
+            <a href="page_ready_article.php" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-default animation-fadeIn">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+Create New <strong>Category</strong><br>
+<small>Create a New Blog Category</small>
+</h3>
+                </div>
+            </a>
+        </div>
+    <div class="col-md-4">
+            <a href="page_ready_article.php" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-default animation-fadeIn">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+Manage <strong>Categories</strong><br>
+<small>Manage your blog categories</small>
+</h3>
+                </div>
+            </a>
+        </div></div>
 </div>
 <!-- END Page Content -->
 

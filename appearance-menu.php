@@ -17,12 +17,13 @@ $user = User::find(Auth::user()->id);
     <div class="row">
         <div class="col-md-12">
             <div class="block">
-                <p class="pull-left">Select a menu to edit: </p><select id="example-select" name="example-select" class="form-control" size="1">
-<option value="0">Please select</option>
-<option value="1">Option #1</option>
-<option value="2">Option #2</option>
-<option value="3">Option #3</option>
-</select>
+                <p class="pull-left">Select a menu to edit: </p>
+                <select id="example-select" name="example-select" class="form-control" size="1">
+                    <option value="0">Please select</option>
+                    <option value="1">Option #1</option>
+                    <option value="2">Option #2</option>
+                    <option value="3">Option #3</option>
+                </select>
                 <p>or create a new menu.</p>
             </div>
         </div>
@@ -70,21 +71,59 @@ $user = User::find(Auth::user()->id);
             </div>
         </div>
         <div class="col-md-9">
-            <div class="block">
-                <div class="block-title">
-                    <h3 class="pull-left">Menu Name</h3><input type="text" value="Main Menu"> <button type="submit" class="btn btn-sm btn-danger pull-right"><i class="fa fa-power-off"></i> Save Menu</button>
-                </div>
-                <h2>Menu Structure</h2>
+                    <h2><strong>Menu Structure</strong></h2>
                 <p>Drag each item into the order you prefer. Click the arrow on the right of the item to reveal additional configuration options.</p>
-                
-                <hr>
-                <h2>Menu Settings</h2>
-            </div><div class="form-group form-actions">
-            <p class="pull-left"><a>Delete Menu</a></p>
-<button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-angle-right"></i> Submit</button>
+                <div class="col-md-6">
+                    <div class="block">
+<div class="block-title">
+<h2><strong>Page Name</strong></h2><div class="block-options pull-right">
+<a href="javascript:void(0)" class="btn btn-alt btn-sm btn-primary" data-toggle="block-toggle-content"><i class="fa fa-arrows-v"></i></a>
 </div>
+</div>
+                     <form action="page_forms_general.php" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+                        
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="content-font">
+                            <h4>Navigation label</h4>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="content-font">
+                            <h4>Title Atrribute</h4>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text">
+                        </div>
+                         </div></form>
+</div>
+
+
+
+                    <h2><strong>Menu Settings</strong></h2>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="content-font">
+                            <h4>Menu Settings</h4>
+                        </label>
+                        <div class="col-md-9">
+                            <div class="checkbox">
+                                <label for="checkbox1">
+                                    <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Automatically Add New Pages To The Menu
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                <div class="form-group form-actions">
+                    <p class="pull-left"><a>Delete Menu</a>
+                    </p>
+                    <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-angle-right"></i> Submit</button>
+                </div>
+            </div>
         </div>
-    </div>
+        </div>
 </div>
 <!-- END Page Content -->
 
@@ -102,5 +141,6 @@ $user = User::find(Auth::user()->id);
 <!-- Load and execute javascript code used only in this page -->
 <script src="js/pages/formWizardWeblifyit.js"></script> 
 <script>$(function(){ FormsWizard.init(); });</script>
-
+<script src="js/pages/uiDraggable.js"></script>
+<script>$(function(){ UiDraggable.init(); });</script>
 <?php include 'inc/template_end.php'; ?>
