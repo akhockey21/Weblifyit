@@ -49,7 +49,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 <h4>Layout</h4>
             </label>
             <div class="col-md-9">
-                <select name="layout" class="form-control" size="1"><option value="" selected="selected">
+                <select name="layout" class="form-control" size="1" value="<?php APRFooter::get($user, 'layout', true); ?>"><option value="" selected="selected">
     Default</option>
 <option value="4;one-fourth;one-fourth;one-fourth;one-fourth">1/4 1/4 1/4 1/4</option>
 <option value="3;one-fourth;one-fourth;one-second;">1/4 1/4 1/2</option>
@@ -68,7 +68,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 <h4>Style</h4>
             </label>
             <div class="col-md-9">
-                <select name="style" class="form-control" size="1"><option value="" selected="selected">
+                <select name="style" class="form-control" size="1" value="<?php APRFooter::get($user, 'style', true); ?>"><option value="" selected="selected">
     Default</option>
 <option value="4;one-fourth;one-fourth;one-fourth;one-fourth">Fixed</option>
 <option value="3;one-fourth;one-fourth;one-second;">Sliding</option>
@@ -88,7 +88,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 <h4>Call To Action</h4></label>
             <div class="col-md-6">
                 <div class="input-group input-colorpicker colorpicker-element">
-                    <input type="text"  name="call_to_action" class="form-control">
+                    <input type="text"  name="call_to_action" class="form-control" value="<?php APRFooter::get($user, 'call_to_action', true); ?>">
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 <h4>Copyright</h4></label>
             <div class="col-md-6">
                 <div class="input-group input-colorpicker colorpicker-element">
-                    <input type="text"  name="copyright" class="form-control">
+                    <input type="text"  name="copyright" class="form-control" value="<?php APRFooter::get($user, 'copyright', true); ?>">
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 <h4>Copyright & Social Bar</h4>
             </label>
             <div class="col-md-9">
-                <select name="copyright_and_social_bar" class="form-control" size="1"><option value="" selected="selected">
+                <select name="copyright_and_social_bar" class="form-control" size="1" value="<?php APRFooter::get($user, 'copyright_and_social_bar', true); ?>"><option value="" selected="selected">
     Default</option>
 <option value="4;one-fourth;one-fourth;one-fourth;one-fourth">Center</option>
 <option value="3;one-fourth;one-fourth;one-second;">Hidden</option>

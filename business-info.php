@@ -47,50 +47,50 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizname">Business Name</label>
-                        <input type="text" id="bizname" name="bizname" class="form-control" placeholder="Enter Your Business' Name" value="Weblifyit">
+                        <input type="text" id="bizname" name="bizname" class="form-control" placeholder="Enter Your Business' Name" value="<?php BusinessInfo::get($user, 'name', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizphone">Business Phone</label>
-                        <input type="text" id="bizphone" name="bizphone" class="form-control" placeholder="Enter Your Business' Phone" value="9073513079">
+                        <input type="text" id="bizphone" name="bizphone" class="form-control" placeholder="Enter Your Business' Phone" value="<?php BusinessInfo::get($user, 'phone', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizemail">Business Email</label>
-                        <input type="text" id="bizemail" name="bizemail" class="form-control" placeholder="Enter Your Business' Email" value="akbrandon.howard@live.com">
+                        <input type="text" id="bizemail" name="bizemail" class="form-control" placeholder="Enter Your Business' Email" value="<?php BusinessInfo::get($user, 'email', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizst">Street Name</label>
-                        <input type="text" id="bizst" name="bizst" class="form-control" placeholder="Enter Your Business' Street Name" value="6629 Wynn Ln">
+                        <input type="text" id="bizst" name="bizst" class="form-control" placeholder="Enter Your Business' Street Name" value="<?php BusinessInfo::get($user, 'street', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="suite_apt_num">Suite Number</label>
-                        <input type="text" id="suite_apt_num" name="suite_apt_num" class="form-control" placeholder="Enter Your Suite Or Apartment Number" value="6629 Wynn Ln">
+                        <input type="text" id="suite_apt_num" name="suite_apt_num" class="form-control" placeholder="Enter Your Suite Or Apartment Number" value="<?php BusinessInfo::get($user, 'suite_apt_num', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizcity">City</label>
-                        <input type="text" id="bizcity" name="bizcity" class="form-control" placeholder="Enter Your Business' City" value="Groveland">
+                        <input type="text" id="bizcity" name="bizcity" class="form-control" placeholder="Enter Your Business' City" value="<?php BusinessInfo::get($user, 'city', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizstate">State</label>
-                        <input type="text" id="bizstate" name="bizstate" class="form-control" placeholder="Enter Your Business State" value="FL">
+                        <input type="text" id="bizstate" name="bizstate" class="form-control" placeholder="Enter Your Business State" value="<?php BusinessInfo::get($user, 'state', true); ?>">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-12">
                         <label class="control-label" for="bizzip">Zip Code</label>
-                        <input type="text" id="bizzip" name="bizzip" class="form-control" placeholder="Enter Your Business Zip Code" value="34736">
+                        <input type="text" id="bizzip" name="bizzip" class="form-control" placeholder="Enter Your Business Zip Code" value="<?php BusinessInfo::get($user, 'zip_code', true); ?>">
                     </div>
                 </div>
                 <div class="form-group form-actions">
