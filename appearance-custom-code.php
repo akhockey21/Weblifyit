@@ -7,6 +7,17 @@ if (!Auth::check()) redirect_to(App::url());
 */ 
 use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
+if (isset($_POST['submit']) && csrf_filter()) {
+    if (isset($_POST['js_head_code'])) {
+        APRCustomCssJs::update($user, 'js_head_code', $_POST['js_head_code']);
+    }
+    if (isset($_POST['js_footer_code'])) {
+        APRCustomCssJs::update($user, 'js_footer_code', $_POST['js_footer_code']);
+    }
+    if (isset($_POST['custom_css'])) {
+        APRCustomCssJs::update($user, 'custom_css', $_POST['custom_css']);
+    }
+}
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>
@@ -22,21 +33,21 @@ $user = User::find(Auth::user()->id);
                 </div>
                 <form action="" method="post" class="form-horizontal form-bordered" onsubmit="return false;">
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="header-code">Head Code</label>
+                        <label class="col-md-3 control-label">Head Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
+                            <textarea class="form-control" rows="6" placeholder="Enter meta description.." name="js_head_code"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="footer-code">Footer Code</label>
+                        <label class="col-md-3 control-label">Footer Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="footer-code" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
+                            <textarea id="product-meta-description" name="js_footer_code" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="css-code">Custom CSS Code</label>
+                        <label class="col-md-3 control-label">Custom CSS Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="css-code" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
+                            <textarea id="product-meta-description" name="custom_css" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                         </div>
                     </div>
                     <div class="form-group form-actions">

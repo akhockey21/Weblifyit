@@ -7,6 +7,38 @@ if (!Auth::check()) redirect_to(App::url());
 */ 
 use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
+if (isset($_POST['submit']) && csrf_filter()) {
+    if (isset($_POST['links_in_new_window'])) {
+        APRSocialMedia::update($user, 'links_in_new_window', $_POST['links_in_new_window']);
+    }
+    if (isset($_POST['skype'])) {
+        APRSocialMedia::update($user, 'skype', $_POST['skype']);
+    }
+    if (isset($_POST['facebook'])) {
+        APRSocialMedia::update($user, 'facebook', $_POST['facebook']);
+    }
+    if (isset($_POST['google_plus'])) {
+        APRSocialMedia::update($user, 'google_plus', $_POST['google_plus']);
+    }
+    if (isset($_POST['twitter'])) {
+        APRSocialMedia::update($user, 'twitter', $_POST['twitter']);
+    }
+    if (isset($_POST['vimeo'])) {
+        APRSocialMedia::update($user, 'vimeo', $_POST['vimeo']);
+    }
+    if (isset($_POST['youtube'])) {
+        APRSocialMedia::update($user, 'youtube', $_POST['youtube']);
+    }
+    if (isset($_POST['linkedin'])) {
+        APRSocialMedia::update($user, 'linkedin', $_POST['linkedin']);
+    }
+    if (isset($_POST['pinterest'])) {
+        APRSocialMedia::update($user, 'pinterest', $_POST['pinterest']);
+    }
+    if (isset($_POST['instagram'])) {
+        APRSocialMedia::update($user, 'instagram', $_POST['instagram']);
+    }
+}
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>
@@ -21,85 +53,85 @@ $user = User::find(Auth::user()->id);
         <div class="row">
             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
-                        <h4>Open Links In New Windo</h4>
+                    <label class="col-md-3 control-label" >
+                        <h4>Open Links In New Window</h4>
                     </label>
                     <div class="col-md-9">
                         <label class="switch switch-primary">
-                            <input type="checkbox" checked=""><span></span>
+                            <input type="checkbox" checked="" name="links_in_new_window"><span></span>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Skype Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="skype">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Facebook Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="facebook">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Google + Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="google_plus">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Twitter Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="twitter">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Vimeo Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="vimeo">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your YouTube Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="youtube">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your LinkedIn Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="linkedin">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Pinterest Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="pinterest">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="theme-kin">
+                    <label class="col-md-3 control-label" >
                         <h4>Enter Your Instagram Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text">
+                        <input type="text" name="instagram">
                     </div>
                 </div>
                 <div class="form-group form-actions">

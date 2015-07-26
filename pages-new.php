@@ -14,17 +14,18 @@ $user = User::find(Auth::user()->id);
 
 <!-- Page content -->
 <div id="page-content">
+    <form action="" method="post" class="form-horizontal" onsubmit="return false;">
     <div class="row">
         <div class="col-lg-8">
                 <!-- General Data Title -->
                 <!-- END General Data Title -->
 
                 <!-- General Data Content -->
-                <form action="page_ecom_product_edit.php" method="post" class="form-horizontal" onsubmit="return false;">
+                
                     <div class="form-group">
                         <div class="col-md-12 pull-right">
                             <h3>Add a New Page</h3>
-                            <input type="text" id="page-title" name="page-title" class="form-control input-lg" placeholder="Enter title here">
+                            <input type="text" id="page-title" name="title" class="form-control input-lg" placeholder="Enter title here">
                             <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to Page: <strong>www.example.com/link-to-post/</strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View Page</button></p>
                         </div>
                     </div>
@@ -39,10 +40,10 @@ $user = User::find(Auth::user()->id);
                         <div class="col-md-12">
                             <!-- CKEditor, you just need to include the plugin (see at the bottom of this page) and add the class 'ckeditor' to your textarea -->
                             <!-- More info can be found at http://ckeditor.com -->
-                            <textarea id="product-description" name="product-description" class="ckeditor"></textarea>
+                            <textarea name="body" class="ckeditor"></textarea>
                         </div>
                     </div>
-                </form>
+                
                 <!-- END General Data Content -->
             </div>
         <div class="col-lg-4 pull-right">
@@ -79,21 +80,19 @@ $user = User::find(Auth::user()->id);
                 <!-- END Meta Data Title -->
 
                 <!-- Meta Data Content -->
-                <form action="page_ecom_product_edit.php" method="post" class="form-horizontal form-bordered" onsubmit="return false;">
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-meta-title">Meta Title</label>
+                        <label class="col-md-3 control-label" for="eta-title">Meta Title</label>
                         <div class="col-md-9">
-                            <input type="text" id="product-meta-title" name="product-meta-title" class="form-control" placeholder="Enter meta title..">
+                            <input type="text" id="meta-title" name="meta_title" class="form-control" placeholder="Enter meta title..">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-meta-description">Meta Description</label>
+                        <label class="col-md-3 control-label" for="meta-description">Meta Description</label>
                         <div class="col-md-9">
-                            <textarea id="product-meta-description" name="product-meta-description" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
+                            <textarea id="meta-description" name="meta_description" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                             <div class="help-block">157 Characters Max</div>
                         </div>
                     </div>
-                </form>
                 <!-- END Meta Data Content -->
             </div>
             <!-- END Meta Data Block -->
@@ -169,6 +168,7 @@ $user = User::find(Auth::user()->id);
         </div>
     </div>
     <!-- END Product Edit Content -->
+        </form>
 </div>
 <!-- END Page Content -->
 

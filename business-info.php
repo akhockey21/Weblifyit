@@ -7,6 +7,32 @@ if (!Auth::check()) redirect_to(App::url());
 */ 
 use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
+if (isset($_POST['submit']) && csrf_filter()) {
+    if (isset($_POST['bizname'])) {
+        BusinessInfo::update($user, 'name', $_POST['bizname']);
+    }
+    if (isset($_POST['bizphone'])) {
+        BusinessInfo::update($user, 'phone', $_POST['bizphone']);
+    }
+    if (isset($_POST['bizemail'])) {
+        BusinessInfo::update($user, 'email', $_POST['bizemail']);
+    }
+    if (isset($_POST['bizst'])) {
+        BusinessInfo::update($user, 'street', $_POST['bizst']);
+    }
+    if (isset($_POST['bizcity'])) {
+        BusinessInfo::update($user, 'city', $_POST['bizcity']);
+    }
+    if (isset($_POST['bizstate'])) {
+        BusinessInfo::update($user, 'state', $_POST['bizstate']);
+    }
+    if (isset($_POST['bizzip'])) {
+        BusinessInfo::update($user, 'zip_code', $_POST['bizzip']);
+    }
+    if (isset($_POST['suite_apt_num'])) {
+        BusinessInfo::update($user, 'suite_apt_num', $_POST['suite_apt_num']);
+    }
+}
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>
@@ -40,6 +66,12 @@ $user = User::find(Auth::user()->id);
                     <div class="col-md-12">
                         <label class="control-label" for="bizst">Street Name</label>
                         <input type="text" id="bizst" name="bizst" class="form-control" placeholder="Enter Your Business' Street Name" value="6629 Wynn Ln">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="control-label" for="suite_apt_num">Suite Number</label>
+                        <input type="text" id="suite_apt_num" name="suite_apt_num" class="form-control" placeholder="Enter Your Suite Or Apartment Number" value="6629 Wynn Ln">
                     </div>
                 </div>
                 <div class="form-group">

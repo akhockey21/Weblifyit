@@ -7,6 +7,26 @@ if (!Auth::check()) redirect_to(App::url());
 */ 
 use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
+if (isset($_POST['submit']) && csrf_filter()) {
+    if (isset($_POST['layout'])) {
+        APRFooter::update($user, 'layout', $_POST['layout']);
+    }
+    if (isset($_POST['style'])) {
+        APRFooter::update($user, 'style', $_POST['style']);
+    }
+    if (isset($_POST['background_image'])) {
+        APRFooter::update($user, 'background_image', $_POST['background_image']);
+    }
+    if (isset($_POST['call_to_action'])) {
+        APRFooter::update($user, 'call_to_action', $_POST['call_to_action']);
+    }
+    if (isset($_POST['copyright'])) {
+        APRFooter::update($user, 'copyright', $_POST['copyright']);
+    }
+    if (isset($_POST['copyright_and_social_bar'])) {
+        APRFooter::update($user, 'copyright_and_social_bar', $_POST['copyright_and_social_bar']);
+    }
+}
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>
@@ -25,11 +45,11 @@ $user = User::find(Auth::user()->id);
                 </div>
     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
         <div class="form-group">
-            <label class="col-md-3 control-label" for="theme-kin">
+            <label class="col-md-3 control-label">
                 <h4>Layout</h4>
             </label>
             <div class="col-md-9">
-                <select id="theme-skin" name="theme-skin" class="form-control" size="1"><option value="" selected="selected">
+                <select name="layout" class="form-control" size="1"><option value="" selected="selected">
     Default</option>
 <option value="4;one-fourth;one-fourth;one-fourth;one-fourth">1/4 1/4 1/4 1/4</option>
 <option value="3;one-fourth;one-fourth;one-second;">1/4 1/4 1/2</option>
@@ -48,7 +68,7 @@ $user = User::find(Auth::user()->id);
                 <h4>Style</h4>
             </label>
             <div class="col-md-9">
-                <select id="theme-skin" name="theme-skin" class="form-control" size="1"><option value="" selected="selected">
+                <select name="style" class="form-control" size="1"><option value="" selected="selected">
     Default</option>
 <option value="4;one-fourth;one-fourth;one-fourth;one-fourth">Fixed</option>
 <option value="3;one-fourth;one-fourth;one-second;">Sliding</option>
@@ -64,29 +84,29 @@ $user = User::find(Auth::user()->id);
 </div>
 </div>
         <div class="form-group">
-            <label class="col-md-4 control-label" for="example-colorpicker2">
+            <label class="col-md-4 control-label">
                 <h4>Call To Action</h4></label>
             <div class="col-md-6">
                 <div class="input-group input-colorpicker colorpicker-element">
-                    <input type="text" id="example-colorpicker2" name="example-colorpicker2" class="form-control">
+                    <input type="text"  name="call_to_action" class="form-control">
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-4 control-label" for="example-colorpicker2">
+            <label class="col-md-4 control-label">
                 <h4>Copyright</h4></label>
             <div class="col-md-6">
                 <div class="input-group input-colorpicker colorpicker-element">
-                    <input type="text" id="example-colorpicker2" name="example-colorpicker2" class="form-control">
+                    <input type="text"  name="copyright" class="form-control">
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-3 control-label" for="theme-kin">
+            <label class="col-md-3 control-label">
                 <h4>Copyright & Social Bar</h4>
             </label>
             <div class="col-md-9">
-                <select id="theme-skin" name="theme-skin" class="form-control" size="1"><option value="" selected="selected">
+                <select name="copyright_and_social_bar" class="form-control" size="1"><option value="" selected="selected">
     Default</option>
 <option value="4;one-fourth;one-fourth;one-fourth;one-fourth">Center</option>
 <option value="3;one-fourth;one-fourth;one-second;">Hidden</option>

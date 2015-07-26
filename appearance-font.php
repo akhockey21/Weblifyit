@@ -7,6 +7,24 @@ if (!Auth::check()) redirect_to(App::url());
 */ 
 use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
+
+if (isset($_POST['submit']) && csrf_filter()) {
+    if (isset($_POST['content_font'])) {
+        APRGeneral::update($user, 'content_font', $_POST['content_font']);
+    }
+    if (isset($_POST['main_menu_font'])) {
+        APRGeneral::update($user, 'main_menu_font', $_POST['main_menu_font']);
+    }
+    if (isset($_POST['page_title_font'])) {
+        APRGeneral::update($user, 'page_title_font', $_POST['page_title_font']);
+    }
+    if (isset($_POST['big_headings_font'])) {
+        APRGeneral::update($user, 'big_headings_font', $_POST['big_headings_font']);
+    }
+    if (isset($_POST['small_headings_font'])) {
+        APRGeneral::update($user, 'small_headings_font', $_POST['small_headings_font']);
+    }
+}
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>
@@ -30,7 +48,7 @@ $user = User::find(Auth::user()->id);
         <div class="form-group">
             <label class="col-md-3 control-label" for="content-font"><h4>Content<h4></h4><p>This font size will be used for all theme texts.</p></label>
             <div class="col-md-9">
-                <select id="content-font" name="content-font" class="form-control" size="1">
+                <select id="content-font" name="content_font" class="form-control" size="1">
                     <?php require 'web-builder/inc/font-select-group.inc'; ?>
                 </select>
             </div>
@@ -38,7 +56,7 @@ $user = User::find(Auth::user()->id);
         <div class="form-group">
             <label class="col-md-3 control-label" for="main-menu-font"><h4>Main Menu Font<h4></h4><p>Header menu.</p></label>
             <div class="col-md-9">
-                <select id="main-menu-font" name="main-menu-font" class="form-control" size="1">
+                <select id="main-menu-font" name="main_menu_font" class="form-control" size="1">
                     <?php require 'web-builder/inc/font-select-group.inc'; ?>
                 </select>
             </div>
@@ -46,7 +64,7 @@ $user = User::find(Auth::user()->id);
         <div class="form-group">
             <label class="col-md-3 control-label" for="page-title-font"><h4>Page Title Font<h4></h4></label>
             <div class="col-md-9">
-                <select id="content-font" name="page-title-font" class="form-control" size="1">
+                <select id="content-font" name="page_title_font" class="form-control" size="1">
                     <?php require 'web-builder/inc/font-select-group.inc'; ?>
                 </select>
             </div>
@@ -54,127 +72,18 @@ $user = User::find(Auth::user()->id);
         <div class="form-group">
             <label class="col-md-3 control-label" for="big-headings-font"><h4>Big Headings Font<h4></h4><p>H1, H2, H3 & H4 headings.</p></label>
             <div class="col-md-9">
-                <select id="content-font" name="big-headings-font" class="form-control" size="1">
+                <select id="content-font" name="big_headings_font" class="form-control" size="1">
                     <?php require 'web-builder/inc/font-select-group.inc'; ?>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-3 control-label" for="small-headings-font"><h4>Small Headings Font<h4></h4><p>All theme texts except headings and menu.</p></label>
+            <label class="col-md-3 control-label" for="small-headings-font"><h4>Small Headings Font<h4></h4><p>H5 & H6 headings. All theme texts except headings and menu.</p></label>
             <div class="col-md-9">
-                <select id="content-font" name="small-headings-font" class="form-control" size="1">
+                <select id="content-font" name="small_headings_font" class="form-control" size="1">
                     <?php require 'web-builder/inc/font-select-group.inc'; ?>
                 </select>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-3 control-label" for="content-font"><h4>Content Font<h4></h4><p>H5 & H6 headings.</p></label>
-            <div class="col-md-9">
-                <select id="content-font" name="content-font" class="form-control" size="1">
-                    <?php require 'web-builder/inc/font-select-group.inc'; ?>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-3 control-label" for="content-font"><h4>Google Font Style & Weight<h4></h4><p>Impact on page <strong>load time.</strong></p></label>
-<div class="col-md-9">
-    <div class="checkbox">
-        <label for="checkbox1">
-            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">100 Thin
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox1">
-            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">100 Thin
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox2">
-            <input type="checkbox" id="checkbox2" name="checkbox2" value="option1">100 Thin Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox3">
-            <input type="checkbox" id="checkbox3" name="checkbox3" value="option1">200 Extra-Light
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox4">
-            <input type="checkbox" id="checkbox4" name="checkbox4" value="option1">200 Extra-Light Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox5">
-            <input type="checkbox" id="checkbox5" name="checkbox5" value="option1">300 Light
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox6">
-            <input type="checkbox" id="checkbox6" name="checkbox6" value="option1">300 Light Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox7">
-            <input type="checkbox" id="checkbox7" name="checkbox7" value="option1">400 Regular
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox8">
-            <input type="checkbox" id="checkbox8" name="checkbox8" value="option1">400 Regular Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox9">
-            <input type="checkbox" id="checkbox9" name="checkbox9" value="option1">500 Medium
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox10">
-            <input type="checkbox" id="checkbox10" name="checkbox10" value="option1">500 Medium Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox11">
-            <input type="checkbox" id="checkbox11" name="checkbox11" value="option1">600 Semi-Bold
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox12">
-            <input type="checkbox" id="checkbox12" name="checkbox12" value="option1">600 Semi-Bold Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox13">
-            <input type="checkbox" id="checkbox13" name="checkbox13" value="option1">700 Bold
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox14">
-            <input type="checkbox" id="checkbox14" name="checkbox14" value="option1">700 Bold Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox15">
-            <input type="checkbox" id="checkbox15" name="checkbox15" value="option1">800 Extra-Bold
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox16">
-            <input type="checkbox" id="checkbox16" name="checkbox16" value="option1">800 Extra-Bold Italic
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox17">
-            <input type="checkbox" id="checkbox17" name="checkbox17" value="option1">900 Black
-        </label>
-    </div>
-    <div class="checkbox">
-        <label for="checkbox18">
-            <input type="checkbox" id="checkbox18" name="checkbox18" value="option1">900 Black Italic
-        </label>
-    </div>
-</div>
-
         </div>
         <div class="form-group form-actions">
             <div class="col-md-9 col-md-offset-3">
