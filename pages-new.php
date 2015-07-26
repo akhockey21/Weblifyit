@@ -23,73 +23,23 @@ $user = User::find(Auth::user()->id);
                 <form action="page_ecom_product_edit.php" method="post" class="form-horizontal" onsubmit="return false;">
                     <div class="form-group">
                         <div class="col-md-12 pull-right">
+                            <h3>Add a New Page</h3>
                             <input type="text" id="page-title" name="page-title" class="form-control input-lg" placeholder="Enter title here">
+                            <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to Page: <strong>www.example.com/link-to-post/</strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View Page</button></p>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="btn-group">
-                            <button class="btn btn-primary"><i class="fa fa-arrow-left"></i> Backend Editor</button>
-                            <button class="btn btn-primary">Frontend Editor <i class="fa fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
+    <div class="btn-group">
+        <button class="btn btn-primary"><i class="gi gi-flash"></i></button>
+        <button class="btn btn-primary"><i class="fa fa-arrow-left"></i> Backend Editor</button>
+        <button class="btn btn-primary">Frontend Editor <i class="fa fa-arrow-right"></i></button>
+    </div>
+    <br>
+<button type="button" class="btn btn-sm btn-default"><i class="gi gi-camera"></i> Insert Media</button>
                     <div class="form-group">
                         <div class="col-md-12">
                             <!-- CKEditor, you just need to include the plugin (see at the bottom of this page) and add the class 'ckeditor' to your textarea -->
                             <!-- More info can be found at http://ckeditor.com -->
                             <textarea id="product-description" name="product-description" class="ckeditor"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-short-description">Short Description</label>
-                        <div class="col-md-9">
-                            <textarea id="product-short-description" name="product-short-description" class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-category">Category</label>
-                        <div class="col-md-8">
-                            <!-- Chosen plugin (class is initialized in js/app.js -> uiInit()), for extra usage examples you can check out http://harvesthq.github.io/chosen/ -->
-                            <select id="product-category" name="product-category" class="select-chosen" data-placeholder="Choose Category.." style="width: 250px;">
-                                <option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->
-                                <option value="1">Tablets</option>
-                                <option value="2">Laptops</option>
-                                <option value="3">PCs</option>
-                                <option value="4">Consoles</option>
-                                <option value="5">Movies</option>
-                                <option value="6">Books</option>
-                                <option value="7">Cables</option>
-                                <option value="8">Adapters</option>
-                                <option value="9">Office</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-price">Price</label>
-                        <div class="col-md-8">
-                            <div class="input-group">
-                                <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-                                <input type="text" id="product-price" name="product-price" class="form-control" placeholder="0,00">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Condition</label>
-                        <div class="col-md-9">
-                            <label class="radio-inline" for="product-condition-new">
-                                <input type="radio" id="product-condition-new" name="product-condition" value="condition_new" checked> New
-                            </label>
-                            <label class="radio-inline" for="product-condition-used">
-                                <input type="radio" id="product-condition-used" name="product-condition" value="condition_used"> Used
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Published?</label>
-                        <div class="col-md-9">
-                            <label class="switch switch-primary">
-                                <input type="checkbox" id="product-status" name="product-status" checked><span></span>
-                            </label>
                         </div>
                     </div>
                 </form>

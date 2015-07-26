@@ -46,7 +46,7 @@ $template = array(
     'footer'            => '',
     // ''                       empty for default style
     // 'style-alt'              for an alternative main style (affects main page background as well as blocks style)
-    'main_style'        => 'style-alt',
+    'main_style'        => '',
     // 'night', 'amethyst', 'modern', 'autumn', 'flatie', 'spring', 'fancy', 'fire', 'coral', 'lake',
     // 'forest', 'waterlily', 'emerald', 'blackberry' or '' leave empty for the Default Blue theme
     'theme'             => '',

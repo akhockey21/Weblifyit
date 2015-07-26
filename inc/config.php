@@ -46,7 +46,7 @@ $template = array(
     'footer'            => '',
     // ''                       empty for default style
     // 'style-alt'              for an alternative main style (affects main page background as well as blocks style)
-    'main_style'        => 'style-alt',
+    'main_style'        => '',
     // ''                           Disable cookies (best for setting an active color theme from the next variable)
     // 'enable-cookies'             Enables cookies for remembering active color theme when changed from the sidebar links (the next color theme variable will be ignored)
     'cookies'           => '',

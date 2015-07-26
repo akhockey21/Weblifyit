@@ -14,6 +14,167 @@ $user = User::find(Auth::user()->id);
 
 <!-- Page content -->
 <div id="page-content">
+    <div class="block full">
+        <div class="block-title">
+            <h2>Working Tabs <small>Block and Simple</small></h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs push" data-toggle="tabs">
+                    <li class="active"><a href="#header-style"><h4>Header Style</h4></a></li>
+                    <li><a href="#logo-options"><h4>Logo Options</h4></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="header-style">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="content-font"><h4>Header | Style</h4><p>Choose the header style for your website.</p></label>
+<div class="col-md-9">
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Modern
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Classic
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox2">
+            <input type="checkbox" id="checkbox2" name="checkbox2" value="option1">Creative
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox3">
+            <input type="checkbox" id="checkbox3" name="checkbox3" value="option1">Creative: Always Open
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox4">
+            <input type="checkbox" id="checkbox4" name="checkbox4" value="option1">Stack Left
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox5">
+            <input type="checkbox" id="checkbox5" name="checkbox5" value="option1">Stack Right
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox6">
+            <input type="checkbox" id="checkbox6" name="checkbox6" value="option1">Fixed
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox7">
+            <input type="checkbox" id="checkbox7" name="checkbox7" value="option1">Transparent
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox8">
+            <input type="checkbox" id="checkbox8" name="checkbox8" value="option1">Simple
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox9">
+            <input type="checkbox" id="checkbox9" name="checkbox9" value="option1">Split Menu
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox10">
+            <input type="checkbox" id="checkbox10" name="checkbox10" value="option1">Overlay Menu
+        </label>
+    </div>
+</div>
+
+        </div>  
+        
+        
+        <div class="form-group form-actions">
+            <div class="col-md-9 col-md-offset-3">
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>
+                <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+            </div>
+        </div>
+    </form>
+</div>
+                    <div class="tab-pane" id="logo-options">
+    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="content-font"><h4>Header | Style</h4><p>Choose the header style for your website.</p></label>
+<div class="col-md-9">
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Modern
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox1">
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">Classic
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox2">
+            <input type="checkbox" id="checkbox2" name="checkbox2" value="option1">Creative
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox3">
+            <input type="checkbox" id="checkbox3" name="checkbox3" value="option1">Creative: Always Open
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox4">
+            <input type="checkbox" id="checkbox4" name="checkbox4" value="option1">Stack Left
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox5">
+            <input type="checkbox" id="checkbox5" name="checkbox5" value="option1">Stack Right
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox6">
+            <input type="checkbox" id="checkbox6" name="checkbox6" value="option1">Fixed
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox7">
+            <input type="checkbox" id="checkbox7" name="checkbox7" value="option1">Transparent
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox8">
+            <input type="checkbox" id="checkbox8" name="checkbox8" value="option1">Simple
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox9">
+            <input type="checkbox" id="checkbox9" name="checkbox9" value="option1">Split Menu
+        </label>
+    </div>
+    <div class="checkbox">
+        <label for="checkbox10">
+            <input type="checkbox" id="checkbox10" name="checkbox10" value="option1">Overlay Menu
+        </label>
+    </div>
+</div>
+
+        </div>   
+        <div class="form-group form-actions">
+            <div class="col-md-9 col-md-offset-3">
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-angle-right"></i> Submit</button>
+                <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+            </div>
+        </div>
+    </form>                   
+            
+            
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>
 <!-- END Page Content -->
