@@ -36,6 +36,9 @@ if (isset($_POST['submit']) && csrf_filter()) {
     if (isset($_POST['link_color'])) {
         APRColors::update($user, 'link_color', $_POST['link_color']);
     }
+    if (isset($_POST['link_hover_color'])) {
+        APRColors::update($user, 'link_hover_color', $_POST['link_hover_color']);
+    }
     if (isset($_POST['hr_color'])) {
         APRColors::update($user, 'hr_color', $_POST['hr_color']);
     }
