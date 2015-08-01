@@ -67,7 +67,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Skype Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="skype" value="<?php APRSocialMedia::get($user, 'skype', true); ?>">
+                        <input type="text" name="skype" value="<?php echo APRSocialMedia::get($user, 'skype', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -75,7 +75,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Facebook Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="facebook" value="<?php APRSocialMedia::get($user, 'facebook', true); ?>">
+                        <input type="text" name="facebook" value="<?php echo APRSocialMedia::get($user, 'facebook', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -83,7 +83,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Google + Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="google_plus" value="<?php APRSocialMedia::get($user, 'google_plus', true); ?>">
+                        <input type="text" name="google_plus" value="<?php echo APRSocialMedia::get($user, 'google_plus', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -91,7 +91,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Twitter Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="twitter" value="<?php APRSocialMedia::get($user, 'twitter', true); ?>">
+                        <input type="text" name="twitter" value="<?php echo APRSocialMedia::get($user, 'twitter', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -99,7 +99,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Vimeo Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="vimeo" value="<?php APRSocialMedia::get($user, 'vimeo', true); ?>">
+                        <input type="text" name="vimeo" value="<?php echo APRSocialMedia::get($user, 'vimeo', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -107,7 +107,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your YouTube Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="youtube" value="<?php APRSocialMedia::get($user, 'youtube', true); ?>">
+                        <input type="text" name="youtube" value="<?php echo APRSocialMedia::get($user, 'youtube', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -115,7 +115,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your LinkedIn Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="linkedin" value="<?php APRSocialMedia::get($user, 'linkedin', true); ?>">
+                        <input type="text" name="linkedin" value="<?php echo APRSocialMedia::get($user, 'linkedin', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -123,7 +123,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Pinterest Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="pinterest" value="<?php APRSocialMedia::get($user, 'pinterest', true); ?>">
+                        <input type="text" name="pinterest" value="<?php echo APRSocialMedia::get($user, 'pinterest', true); ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -131,7 +131,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <h4>Enter Your Instagram Link Here</h4>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="instagram" value="<?php APRSocialMedia::get($user, 'instagram', true); ?>">
+                        <input type="text" name="instagram" value="<?php echo APRSocialMedia::get($user, 'instagram', true); ?>">
                     </div>
                 </div>
                 <div class="form-group form-actions">

@@ -162,7 +162,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                     <h4>Header | Sticky Style</h4>
                                 </label>
                                 <div class="col-md-9">
-                                    <select name="sticky_style" class="form-control" size="1" value="<?php APRHeader::get($user, 'sticky_style', true); ?>">
+                                    <select name="sticky_style" class="form-control" size="1" value="<?php echo APRHeader::get($user, 'sticky_style', true); ?>">
                                         <optgroup>
                                             <option value="white">White</option>
                                             <option value="dark">Dark</option>
@@ -206,7 +206,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                     </p>
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="text" name="logo_text" value="<?php APRHeader::get($user, 'logo_text', true); ?>">
+                                    <input type="text" name="logo_text" value="<?php echo APRHeader::get($user, 'logo_text', true); ?>">
                                 </div>
                             </div>
                             <div class="form-group">

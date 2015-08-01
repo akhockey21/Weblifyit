@@ -35,19 +35,19 @@ if (isset($_POST['submit']) && csrf_filter()) {
                     <div class="form-group">
                         <label class="col-md-3 control-label">Head Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea class="form-control" rows="6" placeholder="Enter meta description.." name="js_head_code" value="<?php APRCustomCssJs::get($user, 'js_head_code', true); ?>"></textarea>
+                            <textarea class="form-control" rows="6" placeholder="Enter meta description.." name="js_head_code" value="<?php echo APRCustomCssJs::get($user, 'js_head_code', true); ?>"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Footer Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="js_footer_code" class="form-control" rows="6" placeholder="Enter meta description.." value="<?php APRCustomCssJs::get($user, 'js_footer_code', true); ?>"></textarea>
+                            <textarea id="product-meta-description" name="js_footer_code" class="form-control" rows="6" placeholder="Enter meta description.." value="<?php echo APRCustomCssJs::get($user, 'js_footer_code', true); ?>"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Custom CSS Code</label>
                         <div class="col-md-9" style="width: auto; overflow: hidden;">
-                            <textarea id="product-meta-description" name="custom_css" class="form-control" rows="6" placeholder="Enter meta description.." value="<?php APRCustomCssJs::get($user, 'custom_css', true); ?>"></textarea>
+                            <textarea id="product-meta-description" name="custom_css" class="form-control" rows="6" placeholder="Enter meta description.." value="<?php echo APRCustomCssJs::get($user, 'custom_css', true); ?>"></textarea>
                         </div>
                     </div>
                     <div class="form-group form-actions">
