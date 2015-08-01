@@ -1,9 +1,0 @@
-[27-Jun-2014 15:30:35 UTC] PHP Fatal error:  Uncaught exception 'Services_Twilio_RestException' with message 'The 'To' number 555-555-5555 is not a valid phone number.' in /home/akhockey1921/public_html/sms/webhook/Services/Twilio.php:305
-Stack trace:
-#0 /home/akhockey1921/public_html/sms/webhook/Services/Twilio.php(229): Services_Twilio->_processResponse(Array)
-#1 /home/akhockey1921/public_html/sms/webhook/Services/Twilio/ListResource.php(92): Services_Twilio->createData('/2010-04-01/Acc...', Array)
-#2 /home/akhockey1921/public_html/sms/webhook/Services/Twilio/Rest/Messages.php(24): Services_Twilio_ListResource->_create(Array)
-#3 /home/akhockey1921/public_html/sms/webhook/Services/Twilio/Rest/Messages.php(71): Services_Twilio_Rest_Messages->create(Array)
-#4 /home/akhockey1921/public_html/sms/webhook/index.php(1423): Services_Twilio_Rest_Messages->sendMessage('855-800-2259', '555-555-5555', 'noen,??I am Chr...')
-#5 {main}
-  thrown in /home/akhockey1921/public_html/sms/webhook/Services/Twilio.php on line 305

@@ -49,7 +49,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
             <label class="col-md-3 control-label" for="content-font"><h4>Content<h4></h4><p>This font size will be used for all theme texts.</p></label>
             <div class="col-md-9">
                 <select id="content-font" name="content_font" class="form-control" size="1" value="<?php APRGeneral::get($user, 'content_font', true); ?>">
-                    <?php require 'web-builder/inc/font-select-group.inc'; ?>
+                    <?php require 'extra/weblifyit/font-select-group.inc'; ?>
                 </select>
             </div>
         </div>
@@ -57,7 +57,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
             <label class="col-md-3 control-label" for="main-menu-font"><h4>Main Menu Font<h4></h4><p>Header menu.</p></label>
             <div class="col-md-9">
                 <select id="main-menu-font" name="main_menu_font" class="form-control" size="1" value="<?php APRGeneral::get($user, 'main_menu_font', true); ?>">
-                    <?php require 'web-builder/inc/font-select-group.inc'; ?>
+                    <?php require 'extra/weblifyit/font-select-group.inc'; ?>
                 </select>
             </div>
         </div>
@@ -65,7 +65,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
             <label class="col-md-3 control-label" for="page-title-font"><h4>Page Title Font<h4></h4></label>
             <div class="col-md-9">
                 <select id="content-font" name="page_title_font" class="form-control" size="1" value="<?php APRGeneral::get($user, 'page_title_font', true); ?>">
-                    <?php require 'web-builder/inc/font-select-group.inc'; ?>
+                    <?php require 'extra/weblifyit/font-select-group.inc'; ?>
                 </select>
             </div>
         </div>
@@ -73,7 +73,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
             <label class="col-md-3 control-label" for="big-headings-font"><h4>Big Headings Font<h4></h4><p>H1, H2, H3 & H4 headings.</p></label>
             <div class="col-md-9">
                 <select id="content-font" name="big_headings_font" class="form-control" size="1" value="<?php APRGeneral::get($user, 'big_headings_font', true); ?>">
-                    <?php require 'web-builder/inc/font-select-group.inc'; ?>
+                    <?php require 'extra/weblifyit/font-select-group.inc'; ?>
                 </select>
             </div>
         </div>
@@ -81,7 +81,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
             <label class="col-md-3 control-label" for="small-headings-font"><h4>Small Headings Font<h4></h4><p>H5 & H6 headings. All theme texts except headings and menu.</p></label>
             <div class="col-md-9">
                 <select id="content-font" name="small_headings_font" class="form-control" size="1" value="<?php APRGeneral::get($user, 'small_headings_font', true); ?>">
-                    <?php require 'web-builder/inc/font-select-group.inc'; ?>
+                    <?php require 'extra/weblifyit/font-select-group.inc'; ?>
                 </select>
             </div>
         </div>
