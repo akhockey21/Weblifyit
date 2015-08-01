@@ -3,6 +3,6 @@ if (!Auth::check()) redirect_to(App::url());
 
  
 
-echo "YEAHH BOII";
+echo uniqid();
 ?>
 

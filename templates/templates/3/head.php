@@ -25,14 +25,8 @@
     <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/theme-elements.css">
-    <link rel="stylesheet" href="css/theme-blog.css">
-    <link rel="stylesheet" href="css/theme-shop.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/theme-animate.css">
-
-    <!-- Skin CSS -->
-    <link rel="stylesheet" href="css/skins/default.css">
 
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">

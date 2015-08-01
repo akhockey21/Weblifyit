@@ -1,26 +1,44 @@
 <?php
+/**
+ * Title: Web Publish Page
+ * Note: This page is used to publish the users website
+ */ 
 require_once 'app/init.php';
 if (!Auth::check())
     redirect_to(App::url());
 use Hazzard\Support\MessageBag;
 $user = User::find(Auth::user()->id);
 
-$templateid = Userwebsite::get(Auth::user()->id, 'template_id', true);
-$pagesall   = DB::table('userpages')->where('user_id', Auth::user()->id)->get();
+/**
+ * @$templateid : Get the template ID
+ * @$pagesall : Get all the pages that the user has created
+ */ 
+$templateid = WebsiteSettings::get($user, 'template_id', true);
+$pagesall = DB::table('pages_manage')->where('user_id', $user)->get();
 
-$domain = $_GET['subdomain'];
-$path   = "userwebsites/web/$domain/";
+/**
+ * Generate a unique domain id that will be the path of the users website.
+ * Update database with the unique domain id.
+ */ 
+$uniqueDomainID = uniqid();
+WebsiteSettings::update($user, 'website_path', $uniqueDomainID);
+$path = "userwebsites/web/$uniqueDomainID/";
+
 if (file_exists($path)) {
-    //make message pop up saying the domain is taken.
+    //check if another user has the unique domain ID
+    
+    //If another user does NOT have the unique domain ID, then erase path, and continue with website publish
+    
+    WebsiteSettings::update($user, 'website_path', 'Duplicate ID');
 } else {
-    Userwebsite::update(Auth::user()->id, 'sub_domain_name', $domain);
-    Userwebsite::update(Auth::user()->id, 'path', $path);
-    Userwebsite::update(Auth::user()->id, 'domainsetup', 1);
     mkdir("$path");
     
     $src = "templates/templates/$templateid/files2copy/";
     $dst = $path;
-    //move all files in "files2move" folder of template
+    /**
+     * Function to Move all the files from "files2copy" folder, to the users
+     * destination folder
+     */ 
     function recurse_copy($src, $dst)
     {
         $dir = opendir($src);
@@ -37,8 +55,15 @@ if (file_exists($path)) {
         closedir($dir);
     }
     
+    /**
+     * Call the function
+     */ 
     recurse_copy($src, $dst);
     
+    /**
+     * Because there are multiple fields witht he same page id in the
+     * $pagesall variable, this array will filter the ones that arnt unique.
+     */ 
     $pageidsE = array();
     foreach ($pagesall as $filter_result) {
         if (in_array($filter_result->page_id, $pageidsE)) {
@@ -48,11 +73,11 @@ if (file_exists($path)) {
         $exportpageid = $filter_result->page_id;
         //if page id is 1, then build index.html, if not, then just build the html with the pagename
         if ($exportpageid == 1) {
-            $path = Userwebsite::get(Auth::user()->id, 'path', true);
+            $path = "userwebsites/web/$uniqueDomainID/" . "$filename.html";
             $path = $path . "index.html";
             // Start output buffering
             ob_start();
-            include 'templates/models/build.php';
+            include 'models/publish/build.php';
             
             // saving captured output to file
             file_put_contents("$path", ob_get_contents());
@@ -60,12 +85,11 @@ if (file_exists($path)) {
             ob_end_clean();
             
         } else {
-            $path     = Userwebsite::get(Auth::user()->id, 'path', true);
-            $filename = preg_replace("/[^A-Za-z0-9]/", "", strtolower(Userpages::get(Auth::user()->id, $filter_result->page_id, 'pagename', true)));
-            $path     = $path . "$filename.html";
+            $filename = preg_replace("/[^A-Za-z0-9]/", "", strtolower(PagesManage::get(Auth::user()->id, $filter_result->page_id, 'page_name', true)));
+            $path = "userwebsites/web/$uniqueDomainID/" . "$filename.html";
             // Start output buffering
             ob_start();
-            include 'templates/models/build.php';
+            include 'models/publish/build.php';
             
             // saving captured output to file
             file_put_contents("$path", ob_get_contents());
@@ -73,7 +97,18 @@ if (file_exists($path)) {
             ob_end_clean();
             
         }
-        
+        /**
+         * Convert the style.php into style.css
+         */ 
+            // Start output buffering
+            $path = "userwebsites/web/$uniqueDomainID/css/" . "style.css";
+            ob_start();
+            include "templates/templates/$templateid/style.php"; 
+            
+            // saving captured output to file
+            file_put_contents("$path", ob_get_contents());
+            // end buffering and displaying page
+            ob_end_clean();
     }
 }
 
