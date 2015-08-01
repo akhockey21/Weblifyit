@@ -1667,7 +1667,7 @@ aside ul.nav-list > li > a {
 }
 /* #Footer */
 #footer {
-	background: #2d343e;
+	background: <?php APRColors::get($user, 'footer_background', true); ?>;
 	border-top: 4px solid #2d343e;
 	font-size: 0.9em;
 	margin-top: 70px;
@@ -1677,11 +1677,15 @@ aside ul.nav-list > li > a {
 }
 
 #footer p {
-	color: #7a8089;
+	color: <?php APRColors::get($user, 'footer_text_color', true); ?>;
+}
+
+#footer a {
+	color: <?php APRColors::get($user, 'footer_link_color', true); ?>;
 }
 
 #footer a:hover {
-	color: #CCC;
+	color: <?php APRColors::get($user, 'footer_hover_link_color', true); ?>;
 }
 
 #footer form {
@@ -1689,8 +1693,8 @@ aside ul.nav-list > li > a {
 	opacity: 0.85;
 }
 
-#footer h1, #footer h2, #footer h3, #footer h4, #footer a {
-	color: #FFF !important;
+#footer h1, #footer h2, #footer h3, #footer h4{
+	color:  <?php APRColors::get($user, 'footer_heading_color', true); ?> !important;
 }
 
 #footer h4 {
@@ -3853,7 +3857,7 @@ html[xmlns] .clearfix {
 
 /* Divider Line */
 hr {
-	background: #dddee2;
+	background: <?php APRColors::get($user, 'hr_color', true); ?>;
 	border: 0;
 	height: 1px;
 	margin: 22px 0 22px 0;
