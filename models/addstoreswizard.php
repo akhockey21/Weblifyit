@@ -2,7 +2,7 @@
 use Hazzard\Support\MessageBag;
 
 //$stores = Usermeta::get($user->id, 'number_of_stores', true);
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 
 		if (isset($_POST['submit']) && csrf_filter()) {
             //$getstores = Usermeta::get($user->id, 'number_of_stores', true);

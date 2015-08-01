@@ -6,59 +6,60 @@ if (!Auth::check()) redirect_to(App::url());
 * 
 */ 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
+$userID = Auth::user()->id;
 
 if (isset($_POST['submit']) && csrf_filter()) {
     if (isset($_POST['theme_skin'])) {
-        APRColors::update($user, 'theme_skin', $_POST['theme_skin']);
+        APRColors::update($userID, 'theme_skin', $_POST['theme_skin']);
     }
     if (isset($_POST['body_background'])) {
-        APRColors::update($user, 'body_background', $_POST['body_background']);
+        APRColors::update($userID, 'body_background', $_POST['body_background']);
     }
     if (isset($_POST['header_background'])) {
-        APRColors::update($user, 'header_background', $_POST['header_background']);
+        APRColors::update($userID, 'header_background', $_POST['header_background']);
     }
     if (isset($_POST['menu_link_color'])) {
-        APRColors::update($user, 'menu_link_color', $_POST['menu_link_color']);
+        APRColors::update($userID, 'menu_link_color', $_POST['menu_link_color']);
     }
     if (isset($_POST['menu_link_active_color'])) {
-        APRColors::update($user, 'menu_link_active_color', $_POST['menu_link_active_color']);
+        APRColors::update($userID, 'menu_link_active_color', $_POST['menu_link_active_color']);
     }
     if (isset($_POST['menu_active_link_background'])) {
-        APRColors::update($user, 'menu_active_link_background', $_POST['menu_active_link_background']);
+        APRColors::update($userID, 'menu_active_link_background', $_POST['menu_active_link_background']);
     }
     if (isset($_POST['theme_color'])) {
-        APRColors::update($user, 'theme_color', $_POST['theme_color']);
+        APRColors::update($userID, 'theme_color', $_POST['theme_color']);
     }
     if (isset($_POST['text_color'])) {
-        APRColors::update($user, 'text_color', $_POST['text_color']);
+        APRColors::update($userID, 'text_color', $_POST['text_color']);
     }
     if (isset($_POST['link_color'])) {
-        APRColors::update($user, 'link_color', $_POST['link_color']);
+        APRColors::update($userID, 'link_color', $_POST['link_color']);
     }
     if (isset($_POST['link_hover_color'])) {
-        APRColors::update($user, 'link_hover_color', $_POST['link_hover_color']);
+        APRColors::update($userID, 'link_hover_color', $_POST['link_hover_color']);
     }
     if (isset($_POST['hr_color'])) {
-        APRColors::update($user, 'hr_color', $_POST['hr_color']);
+        APRColors::update($userID, 'hr_color', $_POST['hr_color']);
     }
     if (isset($_POST['footer_theme_color'])) {
-        APRColors::update($user, 'footer_theme_color', $_POST['footer_theme_color']);
+        APRColors::update($userID, 'footer_theme_color', $_POST['footer_theme_color']);
     }
     if (isset($_POST['footer_background'])) {
-        APRColors::update($user, 'footer_background', $_POST['footer_background']);
+        APRColors::update($userID, 'footer_background', $_POST['footer_background']);
     }
     if (isset($_POST['footer_text_color'])) {
-        APRColors::update($user, 'footer_text_color', $_POST['footer_text_color']);
+        APRColors::update($userID, 'footer_text_color', $_POST['footer_text_color']);
     }
     if (isset($_POST['footer_link_color'])) {
-        APRColors::update($user, 'footer_link_color', $_POST['footer_link_color']);
+        APRColors::update($userID, 'footer_link_color', $_POST['footer_link_color']);
     }
     if (isset($_POST['footer_hover_link_color'])) {
-        APRColors::update($user, 'footer_hover_link_color', $_POST['footer_hover_link_color']);
+        APRColors::update($userID, 'footer_hover_link_color', $_POST['footer_hover_link_color']);
     }
     if (isset($_POST['footer_heading_color'])) {
-        APRColors::update($user, 'footer_heading_color', $_POST['footer_heading_color']);
+        APRColors::update($userID, 'footer_heading_color', $_POST['footer_heading_color']);
     }
 }
 ?>
@@ -101,7 +102,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                             <p>Choose one of the predefined styles or set your own colors.</p>
                                         </label>
                                         <div class="col-md-9">
-                                            <select name="theme_skin" class="form-control" size="1" value="<?php APRColors::get($user, 'theme_skin', true); ?>">
+                                            <select name="theme_skin" class="form-control" size="1" value="<?php APRColors::get($userID, 'theme_skin', true); ?>">
                                                 <optgroup label="Theme Skins">
                                                     <option value="custom-skin">- Custom Skin -</option>
                                                     <option value="blue">Blue</option>
@@ -124,7 +125,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Body Background</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="body_background" class="form-control" value="<?php APRColors::get($user, 'body_background', true); ?>">
+                                                <input type="text" name="body_background" class="form-control" value="<?php APRColors::get($userID, 'body_background', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -144,7 +145,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Header Background</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="header_background" class="form-control" value="<?php APRColors::get($user, 'header_background', true); ?>">
+                                                <input type="text" name="header_background" class="form-control" value="<?php APRColors::get($userID, 'header_background', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -153,7 +154,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Search Bar Background</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="search_bar_background" class="form-control" value="<?php APRColors::get($user, 'search_bar_background', true); ?>">
+                                                <input type="text" name="search_bar_background" class="form-control" value="<?php APRColors::get($userID, 'search_bar_background', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -175,7 +176,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Menu | Link Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="menu_link_color" class="form-control" value="<?php APRColors::get($user, 'menu_link_color', true); ?>">
+                                                <input type="text" name="menu_link_color" class="form-control" value="<?php APRColors::get($userID, 'menu_link_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -184,7 +185,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Menu | Active Link Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="menu_link_active_color" class="form-control" value="<?php APRColors::get($user, 'menu_link_active_color', true); ?>">
+                                                <input type="text" name="menu_link_active_color" class="form-control" value="<?php APRColors::get($userID, 'menu_link_active_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -193,7 +194,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Menu | Active Link Background</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="menu_active_link_background" class="form-control" value="<?php APRColors::get($user, 'menu_active_link_background', true); ?>">
+                                                <input type="text" name="menu_active_link_background" class="form-control" value="<?php APRColors::get($userID, 'menu_active_link_background', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -214,7 +215,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Theme Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="theme_color" class="form-control" value="<?php APRColors::get($user, 'theme_color', true); ?>">
+                                                <input type="text" name="theme_color" class="form-control" value="<?php APRColors::get($userID, 'theme_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -223,7 +224,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Text Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="text_color" class="form-control" value="<?php APRColors::get($user, 'text_color', true); ?>">
+                                                <input type="text" name="text_color" class="form-control" value="<?php APRColors::get($userID, 'text_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -232,7 +233,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Link Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="link_color" class="form-control" value="<?php APRColors::get($user, 'link_color', true); ?>">
+                                                <input type="text" name="link_color" class="form-control" value="<?php APRColors::get($userID, 'link_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -241,7 +242,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Link Hover Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="link_hover_color" class="form-control" value="<?php APRColors::get($user, 'link_hover_color', true); ?>">
+                                                <input type="text" name="link_hover_color" class="form-control" value="<?php APRColors::get($userID, 'link_hover_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -250,7 +251,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Hr Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="hr_color" class="form-control" value="<?php APRColors::get($user, 'hr_color', true); ?>">
+                                                <input type="text" name="hr_color" class="form-control" value="<?php APRColors::get($userID, 'hr_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -269,7 +270,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Footer Theme Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="footer_theme_color" class="form-control" value="<?php APRColors::get($user, 'footer_theme_color', true); ?>">
+                                                <input type="text" name="footer_theme_color" class="form-control" value="<?php APRColors::get($userID, 'footer_theme_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -278,7 +279,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Footer Background</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="footer_background" class="form-control" value="<?php APRColors::get($user, 'footer_background', true); ?>">
+                                                <input type="text" name="footer_background" class="form-control" value="<?php APRColors::get($userID, 'footer_background', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -287,7 +288,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Footer Text Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="footer_text_color" class="form-control" value="<?php APRColors::get($user, 'footer_text_color', true); ?>">
+                                                <input type="text" name="footer_text_color" class="form-control" value="<?php APRColors::get($userID, 'footer_text_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -296,7 +297,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Footer Link Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="footer_link_color" class="form-control" value="<?php APRColors::get($user, 'footer_link_color', true); ?>">
+                                                <input type="text" name="footer_link_color" class="form-control" value="<?php APRColors::get($userID, 'footer_link_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -305,7 +306,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Footer Hover Link Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="footer_hover_link_color" class="form-control" value="<?php APRColors::get($user, 'footer_hover_link_color', true); ?>">
+                                                <input type="text" name="footer_hover_link_color" class="form-control" value="<?php APRColors::get($userID, 'footer_hover_link_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>
@@ -314,7 +315,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                         <label class="col-md-4 control-label">Footer Heading Color</label>
                                         <div class="col-md-6">
                                             <div class="input-group input-colorpicker colorpicker-element">
-                                                <input type="text" name="footer_heading_color" class="form-control" value="<?php APRColors::get($user, 'footer_heading_color', true); ?>">
+                                                <input type="text" name="footer_heading_color" class="form-control" value="<?php APRColors::get($userID, 'footer_heading_color', true); ?>">
                                                 <span class="input-group-addon"><i style="background-color: rgb(27, 186, 225);"></i></span>
                                             </div>
                                         </div>

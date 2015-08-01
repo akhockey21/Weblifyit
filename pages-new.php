@@ -6,7 +6,7 @@ if (!Auth::check()) redirect_to(App::url());
 * 
 */ 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>

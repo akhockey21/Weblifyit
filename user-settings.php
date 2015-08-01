@@ -5,7 +5,7 @@ $page = isset($_GET['p']) ? $_GET['p'] : 'account';
 
 switch ($page) {
 	case 'account':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 		
 		if (isset($_POST['submit']) && csrf_filter()) {
 			$data = array('email' => $_POST['email']);
@@ -46,7 +46,7 @@ switch ($page) {
 	break;
 
 	case 'password':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 
 		if (isset($_POST['submit']) && csrf_filter()) {
 			$validator = Validator::make(
@@ -80,7 +80,7 @@ switch ($page) {
 	break;
 
 	case 'profile':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 
 		if (isset($_POST['submit']) && csrf_filter()) {
 			$data = array('avatar_type' => $_POST['avatar_type']);

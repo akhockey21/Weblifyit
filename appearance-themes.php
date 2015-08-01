@@ -6,7 +6,7 @@ if (!Auth::check()) redirect_to(App::url());
 * 
 */ 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 $category = Userwebsite::get(Auth::user()->id, 'category', true);
 ?>
 <?php include 'inc/builder/config.php'; ?>

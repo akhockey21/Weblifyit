@@ -2,7 +2,7 @@
 if (!Auth::check()) redirect_to(App::url()); 
 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 //get website info
 $bizName = Usermeta::get(Auth::user()->id, 'business_name', true);
 $bizPhone = Usermeta::get(Auth::user()->id, 'company_busines_phone', true);

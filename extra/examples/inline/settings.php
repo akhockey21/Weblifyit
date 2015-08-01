@@ -86,7 +86,7 @@ switch ($page) {
 
 	// Profile
 	case 'profile':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 		?>
 		<link href="<?php echo asset_url('css/vendor/imgpicker.css') ?>" rel="stylesheet">
 		

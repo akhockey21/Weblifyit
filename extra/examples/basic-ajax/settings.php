@@ -49,7 +49,7 @@ switch ($page) {
 
 	// Account
 	case 'account':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 		?>
 		<h3 class="page-header"><?php echo _e('main.account') ?></h3>
 
@@ -88,7 +88,7 @@ switch ($page) {
 
 	// Password
 	case 'password':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 		?>
 		<h3 class="page-header"><?php echo _e('main.password') ?></h3>
 
@@ -115,7 +115,7 @@ switch ($page) {
 
 	// Profile
 	case 'profile':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 		?>
 		<link href="<?php echo asset_url('css/vendor/imgpicker.css') ?>" rel="stylesheet">
 

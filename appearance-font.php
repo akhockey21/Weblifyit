@@ -6,7 +6,7 @@ if (!Auth::check()) redirect_to(App::url());
 * 
 */ 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 
 if (isset($_POST['submit']) && csrf_filter()) {
     if (isset($_POST['content_font'])) {

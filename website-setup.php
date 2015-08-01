@@ -20,7 +20,7 @@ if (isset($_POST['confirm']) && csrf_filter()) {
 
 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 $category = Userwebsite::get(Auth::user()->id, 'category', true);
 $domainsetup = Userwebsite::get(Auth::user()->id, 'domainsetup', true);
 $usesdomain = Userwebsite::get(Auth::user()->id, 'usesdomain', true);

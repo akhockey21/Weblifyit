@@ -2,7 +2,7 @@
 if (!Auth::check()) redirect_to(App::url()); 
 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 
 $setup = Usermodels::get(Auth::user()->id, 'setup_complete', true);
 

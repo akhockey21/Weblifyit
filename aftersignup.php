@@ -10,7 +10,7 @@ $page = isset($_GET['p']) ? $_GET['p'] : 'step1';
 switch ($page) {
 
 	case 'step1':
-    $user = User::find(Auth::user()->id);
+    $user = Auth::user()->id;
 		
 		if (isset($_POST['submit']) && csrf_filter()) {
             
@@ -57,7 +57,7 @@ switch ($page) {
 	break;
     
     	case 'step2':
-    $user = User::find(Auth::user()->id);
+    $user = Auth::user()->id;
 		
 		if (isset($_POST['submit']) && csrf_filter()) {
             
@@ -104,7 +104,7 @@ switch ($page) {
 	break;
     
     case 'step3':
-    $user = User::find(Auth::user()->id);
+    $user = Auth::user()->id;
 		
 		if (isset($_POST['submit']) && csrf_filter()) {
             
@@ -146,7 +146,7 @@ switch ($page) {
 	break;
     
     case 'step4':
-    $user = User::find(Auth::user()->id);
+    $user = Auth::user()->id;
 		
 		if (isset($_POST['submit']) && csrf_filter()) {
             

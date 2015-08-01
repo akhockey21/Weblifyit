@@ -4,24 +4,22 @@
  * Note: This page is used to publish the users website
  */ 
 require_once 'app/init.php';
-if (!Auth::check())
-    redirect_to(App::url());
+if (!Auth::check()) redirect_to(App::url());
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
-
+$userID = Auth::user()->id;
 /**
  * @$templateid : Get the template ID
  * @$pagesall : Get all the pages that the user has created
  */ 
-$templateid = WebsiteSettings::get($user, 'template_id', true);
-$pagesall = DB::table('pages_manage')->where('user_id', $user)->get();
+$templateid = WebsiteSettings::get($userID, 'template_id', true);
+$pagesall = DB::table('pages_manage')->where('user_id', $userID)->get();
 
 /**
  * Generate a unique domain id that will be the path of the users website.
  * Update database with the unique domain id.
  */ 
 $uniqueDomainID = uniqid();
-WebsiteSettings::update($user, 'website_path', $uniqueDomainID);
+WebsiteSettings::update($userID, 'website_path', $uniqueDomainID);
 $path = "userwebsites/web/$uniqueDomainID/";
 
 if (file_exists($path)) {
@@ -29,7 +27,7 @@ if (file_exists($path)) {
     
     //If another user does NOT have the unique domain ID, then erase path, and continue with website publish
     
-    WebsiteSettings::update($user, 'website_path', 'Duplicate ID');
+    WebsiteSettings::update($userID, 'website_path', 'Duplicate ID');
 } else {
     mkdir("$path");
     

@@ -151,7 +151,7 @@ function ajax_settings_account()
 	$username = isset($_POST['username']) ? $_POST['username'] : '';
 	$locale   = isset($_POST['locale'])   ? $_POST['locale']   : '';
 
-	$user = User::find(Auth::user()->id);
+	$user = Auth::user()->id;
 	
 	$data  = array('email' => $email);
 	$rules = array('email' => "required|email|max:100|unique:users,email,{$user->id}");
@@ -207,7 +207,7 @@ function ajax_settings_profile()
     $validator = Validator::make($data, $rules);
 
 	if ($validator->passes()) {
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 
 		if (!empty($displayName)) {
 			$user->display_name = $displayName;
@@ -241,7 +241,7 @@ function ajax_settings_password()
 	$pass2 = isset($_POST['pass2']) ? $_POST['pass2'] : '';
 	$pass3 = isset($_POST['pass3']) ? $_POST['pass3'] : '';
 
-	$user = User::find(Auth::user()->id);
+	$user = Auth::user()->id;
 
 	$validator = Validator::make(
 		array(

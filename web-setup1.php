@@ -2,7 +2,7 @@
 if (!Auth::check()) redirect_to(App::url()); 
 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 $home1 = Templatetext::get(1, 'home_2', true);
 
 if (isset($_POST['submit']) && csrf_filter()) {

@@ -4,7 +4,7 @@ use Hazzard\Support\MessageBag;
 
 include 'models/website.php';
  
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 $page = isset($_GET['page']) ? $_GET['page'] : '1';
 $pagesall = DB::table('userpages')->where('user_id', Auth::user()->id)->get();
 $category = Userwebsite::get(Auth::user()->id, 'category', true);

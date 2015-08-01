@@ -2,7 +2,7 @@
 if (!Auth::check()) redirect_to(App::url()); 
 
 use Hazzard\Support\MessageBag;
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 
 /**
  * This page is to continue the website builder form wizard version, this should be the main builder that the user will want to use to make it as simple and easy as possible.

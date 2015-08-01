@@ -2,19 +2,19 @@
 if (!Auth::check()) redirect_to(App::url()); 
 use Hazzard\Support\MessageBag;
 $page = isset($_GET['p']) ? $_GET['p'] : 'content';
-$user = User::find(Auth::user()->id);
+$user = Auth::user()->id;
 switch ($page) {
 	case 'content':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
     require_once 'models/web/content_top.php';
 		
 	break;
 	case 'design':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
         require_once 'models/web/design_top.php';
 	break;
 	case 'pages':
-		$user = User::find(Auth::user()->id);
+		$user = Auth::user()->id;
 		require_once 'models/web/pages_top.php';
 	break;
 	case 'settings':
