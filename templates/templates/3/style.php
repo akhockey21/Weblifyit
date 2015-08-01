@@ -1,5 +1,5 @@
 body {
-	background-color: <?php APRColors::get(Auth::user()->id, 'body_background', true); ?>;
+	background-color: <?php echo APRColors::get(Auth::user()->id, 'body_background', true); ?>;
 	color: #87919f;
 	font-family: "Open Sans", Arial, sans-serif;
 	font-size: 13px;
@@ -14,7 +14,7 @@ html.no-page-top body > .body {
 
 /* Header */
 #header {
-	background: none repeat scroll 0 0 <?php APRColors::get(Auth::user()->id, 'header_background', true); ?>;
+	background: none repeat scroll 0 0 <?php echo APRColors::get(Auth::user()->id, 'header_background', true); ?>;
 	border-bottom: 3px solid #e5e7e9;
 	clear: both;
 	padding: 4px 0 8px;
@@ -212,7 +212,7 @@ html.no-page-top body > .body {
 }
 
 #header nav ul.nav-main li a {
-	color: <?php APRColors::get(Auth::user()->id, 'menu_link_color', true) ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'menu_link_color', true) ?>;
 	font-size: 1.1em;
 	font-style: normal;
 	font-weight: 100;
@@ -1667,7 +1667,7 @@ aside ul.nav-list > li > a {
 }
 /* #Footer */
 #footer {
-	background: <?php APRColors::get(Auth::user()->id, 'footer_background', true); ?>;
+	background: <?php echo APRColors::get(Auth::user()->id, 'footer_background', true); ?>;
 	border-top: 4px solid #2d343e;
 	font-size: 0.9em;
 	margin-top: 70px;
@@ -1677,15 +1677,15 @@ aside ul.nav-list > li > a {
 }
 
 #footer p {
-	color: <?php APRColors::get(Auth::user()->id, 'footer_text_color', true); ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'footer_text_color', true); ?>;
 }
 
 #footer a {
-	color: <?php APRColors::get(Auth::user()->id, 'footer_link_color', true); ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'footer_link_color', true); ?>;
 }
 
 #footer a:hover {
-	color: <?php APRColors::get(Auth::user()->id, 'footer_hover_link_color', true); ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'footer_hover_link_color', true); ?>;
 }
 
 #footer form {
@@ -1694,7 +1694,7 @@ aside ul.nav-list > li > a {
 }
 
 #footer h1, #footer h2, #footer h3, #footer h4{
-	color:  <?php APRColors::get(Auth::user()->id, 'footer_heading_color', true); ?> !important;
+	color:  <?php echo APRColors::get(Auth::user()->id, 'footer_heading_color', true); ?> !important;
 }
 
 #footer h4 {
@@ -2021,11 +2021,11 @@ h5 {
 }
 
 a {
-	color: <?php APRColors::get(Auth::user()->id, 'link_color', true); ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'link_color', true); ?>;
 }
 
 a:hover {
-	color: <?php APRColors::get(Auth::user()->id, 'link_hover_color', true); ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'link_hover_color', true); ?>;
 }
 
 a:active {
@@ -2691,7 +2691,7 @@ blockquote {
 
 /* Paragraphs */
 p {
-	color: <?php APRColors::get(Auth::user()->id, 'text_color', true); ?>;
+	color: <?php echo APRColors::get(Auth::user()->id, 'text_color', true); ?>;
 	line-height: 24px;
 	margin: 0 0 20px;
 }
@@ -3857,7 +3857,7 @@ html[xmlns] .clearfix {
 
 /* Divider Line */
 hr {
-	background: <?php APRColors::get(Auth::user()->id, 'hr_color', true); ?>;
+	background: <?php echo APRColors::get(Auth::user()->id, 'hr_color', true); ?>;
 	border: 0;
 	height: 1px;
 	margin: 22px 0 22px 0;
