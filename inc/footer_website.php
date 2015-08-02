@@ -36,7 +36,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header text-center">
-                <h2 class="modal-title">Choose This Template?</h2>
+                <h2 class="modal-title">Choose This Theme?</h2>
                 <h3 id="tempname" class="modal-title themed-color-modern"></h3>
             </div>
             <!-- END Modal Header -->
@@ -47,7 +47,7 @@
 <div id="widget-carousel3" class="carousel slide remove-margin">
 <div class="carousel-inner">
 <div class="active item">
-<img src="templates/screenshots/plumber/1.png" alt="image">
+<img src="/templates/screenshots/template_images/1.png" alt="image">
 </div>
 </div>
 </div>
@@ -58,7 +58,7 @@
                     <div class="form-group form-actions">
                         <div class="col-xs-12 text-center">
                             <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Go Back</button>
-                            <button type="submit" class="btn btn-sm btn-success" name="confirm">Save Template</button>
+                            <button type="submit" class="btn btn-sm btn-success" name="confirm">Save Theme</button>
                         </div>
                     </div>
                 </form>

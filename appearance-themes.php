@@ -23,7 +23,7 @@ $category = Userwebsite::get(Auth::user()->id, 'category', true);
                         <div id="widget-carousel3" class="carousel slide remove-margin">
                             <div class="carousel-inner">
                                 <div class="active item">
-                                    <img src="templates/screenshots/plumber/1.png" alt="image">
+                                    <img src="/templates/screenshots/template_images/1.png" alt="image">
                                 </div>
                             </div>
                         </div>
@@ -32,7 +32,7 @@ $category = Userwebsite::get(Auth::user()->id, 'category', true);
             </div>
             <div class="col-md-7">
                 <div class="block-section">
-                    <h3 class="sub-header text-center"><strong>Boost your creativity now!</strong></h3>
+                    <h3 class="sub-header text-center"><strong>Your Current Theme: Tucson</strong></h3>
                     <p class="clearfix"><i class="fa fa-clock-o fa-5x text-danger pull-left animation-pulse"></i>Your theme name is <span class="text-success"><strong>theme name.</strong></span> You can either change your theme, or get customize your theme by clicking the button below..</p>
                     <p>
                         <a href="page_ready_pricing_tables.php" class="btn btn-lg btn-success btn-block">Customize Theme Now</a>
@@ -45,18 +45,18 @@ $category = Userwebsite::get(Auth::user()->id, 'category', true);
     
     
     
-<?php $templates = DB::table('webtemplates')->get();
+<?php $templates = DB::table('global_themes')->get();
 ?>
     <div class="row">
 <div class="block-section">
 <h2 class="sub-header text-center"><strong>Change Your Website Theme</strong></h2>
     <?php
-foreach ($templates as $web) {
+foreach ($templates as $web) { 
     //screen shot location templates/screenshots/$category/$template_id.png
     //$template->template_id;
     $tempname = $web->template_name;
     $tempid = $web->template_id;
-    $tempss = "templates/screenshots/$category/$tempid.png";
+    $tempss = "templates/screenshots/template_images/$tempid.png";
     ?>
 <div class="col-md-4">
 <div class="widget">

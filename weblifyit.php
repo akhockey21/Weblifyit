@@ -39,16 +39,16 @@ Userpages::update(Auth::user()->id, 3, 'style', "shortheader");
 if (isset($_POST['submitone']) && csrf_filter()) {
     if (isset($_POST['category'])) {
         $category = str_replace(" ", "-", $_POST['category']);
-        Userwebsite::update(Auth::user()->id, 'category', $category);
-        Userwebsite::update(Auth::user()->id, 'step', 1);
+        BusinessInfo::update(Auth::user()->id, 'business_category', $category);
+        WebsiteSettings::update(Auth::user()->id, 'step', 1);
 }
  }  
 
 if (isset($_POST['confirm']) && csrf_filter()) {
     if (isset($_POST['templateid'])) {
         $templateid = $_POST['templateid'];
-        Userwebsite::update(Auth::user()->id, 'template_id', true);
-        Userwebsite::update(Auth::user()->id, 'step', 2);
+        WebsiteSettings::update(Auth::user()->id, 'template_id', $templateid);
+        WebsiteSettings::update(Auth::user()->id, 'step', 2);
         //header("Location: website-setup2.php");
 }
  }
@@ -56,70 +56,45 @@ if (isset($_POST['confirm']) && csrf_filter()) {
 
 if (isset($_POST['submit']) && csrf_filter()) {
 
-    if (isset($_POST['bizname'])) {
+    if (isset($_POST['bizname'])) { 
                 $bizname = $_POST['bizname'];
-				Usermeta::update(Auth::user()->id, 'business_name', $bizname);
+				BusinessInfo::update(Auth::user()->id, 'name', $bizname);
 			} 
      if (isset($_POST['bizphone'])) {
                 $bizphone = $_POST['bizphone'];
-				Usermeta::update(Auth::user()->id, 'company_busines_phone', $bizphone);
+				BusinessInfo::update(Auth::user()->id, 'phone', $bizphone);
 			} 
      if (isset($_POST['bizemail'])) {
                 $bizemail = $_POST['bizemail'];
-				Usermeta::update(Auth::user()->id, 'company_email', $bizemail);
+				BusinessInfo::update(Auth::user()->id, 'email', $bizemail);
 			} 
      if (isset($_POST['bizst'])) {
                 $bizst = $_POST['bizst'];
-				Usermeta::update(Auth::user()->id, 'company_address_st', $bizst);
+				BusinessInfo::update(Auth::user()->id, 'street', $bizst);
 			}
      if (isset($_POST['bizcity'])) {
                 $bizcity = $_POST['bizcity'];
-				Usermeta::update(Auth::user()->id, 'company_address_city', $bizcity);
+				BusinessInfo::update(Auth::user()->id, 'city', $bizcity);
 			} 
      if (isset($_POST['bizstate'])) {
                 $bizstate = $_POST['bizstate'];
-				Usermeta::update(Auth::user()->id, 'company_address_state', $bizstate);
+				BusinessInfo::update(Auth::user()->id, 'state', $bizstate);
 			} 
      if (isset($_POST['bizzip'])) {
                 $bizzip = $_POST['bizzip'];
-				Usermeta::update(Auth::user()->id, 'company_address_zip', $bizzip);
+				BusinessInfo::update(Auth::user()->id, 'zip_code', $bizzip);
 			}
-     if (isset($_POST['aboutus'])) {
-        Userpages::update(Auth::user()->id, 2, 'pagename', "About Us");
-        Userpages::update(Auth::user()->id, 2, 'navhide', 1);
-        Userpages::update(Auth::user()->id, 2, 'style', "aboutus");
-        Userpages::update(Auth::user()->id, 2, 'visibility', "public");
-        Userpages::update(Auth::user()->id, 2, 'title', "About Us");
-    }
-     if (isset($_POST['services'])) {
-        Userpages::update(Auth::user()->id, 3, 'pagename', "Services");
-        Userpages::update(Auth::user()->id, 3, 'navhide', 1);
-        Userpages::update(Auth::user()->id, 3, 'style', "services");
-        Userpages::update(Auth::user()->id, 3, 'visibility', "public");
-        Userpages::update(Auth::user()->id, 3, 'title', "Services");
-    }
-     if (isset($_POST['contactus'])) {
-        Userpages::update(Auth::user()->id, 4, 'pagename', "Contact Us");
-        Userpages::update(Auth::user()->id, 4, 'navhide', 1);
-        Userpages::update(Auth::user()->id, 4, 'style', "contactus");
-        Userpages::update(Auth::user()->id, 4, 'visibility', "public");
-        Userpages::update(Auth::user()->id, 4, 'title', "contact Us");
-    }
-        Userpages::update(Auth::user()->id, 1, 'pagename', "Homepage");
-        Userpages::update(Auth::user()->id, 1, 'navhide', 1);
-        Userpages::update(Auth::user()->id, 1, 'style', "homepage");
-        Userpages::update(Auth::user()->id, 1, 'visibility', "public");
-        Userpages::update(Auth::user()->id, 1, 'title', "Homepage");
+        PagesManage::update(Auth::user()->id, 1, 'page_name', "Homepage");
     
-    Userwebsite::update(Auth::user()->id, 'step', 3);
-    header("Location: website-setup2.php");
+    WebsiteSettings::update(Auth::user()->id, 'step', 3);
+    header("Location: dashboard.php");
 }
 
 
-$category = Userwebsite::get(Auth::user()->id, 'category', true);
-$domainsetup = Userwebsite::get(Auth::user()->id, 'domainsetup', true);
-$usesdomain = Userwebsite::get(Auth::user()->id, 'usesdomain', true);
-$step = Userwebsite::get(Auth::user()->id, 'step', true);
+$category = BusinessInfo::get(Auth::user()->id, 'business_category', true);
+$domainsetup = WebsiteSettings::get(Auth::user()->id, 'domainsetup', true);
+$usesdomain = WebsiteSettings::get(Auth::user()->id, 'usesdomain', true);
+$step = WebsiteSettings::get(Auth::user()->id, 'step', true);
 if($step>=3){
     header("Location: website-setup2.php");
 }
@@ -146,7 +121,7 @@ if($step>=3){
 <a><i class="hi hi-earphone"></i> Business Info</a>
 </li>
 <li>
-<a><i class="gi gi-edit"></i> Feel Free To Edit</a>
+<a><i class="gi gi-edit"></i> Edit/Publish Website</a>
 </li>
 </ul>
 </div>
@@ -175,7 +150,7 @@ if($step>=3){
 </div>
         <?php
                         }elseif($category==true && $step==1){
-                            $templates = DB::table('webtemplates')->get();
+                            $templates = DB::table('global_themes')->get();
 ?>
     <div class="content-header">
 <ul class="nav-horizontal text-center">
@@ -183,13 +158,13 @@ if($step>=3){
 <a><i class="gi gi-shop"></i> Business Type</a>
 </li>
 <li class="active">
-<a><i class="fa fa-laptop"></i> Choose Template</a>
+<a><i class="fa fa-laptop"></i> Choose Theme</a>
 </li>
 <li>
 <a><i class="hi hi-earphone"></i> Business Info</a>
 </li>
 <li>
-<a><i class="gi gi-edit"></i> Feel Free To Edit</a>
+<a><i class="gi gi-edit"></i> Edit/Publish Website</a>
 </li>
 </ul>
 </div>
@@ -203,7 +178,7 @@ foreach ($templates as $web) {
     //$template->template_id;
     $tempname = $web->template_name;
     $tempid = $web->template_id;
-    $tempss = "templates/screenshots/$category/$tempid.png";
+    $tempss = "templates/screenshots/template_images/$tempid.png";
     ?>
 <div class="col-md-4">
 <div class="widget">
@@ -245,7 +220,7 @@ foreach ($templates as $web) {
 <a><i class="hi hi-earphone"></i> Business Info</a>
 </li>
 <li>
-<a><i class="gi gi-edit"></i> Feel Free To Edit</a>
+<a><i class="gi gi-edit"></i> Edit/Publish Website</a>
 </li>
 </ul>
 </div>
