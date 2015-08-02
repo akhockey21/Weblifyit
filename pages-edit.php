@@ -10,7 +10,7 @@ if (!Auth::check())
 use Hazzard\Support\MessageBag;
 $userID = Auth::user()->id;
 
-if (isset($_POST['addnew']) && csrf_filter()) {
+if (isset($_POST['submit']) && csrf_filter()) {
     
     /**
      * Make this page have a unique ID and in order
@@ -89,12 +89,12 @@ include 'inc/builder/page_head.php';
                 <!-- END Meta Data Title -->
 
                 <!-- Meta Data Content -->
-                <form action="" method="post" class="form-horizontal form-bordered" id="main">
+                <form action="" method="post" class="form-horizontal form-bordered" onsubmit="return false;" id="main">
                     <div class="form-group form-actions">
                         <div class="col-md-9 col-md-offset-3">
             <button type="button" class="btn btn-sm btn-info">Save</button>
             <button type="button" class="btn btn-sm btn-warning">Preview</button>
-            <button type="submit" class="btn btn-sm btn-primary" name="addnew">Publish</button>
+            <button type="submit" class="btn btn-sm btn-primary">Publish</button>
                         </div>
                     </div>
                 </form>

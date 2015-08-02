@@ -8,7 +8,7 @@ require_once 'app/init.php';
 if (!Auth::check())
     redirect_to(App::url());
 use Hazzard\Support\MessageBag;
-$userID     = Auth::user()->id;
+$userID = Auth::user()->id;
 /**
  * @$templateid : Get the template ID
  * @$pagesall : Get all the pages that the user has created
