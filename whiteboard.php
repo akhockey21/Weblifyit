@@ -4,6 +4,5 @@ if (!Auth::check()) redirect_to(App::url());
 $userID = Auth::user()->id;
  
 
-echo WebsiteSettings::get($userID, 'template_id', 3);
+echo PagesContent::get(Auth::user()->id, 2, 'body', true); 
 ?>
-
