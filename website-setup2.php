@@ -32,6 +32,14 @@ $webtitle = Userwebsite::get(Auth::user()->id, 'title', true);
 $maincolor = Userwebsite::get(Auth::user()->id, 'main_color', true); 
 $sidecolor = Userwebsite::get(Auth::user()->id, 'side_color', true);
 $todoList = Userwebsite::get(Auth::user()->id, 'todo', true);
+$userID = Auth::user()->id;
+
+$uniqueDomainID = WebsiteSettings::get($userID, 'website_path', true);
+if (!$uniqueDomainID) {
+    $uniqueDomainID = uniqid();
+    WebsiteSettings::update($userID, 'website_path', $uniqueDomainID);
+    $uniqueDomainID = WebsiteSettings::get($userID, 'website_path', true);
+}
 ?> 
 <?php include 'inc/configweb.php'; ?>
 <?php include 'inc/template_start_web.php'; ?>
@@ -200,7 +208,7 @@ $total = $tot + 1;
 </form>
 </div>
     
-    <form action="models/web/upload.php" class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here or click To Upload</span></div>
+   <form action="media_upload.php?id=<?php echo $uniqueDomainID; ?> " class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here or click To Upload</span></div>
     </form></div></div></div>
 <div class="tab-pane" id="business-information">
 <div class="col-md-offset-1 col-md-2">

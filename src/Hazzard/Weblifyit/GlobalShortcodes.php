@@ -37,16 +37,19 @@ class GlobalShortcodes {
 	 * @param  bool 	$unique 	Optional, default is false. Whether the same key should not be added.
 	 * @return int|false 			Meta ID on success, false on failure.
 	 */
-	public function add($metaKey, $metaValue, $unique = false)
+	public function add($userId, $shortcodeId, $metaKey, $metaValue, $unique = false)
 	{
+		if (!$this->isNumeric($userId)) return false;
 
 		$metaKey = sanitize_key($metaKey);
 
 		$metaValue = maybe_serialize($metaValue);
 
-		if ($unique && $this->has($metaKey)) return false;
+		if ($unique && $this->has($userId, $shortcodeId, $metaKey)) return false;
 
 		$data = array(
+			'user_id' => $userId,
+            'shortcode_id' => $shortcodeId,
 			'meta_key' => $metaKey,
 			'meta_value' => $metaValue
 		);
@@ -62,12 +65,13 @@ class GlobalShortcodes {
 	 * @param  bool 	$single 	Whether to return a single value.
 	 * @return mixed 				Will be an array if $single is false. Will be value of meta data field if $single is true.
 	 */
-	public function get($metaKey = '', $single = false)
+	public function get($userId, $shortcodeId, $metaKey = '', $single = false)
 	{
+		if (!$this->isNumeric($userId)) return false;
 
 		$metaKey = sanitize_key($metaKey);
 
-		$query = $this->newQuery();
+		$query = $this->newQuery()->where('user_id', $userId)->where('shortcode_id', $shortcodeId);
 
 		if ($metaKey == '') {
 			$meta = $query->get();
@@ -113,8 +117,9 @@ class GlobalShortcodes {
 	 * @param  mixed 	$prevValue  Optional. Previous value to check before removing.
 	 * @return int|bool 			Meta ID if the key didn't exist, true on successful update, false on failure.
 	 */
-	public function update($metaKey, $metaValue, $prevValue = '')
+	public function update($userId, $shortcodeId, $metaKey, $metaValue, $prevValue = '')
 	{
+		if (!$this->isNumeric($userId)) return false;
 
 		$metaKey = sanitize_key($metaKey);
 
@@ -122,11 +127,11 @@ class GlobalShortcodes {
 
 		$prevValue = maybe_serialize($prevValue);
 
-		if (!$this->has($metaKey)) {
-			return $this->add($metaKey, $metaValue);
+		if (!$this->has($userId, $shortcodeId, $metaKey)) {
+			return $this->add($userId, $shortcodeId, $metaKey, $metaValue);
 		}
 
-		$query = $this->newQuery()->where('meta_key', $metaKey);
+		$query = $this->newQuery()->where('user_id', $userId)->where('shortcode_id', $shortcodeId)->where('meta_key', $metaKey);
 
 		if ($prevValue != '') $query->where('meta_value', $prevValue);
 
@@ -141,11 +146,11 @@ class GlobalShortcodes {
 	* @param  mixed   $metaValue  Optional. Metadata value.
 	* @return bool  			  True on success, false on failure.
 	*/
-	public function delete($metaKey = '', $metaValue = '')
+	public function delete($userId, $shortcodeId, $metaKey = '', $metaValue = '')
 	{
 		$metaKey = sanitize_key($metaKey);
 
-		$query = $this->newQuery();
+		$query = $this->newQuery()->where('user_id', $userId)->where('shortcode_id', $shortcodeId);
 
 		if ($metaKey != '') {
 			$query->where('meta_key', $metaKey);
@@ -167,9 +172,9 @@ class GlobalShortcodes {
 	* @param  string  $metaKey
 	* @return bool
 	*/
-	protected function has($metaKey)
+	protected function has($userId, $shortcodeId, $metaKey)
 	{
-		return $this->newQuery()->where('meta_key', $metaKey)->pluck('id');	
+		return $this->newQuery()->where('user_id', $userId)->where('shortcode_id', $shortcodeId)->where('meta_key', $metaKey)->pluck('id');	
 	}
 
 	/**
