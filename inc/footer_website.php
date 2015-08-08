@@ -137,8 +137,10 @@
 
 
 <?php
-if($display_mediaAdder == true){
+if(isset($display_mediaAdder)){
+    if($display_mediaAdder == true){
     include 'models/media/media-adder.php';
+}
 }
 ?>
 		
