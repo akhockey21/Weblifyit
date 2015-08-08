@@ -1,44 +1,32 @@
-<?php require_once 'app/init.php'; 
-if (!Auth::check()) redirect_to(App::url());
-/** 
-* 
-* This page is the dashboard for the entire web application.
-* 
-*/ 
-use Hazzard\Support\MessageBag;
-$user = Auth::user()->id;
+<?php
+/**
+ * Include for the footer,
+ * 
+ * There are going to be multiple types of the media adder. For instance, there may be one to only select one image, or multiple images. One may be to select just a video, and so on. These arent developed yet, but will be soon.
+ * 
+ * ^ This can be done by declaring a specific variable on each page. Such as $type_of_media_adder = "image-single"; and so on.
+ */ 
+
 ?>
-<?php include 'inc/builder/config.php'; ?>
-<?php include 'inc/builder/template_start.php'; ?>
-<?php include 'inc/builder/page_head.php'; ?>
-
-<!-- Page content -->
-<div id="page-content">
-    <!-- Files Header -->
-    <div class="content-header">
-        <div class="header-section">
-            <h1>
-                <i class="gi gi-file"></i>Files<br><small>Manage your files</small>
-            </h1>
-        </div>
-    </div>
-    <ul class="breadcrumb breadcrumb-top">
-        <li>Pages</li>
-        <li><a href="">Files</a></li>
-        <li><a href="#media-adder" data-toggle="modal" data-placement="bottom" class="active">Media Adder Widget</a></li>
-    </ul>
-    <!-- END Files Header -->
-
-    <!-- Main Row -->
-    <div class="row">
-        <div class="col-md-4 col-lg-3">
+<!-- Media Adder -->
+<div id="media-adder" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> 
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header text-center">
+<button type="button" class="btn btn-sm btn-primary pull-right" style="margin-right: 8px;">Save</button>
+<button type="button" class="btn btn-sm btn-default pull-right" data-dismiss="modal" aria-hidden="true" style="margin-right: 8px;">Close</button>
+                <h4 class="modal-title"> Your Files</h4>
+            </div>
+            <!-- END Modal Header -->
+            <!-- Modal Body -->
+            <div class="modal-body"> 
+                <div class="row">
+        <div class="col-md-5 col-lg-4">
             <!-- Navigation Block -->
             <div class="block full">
                 <!-- Navigation Title -->
                 <div class="block-title">
-                    <div class="block-options pull-right">
-                        <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
-                    </div>
                     <h2><i class="fa fa-compass"></i> Files <strong>Navigation</strong></h2>
                 </div>
                 <!-- END Navigation Title -->
@@ -81,20 +69,24 @@ $user = Auth::user()->id;
             <div class="block full hidden-xs">
                 <!-- Upload Title -->
                 <div class="block-title">
-                    <div class="block-options pull-right">
-                        <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
-                    </div>
                     <h2><i class="fa fa-cloud-upload"></i> Upload <strong>File</strong></h2>
                 </div>
                 <!-- END Upload Title -->
 
                 <!-- Upload Content -->
-                <form action="page_app_media.php" class="dropzone"></form>
+                <form action="media_upload.php?id=<?php $uniqueDomainID = WebsiteSettings::get(Auth::user()->id, 'website_path', true);
+if (!$uniqueDomainID) {
+    $uniqueDomainID = uniqid();
+    WebsiteSettings::update(Auth::user()->id, 'website_path', $uniqueDomainID);
+    $uniqueDomainID = WebsiteSettings::get(Auth::user()->id, 'website_path', true);
+}
+echo $uniqueDomainID; ?> " class="dropzone dz-clickable">
+    </form>
                 <!-- END Upload Content -->
             </div>
             <!-- END Upload Block -->
         </div>
-        <div class="col-md-8 col-lg-9">
+        <div class="col-md-7 col-lg-8">
             <!-- Files Block -->
             <div class="block">
                 <!-- Files Content -->
@@ -269,7 +261,7 @@ $user = Auth::user()->id;
                             <h4>
                                 <strong>New Sun</strong>.mp3<br>
                                 <small>3 min | 3.5MB</small>
-                            </h4>
+                            </h4> 
                         </div>
                     </div>
                 </div>
@@ -278,18 +270,8 @@ $user = Auth::user()->id;
             <!-- END Files Block -->
         </div>
     </div>
-    <!-- END Main Row -->
+            </div>
+            <!-- END Modal Body -->
+        </div>
+    </div>
 </div>
-<!-- END Page Content -->
-
-<?php include 'inc/footer_website.php'; ?>
-
-<!-- Remember to include excanvas for IE8 chart support -->
-<!--[if IE 8]><script src="js/helpers/excanvas.min.js"></script><![endif]-->
-
-<?php include 'inc/template_scripts.php'; ?>
-
-<script src="js/pages/readyFiles.js"></script>
-<script>$(function(){ ReadyFiles.init(); });</script>
-
-<?php include 'inc/template_end.php'; ?>
