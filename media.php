@@ -25,6 +25,7 @@ $user = Auth::user()->id;
     <ul class="breadcrumb breadcrumb-top">
         <li>Pages</li>
         <li><a href="">Files</a></li>
+        <li><a href="#media-adder" data-toggle="modal" data-placement="bottom" class="active">Media Adder Widget</a></li>
     </ul>
     <!-- END Files Header -->
 

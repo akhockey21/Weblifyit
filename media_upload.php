@@ -1,5 +1,9 @@
 
 <?php
+/**
+ * Pass in <form action="media_upload.php?id=<?php echo $uniqueDomainID; ?> " class="dropzone dz-clickable themed-background"><div class="dz-default dz-message"><span>Drop Logo Here or click To Upload</span></div>
+    </form>
+ */ 
 require_once 'app/init.php';
 use Hazzard\Support\MessageBag;
 
