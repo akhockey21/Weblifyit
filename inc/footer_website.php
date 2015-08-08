@@ -136,5 +136,9 @@
 		
 
 
-<?php include 'models/media/media-adder.php'; ?>
+<?php
+if($display_mediaAdder == true){
+    include 'models/media/media-adder.php';
+}
+?>
 		

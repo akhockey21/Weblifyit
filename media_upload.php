@@ -26,6 +26,10 @@ if (!file_exists($path)) {
 
 
 $upload_dir = $path;
+
+//Gets the MediaID for the database
+$MediaId = count(scandir($upload_dir)) - 1; 
+
 if (!empty($_FILES)) 
 { 
      $tempFile = $_FILES['file']['tmp_name'];//this is temporary server location
@@ -34,7 +38,11 @@ if (!empty($_FILES))
      $uploadPath = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . $upload_dir . DIRECTORY_SEPARATOR;
      
      // Adding timestamp with image's name so that files with same name can be uploaded easily.
-     $mainFile = $uploadPath.time().'-'. $_FILES['file']['name'];
+     $mainFile = $uploadPath.time().'-'. $_FILES['file']['name']; 
+    
+    //update database
+     Media::update($userID, $MediaId, 'name', $_FILES['file']['name']);
+     Media::update($userID, $MediaId, 'file_name', time().'-'. $_FILES['file']['name']);
      
      move_uploaded_file($tempFile,$mainFile);
 }
