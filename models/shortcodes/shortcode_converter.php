@@ -3,99 +3,69 @@
  * @param {int} $pageId
  * example string "[row]Hello This is on a new row.[/row]"
  */ 
+
 function convertShortcodes($pageId){
     //Testing Purposes
     //$bodyInput = PagesContent::get(Auth::user()->id, $pageId, 'body', true);
     
     $bodyInput = PagesContent::get(Auth::user()->id, $pageId, 'body', true);
-    
-    
+    //This will be the main outout to HTML
+    $bodyOutput = $bodyInput;
     /**
      * Steps To Convert:
      * 1. Get The Body Input
      * 2. In Order do the following:
-     *    1. Create an array of all items in between these brackets '[' and ']'
-     *    2. Check for matches of shortcodes, if none, remove the item from the arrays
+     *    1. For each shortcode listed in the array, scan $bodyInput for a startTag and endTag.
+     *    2. Check for matches of shortcodes
      *    2. Check if shortcode has paramters
      *    3. If not, just replace the start and end tags with the correct HTML. 
      *    4. If It does, run the specific function that is built for that shortcode. Then Return the HTML.
      * 
      */ 
     
-//List the shortcodes and the options associated
-$shortcodesList = array(
-    'row' => array(
-        'startTag' => '[row]',
-        'endTag' => '[/row]',
-        'variables' => false,
-    ),
-    'header2' => array(
-        'startTag' => '[h2',
-        'endTag' => '[/h2]',
-        'variables' => true,
-    )
-);
- 
-//for shortcodes with no variables, list HTML replacement
-$shortcodesOutputNoVariable = array(
-    'row' => array(
-        'startTag' => '<div class="row'>,
-        'endTag' => '</div>',
-    )
-); 
-    function get_string_between($string, $start, $end){
-    $string = " ".$string;
-    $ini = strpos($string,$start);
-    if ($ini == 0) return "";
-    $ini += strlen($start);
-    $len = strpos($string,$end,$ini) - $ini;
-    return substr($string,$ini,$len);
-}
-
-    $fullstring = "this is my [tag]dog[/tag]";
-    $parsed = get_string_between($fullstring, "[tag]", "[/tag]");
-
-    echo $parsed; // (result = dog)
+require 'models/shortcodes/shortcode_converter_functions.php';
     
-    /**
-     * Each shortcode with variables will have their own function to replace the string data with the correct HMTL.
-     * @param {Type} $data 
-     */ 
-    function header2($data){
-        
+    // Step 1
+    foreach($shortcodesList as $shortcode){
+            //Check if $shortcode['startTag'] is in body text
+            //Get the start positon of the start tag
+            $startTagPosStart = strpos($shortcode['startTag'], $bodyOutput);
+            
+            //Count the start tag string length,then minus charachter length to get the Start tag End positon
+            $startTagPosStartEnd = strlen($shortcode['startTag']) + $startTagPosStart;
+            
+            //Check if exists
+        //Found error, find a better way to see if exists, a tag can start at line '0'
+            if (!$startTagPosStart){
+                
+                //Establish Shortcode name for use below
+                $shortcode_name = $shortcode['name'];
+                //Check if the shortcode allows variables
+                if($shortcode['variables'] == true){
+                    /**
+                     * This is where it will have to find the right shortcode function to call, and run it.
+                     */ 
+                    
+                    //Call dynamic function based on the name of shortcode
+                    $bodyOutput = $shortcode_name($shortcode, $bodyOutput);
+                } else{
+                    /**
+                     * Just Replace the Start and End Tags with the appropriate HTML
+                     */
+                    //replace start tag
+                    $bodyOutput = str_replace($shortcode['startTag'], $shortcodesOutputNoVariable[$shortcode_name]['startTag'], $bodyOutput);
+                    
+                    //replace end tag
+                    $bodyOutput = str_replace($shortcode['endTag'], $shortcodesOutputNoVariable[$shortcode_name]['endTag'], $bodyOutput);
+                     
+                } 
+            }
+        $bodyOutput = $bodyOutput;
     }
     
-    
-}
-    /**
-     * Check if there are shortcodes, return an array
-     * @param {array} $shortcodesList
-     * @param {text} $input 
-     *
-    function isThereShortcodes($shortcodesList, $input){
-        $shortcodesUsed = array;
-        foreach($shortcodesList as $key => $value){
-            if (strpos($input, $value['startTag']) !== false && strpos($input, $value['endTag']) !== false && $value['variables'] == false){
-                /**
-                 * Call the shortcode function without the variables
-                 *
-                $shortcodesUsed[$value['name']];
-            }
-            elseif (strpos($input, $value['startTag']) !== false && strpos($input, $value['endTag']) !== false && $value['variables'] == true){
-                /**
-                 * Call the shortcode function WITH the variables
-                 * 
-                $shortcodesUsed[$value['name']];
-            }
-        }
-        return $shortcodesUsed;
+    //This will be the main outout to HTML
+    if(isset($bodyOutput)){
+        echo $bodyOutput;
     }
-    
-    return isThereShortcodes($shortcodesList, $bodyInput);
 }
-    
-    
-   */ 
-
-
 ?>
