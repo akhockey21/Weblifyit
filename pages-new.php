@@ -60,16 +60,31 @@ include 'inc/builder/page_head.php';
                             <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to Page: <strong>www.example.com/link-to-post/</strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View Page</button></p>
                         </div>
                     </div>
+                        <div class="col-md-12">
     <div class="btn-group">
         <button class="btn btn-primary"><i class="gi gi-flash"></i></button>
         <button class="btn btn-primary"><i class="fa fa-arrow-left"></i> Backend Editor</button>
         <button class="btn btn-primary">Frontend Editor <i class="fa fa-arrow-right"></i></button>
     </div>
     <br>
+    <br>
 <button type="button" class="btn btn-sm btn-default"><i class="gi gi-camera"></i> Insert Media</button>
+            <div class="btn-group pull-right text-center">
+<a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-alt btn-primary dropdown-toggle" aria-expanded="false">Shortcodes <span class="caret"></span></a>
+<ul class="dropdown-menu dropdown-custom text-left">
+<li class="dropdown-header">Click To Add Shortcode</li>
+<li>
+<a href="javascript:void(0);" onclick="inyectarTexto('body','hello world');" >Row</a>
+<a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Header 2</a>
+</li>
+<li class="divider"></li>
+<li>
+<a href="javascript:void(0)"><i class="fa fa-pencil pull-right"></i>Devider Above</a>
+</li>
+</ul>
+</div> <a href="javascript:void(0);" id="add-row">Row</a>
                     <div class="form-group">
-                        <div class="col-md-12">
-                            <textarea form="main" name="body" class="ckeditor"></textarea>
+                            <textarea form="main" name="body" id="body" class="ckeditor"></textarea>
                         </div>
                     </div>
                 
