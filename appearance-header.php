@@ -12,6 +12,11 @@ $display_mediaAdder = true;
 $type_of_media_adder = 'images';
 use Hazzard\Support\MessageBag; 
 $user = Auth::user()->id;
+$uniqueDomainID = WebsiteSettings::get($user, 'website_path', true);
+if (!$uniqueDomainID) {
+    $uniqueDomainID = uniqid();
+    WebsiteSettings::update($userID, 'website_path', $uniqueDomainID);
+}
 
 if (isset($_POST['submit']) && csrf_filter()) {
     if (isset($_POST['header_style'])) {
@@ -131,7 +136,10 @@ if (isset($_POST['submit']) && csrf_filter()) {
                         <div id="widget-carousel3" class="carousel slide remove-margin">
                             <div class="carousel-inner">
                                 <div class="active item">
-                                    <img src="/templates/screenshots/template_images/1.png" alt="image">
+                                    <img src="<?php
+$image_name = DB::table('media')->where('meta_key', 'file_name')->where('media_id', APRHeader::get($user, 'header_image', true))->pluck('meta_value');
+$image_name = str_replace('+','%20',urlencode($image_name));
+echo "/userwebsites/web/$uniqueDomainID/uploads/$image_name"; ?>" alt="image">
                                 </div>
                             </div>
                         </div>
