@@ -125,6 +125,7 @@ if(isset($type_of_media_adder)){
 } else{
     //Make it display all types of media and sorting
     $media_display_all = 1;
+    $media_filter_no = 0;
 }
 ?>
 
@@ -149,7 +150,7 @@ if(isset($type_of_media_adder)){
     <div class="row">
         <div class="col-md-4 col-lg-3">
 <?php
-if(isset($media_filter_no)){
+if($media_filter_no == 1){
 } else{
     
 ?>

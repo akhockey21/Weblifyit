@@ -5,7 +5,12 @@ if (!Auth::check()) redirect_to(App::url());
 * This page is the dashboard for the entire web application.
 * 
 */ 
-use Hazzard\Support\MessageBag;
+/**
+ * Page Options
+ */ 
+$display_mediaAdder = true;
+$type_of_media_adder = 'images';
+use Hazzard\Support\MessageBag; 
 $user = Auth::user()->id;
 
 if (isset($_POST['submit']) && csrf_filter()) {
@@ -73,7 +78,7 @@ if (isset($_POST['submit']) && csrf_filter()) {
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="header-style">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
                             <div class="form-group">
                                 <label class="col-md-3 control-label">
                                     <h4>Header | Style</h4>
@@ -117,8 +122,28 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                     <p>Pages With sliders overide this setting. Also single pages may override this setting.</p>
                                 </label>
                                 <div class="col-md-9">
-                                    <input type="file" id="example-file-input" name="example-file-input">
-                                    <button type="submit" class="btn btn-sm btn-primary pull-left"><i class="fa fa-angle-right"></i> Browse</button>
+                                    
+                                    
+                                    
+                                    <div class="col-md-5">
+                <div class="widget">
+                    <div class="widget-extra-full themed-background-modern">
+                        <div id="widget-carousel3" class="carousel slide remove-margin">
+                            <div class="carousel-inner">
+                                <div class="active item">
+                                    <img src="/templates/screenshots/template_images/1.png" alt="image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                    
+                                    
+                                    <input type="text" id="header_image" name="header_image" value="<?php echo APRHeader::get($user, 'header_image', true); ?>" placeholder="Image ID">
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn btn-sm btn-primary pull-left" href="#media-adder" data-toggle="modal" data-placement="bottom"><i class="fa fa-angle-right"></i> Select Image</button>
                                 </div>
                             </div>
                             <div class="form-group">
