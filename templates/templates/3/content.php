@@ -1,6 +1,7 @@
 <div class="container">
 
-       <?php convertShortcodes(2);
+       <?php $shortcodeConverter = new convertShortcodes;
+echo $shortcodeConverter->convertShortcodesToHtml(2);
     ?>
 </div>
 

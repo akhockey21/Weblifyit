@@ -15,8 +15,7 @@ $userID = Auth::user()->id;
  */
 $templateid = WebsiteSettings::get($userID, 'template_id', true);
 $pagesall   = DB::table('pages_manage')->where('user_id', $userID)->get();
-
-require_once 'models/shortcodes/shortcode_converter.php';
+require 'models/shortcodes/shortcode_converter.php';
 
 /**
  * Generate a unique domain id that will be the path of the users website.
