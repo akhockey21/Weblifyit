@@ -44,8 +44,128 @@ Manage <strong>Categories</strong><br>
 </h3>
                 </div>
             </a>
-        </div></div>
-</div>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-8">
+    <div class="block full">
+        <div class="block-title">
+            <h2>Blog Settings</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Posts per page</h4>
+                                    <p>Number of posts per page.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" id="posts_per_page" name="posts_per_page" value="<?php echo BlogSettings::get($user, 'posts_per_page', true); ?>" placeholder="Posts Per Page">
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Blog Layout</h4>
+                                    <p>Layout for Blog Page.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="blog_layout" value="classic">Classic
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="blog_layout" value="masonry">Masonry
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="blog_layout" value="timeline">Timeline
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="example-file-input">
+                                    <h4>Excerpt Length</h4>
+                                    <p>Number of words on blog teasers.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" id="excerpt_length" name="excerpt_length" value="<?php echo BlogSettings::get($user, 'excerpt_length', true); ?>" placeholder="Excerpt Length">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Show Post Title</h4>
+                                    <p>Show the blog post title on the blog page.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary">
+                                        <input type="checkbox" checked="" name="show_post_title"><span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Post Meta</h4>
+                                    <p>Show Author, Date & Categories.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary">
+                                        <input type="checkbox" checked="" name="post_meta"><span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Author Box</h4>
+                                    <p>Show Author Box.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary">
+                                        <input type="checkbox" checked="" name="show_author_box"><span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Related Posts</h4>
+                                    <p>Show Related Posts.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary">
+                                        <input type="checkbox" checked="" name="show_related_posts"><span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">
+                                    <h4>Blog Post Comments</h4>
+                                    <p>Show Blog Post Comments.</p>
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="switch switch-primary">
+                                        <input type="checkbox" checked="" name="show_comments"><span></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group form-actions">
+                                <div class="col-md-9 col-md-offset-3">
+                                    <button type="submit" class="btn btn-sm btn-primary" name="submit"><i class="fa fa-angle-right"></i> Submit</button>
+                                    <button type="reset" class="btn btn-sm btn-warning"><i class="fa fa-repeat"></i> Reset</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+        </div>
 <!-- END Page Content -->
 
 <?php include 'inc/footer_website.php'; ?>

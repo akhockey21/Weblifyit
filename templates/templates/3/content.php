@@ -1,6 +1,7 @@
 <div class="container">
 
-       <?php echo PagesContent::get(Auth::user()->id, 2, 'body', true); ?>
+       <?php convertShortcodes(2);
+    ?>
 </div>
 
 </div>

@@ -23,7 +23,7 @@ function convertShortcodes($pageId){
      * 
      */ 
     
-require 'models/shortcodes/shortcode_converter_functions.php';
+require_once 'models/shortcodes/shortcode_converter_functions.php';
     
     // Step 1
     foreach($shortcodesList as $shortcode){

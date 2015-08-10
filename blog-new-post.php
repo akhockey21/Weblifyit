@@ -1,18 +1,50 @@
-<?php require_once 'app/init.php'; 
-if (!Auth::check()) redirect_to(App::url());
+<?php
+require_once 'app/init.php';
+if (!Auth::check())
+    redirect_to(App::url());
 /** 
-* 
-* This page is the dashboard for the entire web application.
-* 
-*/ 
+ * 
+ * This blog is the dashboard for the entire web application.
+ * 
+ */
 use Hazzard\Support\MessageBag;
-$user = Auth::user()->id;
-?>
-<?php include 'inc/builder/config.php'; ?>
-<?php include 'inc/builder/template_start.php'; ?>
-<?php include 'inc/builder/page_head.php'; ?>
+$userID = Auth::user()->id;
 
-<!-- Page content -->
+if (isset($_POST['addnew']) && csrf_filter()) {
+    
+    /**
+     * Make this blog have a unique ID and in order
+     */
+    $blogall = DB::table('blog_manage')->where('user_id', $userID)->get();
+    $blogidsE = array();
+    foreach ($blogall as $filter_result) {
+        
+        if (in_array($filter_result->blog_id, $blogidsE)) {
+            continue;
+        }
+        $blogidsE[]   = $filter_result->blog_id;
+        $exportblogid = $filter_result->blog_id;
+    }
+    /**
+     * New blog ID
+     */ 
+    $newblogID = end($blogidsE) + 1;
+    if (isset($_POST['title'])) {
+        BlogManage::update($userID, $newblogID, 'blog_name', $_POST['title']);
+    }
+    if (isset($_POST['body'])) {
+        BlogContent::update($userID, $newblogID, 'body', $_POST['body']);
+    }
+}
+
+include 'inc/builder/config.php';
+
+include 'inc/builder/template_start.php';
+
+include 'inc/builder/page_head.php';
+?>
+
+<!-- blog content -->
 <div id="page-content">
     <div class="row">
         <div class="col-lg-8">
@@ -20,29 +52,42 @@ $user = Auth::user()->id;
                 <!-- END General Data Title -->
 
                 <!-- General Data Content -->
-                <form action="page_ecom_product_edit.php" method="post" class="form-horizontal" onsubmit="return false;">
+                
                     <div class="form-group">
                         <div class="col-md-12 pull-right">
                             <h3>Add a New Blog Post</h3>
-                            <input type="text" id="page-title" name="page-title" class="form-control input-lg" placeholder="Enter title here">
-                            <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to Page: <strong>www.example.com/link-to-post/</strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View Page</button></p>
+                            <input form="main" type="text" id="blog-title" name="title" class="form-control input-lg" placeholder="Enter title here">
+                            <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to blog: <strong>www.example.com/link-to-post/</strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View blog</button></p>
                         </div>
                     </div>
+                        <div class="col-md-12">
     <div class="btn-group">
         <button class="btn btn-primary"><i class="gi gi-flash"></i></button>
         <button class="btn btn-primary"><i class="fa fa-arrow-left"></i> Backend Editor</button>
         <button class="btn btn-primary">Frontend Editor <i class="fa fa-arrow-right"></i></button>
     </div>
     <br>
+    <br>
 <button type="button" class="btn btn-sm btn-default"><i class="gi gi-camera"></i> Insert Media</button>
+            <div class="btn-group pull-right text-center">
+<a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-alt btn-primary dropdown-toggle" aria-expanded="false">Shortcodes <span class="caret"></span></a>
+<ul class="dropdown-menu dropdown-custom text-left">
+<li class="dropdown-header">Click To Add Shortcode</li>
+<li>
+<a href="javascript:void(0);" onclick="inyectarTexto('body','hello world');" >Row</a>
+<a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Header 2</a>
+</li>
+<li class="divider"></li>
+<li>
+<a href="javascript:void(0)"><i class="fa fa-pencil pull-right"></i>Devider Above</a>
+</li>
+</ul>
+</div> <a href="javascript:void(0);" id="add-row">Row</a>
                     <div class="form-group">
-                        <div class="col-md-12">
-                            <!-- CKEditor, you just need to include the plugin (see at the bottom of this page) and add the class 'ckeditor' to your textarea -->
-                            <!-- More info can be found at http://ckeditor.com -->
-                            <textarea id="product-description" name="product-description" class="ckeditor"></textarea>
+                            <textarea form="main" name="body" id="body" class="ckeditor"></textarea>
                         </div>
                     </div>
-                </form>
+                
                 <!-- END General Data Content -->
             </div>
         <div class="col-lg-4 pull-right">
@@ -59,12 +104,12 @@ $user = Auth::user()->id;
                 <!-- END Meta Data Title -->
 
                 <!-- Meta Data Content -->
-                <form action="page_ecom_product_edit.php" method="post" class="form-horizontal form-bordered" onsubmit="return false;">
+                <form action="" method="post" class="form-horizontal form-bordered" id="main">
                     <div class="form-group form-actions">
                         <div class="col-md-9 col-md-offset-3">
             <button type="button" class="btn btn-sm btn-info">Save</button>
-            <button type="submit" class="btn btn-sm btn-warning">Preview</button>
-            <button type="reset" class="btn btn-sm btn-primary">Publish</button>
+            <button type="button" class="btn btn-sm btn-warning">Preview</button>
+            <button type="submit" class="btn btn-sm btn-primary" name="addnew">Publish</button>
                         </div>
                     </div>
                 </form>
@@ -74,30 +119,30 @@ $user = Auth::user()->id;
             <div class="block">
                 <!-- Meta Data Title -->
                 <div class="block-title">
-                    <h2><strong>SEO</strong> Page Settings</h2>
+                    <h2><strong>SEO</strong> blog Settings</h2>
                 </div>
                 <!-- END Meta Data Title -->
-
+<div class="row">
+<div class="col-md-12">
+    
                 <!-- Meta Data Content -->
-                <form action="page_ecom_product_edit.php" method="post" class="form-horizontal form-bordered" onsubmit="return false;">
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-meta-title">Meta Title</label>
+                        <label class="col-md-3 control-label" for="eta-title">Meta Title</label>
                         <div class="col-md-9">
-                            <input type="text" id="product-meta-title" name="product-meta-title" class="form-control" placeholder="Enter meta title..">
+                            <input form="main" type="text" id="meta-title" name="meta_title" class="form-control" placeholder="Enter meta title..">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="product-meta-description">Meta Description</label>
+                        <label class="col-md-3 control-label" for="meta-description">Meta Description</label>
                         <div class="col-md-9">
-                            <textarea id="product-meta-description" name="product-meta-description" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
+                            <textarea id="meta-description" name="meta_description" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
                             <div class="help-block">157 Characters Max</div>
                         </div>
                     </div>
-                </form>
                 <!-- END Meta Data Content -->
-            </div>
-            <!-- END Meta Data Block -->
-
+            <!-- END Meta Data Block -->    </div>                
+</div>
+            </div> 
             <!-- Product Images Block -->
             <div class="block">
                 <!-- Product Images Title -->
@@ -109,7 +154,7 @@ $user = Auth::user()->id;
                 <!-- Product Images Content -->
                 <div class="block-section">
                     <!-- Dropzone.js, You can check out https://github.com/enyo/dropzone/wiki for usage examples -->
-                    <form action="page_ecom_product_edit.php" class="dropzone"></form>
+                    <form action="blog_ecom_product_edit.php" class="dropzone"></form>
                 </div>
                 <table class="table table-bordered table-striped table-vcenter">
                     <tbody>
@@ -121,7 +166,7 @@ $user = Auth::user()->id;
                             </td>
                             <td class="text-center">
                                 <label class="switch switch-primary">
-                                    <input type="checkbox" checked><span></span>
+                                    <input form="main" type="checkbox" checked><span></span>
                                 </label>
                                 Cover
                             </td>
@@ -137,7 +182,7 @@ $user = Auth::user()->id;
                             </td>
                             <td class="text-center">
                                 <label class="switch switch-primary">
-                                    <input type="checkbox"><span></span>
+                                    <input form="main" type="checkbox"><span></span>
                                 </label>
                                 Cover
                             </td>
@@ -153,7 +198,7 @@ $user = Auth::user()->id;
                             </td>
                             <td class="text-center">
                                 <label class="switch switch-primary">
-                                    <input type="checkbox"><span></span>
+                                    <input form="main" type="checkbox"><span></span>
                                 </label>
                                 Cover
                             </td>
@@ -170,7 +215,7 @@ $user = Auth::user()->id;
     </div>
     <!-- END Product Edit Content -->
 </div>
-<!-- END Page Content -->
+<!-- END blog Content -->
 
 <?php include 'inc/footer_website.php'; ?>
 
@@ -179,6 +224,6 @@ $user = Auth::user()->id;
 
 <?php include 'inc/template_scripts.php'; ?>
 
-<!-- ckeditor.js, load it only in the page you would like to use CKEditor (it's a heavy plugin to include it with the others!) -->
+<!-- ckeditor.js, load it only in the blog you would like to use CKEditor (it's a heavy plugin to include it with the others!) -->
 <script src="js/helpers/ckeditor/ckeditor.js"></script>
 <?php include 'inc/template_end.php'; ?>
