@@ -152,7 +152,7 @@ $primary_nav = array(
         'sub'   => array(
             array(
                 'name'  => 'Domain Settings',
-                'url'   => 'website-settings-advanced.php'
+                'url'   => 'website-settings-domain.php'
             ),
             array(
                 'name'  => 'Custom Code',

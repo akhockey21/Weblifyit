@@ -1,7 +1,7 @@
 <div class="container">
 
        <?php $shortcodeConverter = new convertShortcodes;
-echo $shortcodeConverter->convertShortcodesToHtml(2);
+echo $shortcodeConverter->convertShortcodesToHtml($exportpageid);
     ?>
 </div>
 

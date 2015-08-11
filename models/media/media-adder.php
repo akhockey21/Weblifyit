@@ -211,20 +211,22 @@ echo $uniqueDomainID; ?> " class="dropzone dz-clickable">
             </div>
             <!-- END Upload Block -->
         </div>
-        <div class="col-md-7 col-lg-8">
+                    
+<?php 
+$media_path = "userwebsites/web/$uniqueDomainID/uploads";
+
+//Take the string after the period '.', and then search for it in the directory, if it ends up being true. Then Print it out to the file list.
+if(file_exists($media_path)){
+    ?>
+                            <div class="col-md-7 col-lg-8">
             <!-- Files Block -->
             <div class="block">
                 <!-- Files Content -->
                 <!-- Add the category value for each item in its data-category attribute (for the filter functionality to work) -->
                 <div class="row media-filter-items">
-                    
-<?php 
-$media_path = "userwebsites/web/$uniqueDomainID/uploads";
-$media_dir_scan = scandir($media_path); 
-
-//Take the string after the period '.', and then search for it in the directory, if it ends up being true. Then Print it out to the file list.
-
-foreach($media_dir_scan as $media_dir_files){
+                    <?php
+    $media_dir_scan = scandir($media_path); 
+    foreach($media_dir_scan as $media_dir_files){
     //Get file extension string
     $media_file_extension = strrchr($media_dir_files, ".");
     
@@ -262,18 +264,22 @@ foreach($media_dir_scan as $media_dir_files){
     }else{ 
 }
 }
-
-?>
-                    
-                    
-                    
-                    
-                    
+    
+    
+    
+    ?>                    
                 </div>
                 <!-- END Files Content -->
             </div>
             <!-- END Files Block -->
         </div>
+                    <?php
+}
+
+?>
+                    
+                    
+                    
     </div>
             </div>
             <!-- END Modal Body -->

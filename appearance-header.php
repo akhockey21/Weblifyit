@@ -131,27 +131,37 @@ if (isset($_POST['submit']) && csrf_filter()) {
                                     
                                     
                                     <div class="col-md-5">
-                <div class="widget">
-                    <div class="widget-extra-full themed-background-modern">
-                        <div id="widget-carousel3" class="carousel slide remove-margin">
-                            <div class="carousel-inner">
-                                <div class="active item">
+                                        <table class="table table-bordered table-striped table-vcenter">
+                    <tbody>
+                        <tr>
+                            <td style="width: 20%;">
+                                <a href="<?php
+$image_name = DB::table('media')->where('meta_key', 'file_name')->where('media_id', APRHeader::get($user, 'header_image', true))->pluck('meta_value');
+$image_name = str_replace('+','%20',urlencode($image_name));
+echo "/userwebsites/web/$uniqueDomainID/uploads/$image_name"; ?>" data-toggle="lightbox-image">
                                     <img src="<?php
 $image_name = DB::table('media')->where('meta_key', 'file_name')->where('media_id', APRHeader::get($user, 'header_image', true))->pluck('meta_value');
 $image_name = str_replace('+','%20',urlencode($image_name));
-echo "/userwebsites/web/$uniqueDomainID/uploads/$image_name"; ?>" alt="image">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+echo "/userwebsites/web/$uniqueDomainID/uploads/$image_name"; ?>" alt="" class="img-responsive center-block" style="max-width: 110px;">
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <label class="switch switch-primary">
+                                    <input form="main" type="checkbox" checked=""><span></span>
+                                </label>
+                                Cover
+                            </td>
+                            <td class="text-center">
+                                <a href="javascript:void(0)" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                <a class="btn btn-xs btn-info" href="#media-adder" data-toggle="modal" data-placement="bottom"><i class="fa fa-angle-right"></i> Select New Image</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
                                     
                                     
                                     <input type="text" id="header_image" name="header_image" value="<?php echo APRHeader::get($user, 'header_image', true); ?>" placeholder="Image ID">
-                                    <br>
-                                    <br>
-                                    <button type="button" class="btn btn-sm btn-primary pull-left" href="#media-adder" data-toggle="modal" data-placement="bottom"><i class="fa fa-angle-right"></i> Select Image</button>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -4,49 +4,35 @@ if (!Auth::check())
     redirect_to(App::url());
 /** 
  * 
- * This blog is the dashboard for the entire web application.
+ * This is the edit blog page, the blog page id is retrieved through URL with 'blogpost_id'
  * 
  */
 use Hazzard\Support\MessageBag;
 $userID = Auth::user()->id;
 
-if (isset($_POST['addnew']) && csrf_filter()) {
-    
-    /**
-     * Make this blog have a unique ID and in order
-     */
-    $blogall = DB::table('blog_content')->where('user_id', $userID)->get();
-    $blogidsE = array();
-    if(!isset($blogall)){
-    foreach ($blogall as $filter_result) {
-        
-        if (in_array($filter_result->blog_id, $blogidsE)) {
-            continue;
-        }
-        $blogidsE[]   = $filter_result->blog_id;
-        $exportblogid = $filter_result->blog_id;
+if (isset($_GET['blogpostid']) && csrf_filter()) {
+    if (isset($_GET['blogpostid'])) {
+        $blogPostID = $_GET['blogpostid'];
     }
-    /**
-     * New blog ID
-     */ 
-    $newblogID = end($blogidsE) + 1;
-        
-    }else{
-        $newblogID = 1;
-    }
-    if (isset($_POST['title'])) {
-        BlogContent::update($userID, $newblogID, 'title', $_POST['title']);
-    }
-    if (isset($_POST['body'])) {
-        BlogContent::update($userID, $newblogID, 'body', $_POST['body']);
-    }
-    if (isset($_POST['meta_title'])) {
-        BlogContent::update($userID, $newblogID, 'seo_title', $_POST['meta_title']);
-    }
-    if (isset($_POST['meta_description'])) {
-        BlogContent::update($userID, $newblogID, 'seo_description', $_POST['meta_description']); 
+    else{
+        redirect_to(App::url());
     }
 }
+
+$post_link = BlogContent::get($userID, $blogPostID, 'link', true);
+$post_title = BlogContent::get($userID, $blogPostID, 'title', true);
+$post_status = BlogContent::get($userID, $blogPostID, 'status', true);
+$post_visability = BlogContent::get($userID, $blogPostID, 'visability', true);
+$post_publish = BlogContent::get($userID, $blogPostID, 'publish_date', true);
+$post_seo_checked = BlogContent::get($userID, $blogPostID, 'seo_checked', true);
+$post_seo_status = BlogContent::get($userID, $blogPostID, 'seo_status', true);
+$post_seo_title = BlogContent::get($userID, $blogPostID, 'seo_title', true);
+$post_seo_description = BlogContent::get($userID, $blogPostID, 'seo_description', true);
+$post_images = BlogContent::get($userID, $blogPostID, 'images', true);
+$post_images_featured = BlogContent::get($userID, $blogPostID, 'images_featured', true);
+$post_body = BlogContent::get($userID, $blogPostID, 'body', true);
+$post_category = BlogContent::get($userID, $blogPostID, 'category', true);
+
 include 'inc/builder/config.php';
 
 include 'inc/builder/template_start.php';
@@ -66,8 +52,8 @@ include 'inc/builder/page_head.php';
                     <div class="form-group">
                         <div class="col-md-12 pull-right">
                             <h3>Add a New Blog Post</h3>
-                            <input form="main" type="text" id="blog-title" name="title" class="form-control input-lg" placeholder="Enter title here">
-                            <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to blog: <strong>www.example.com/link-to-post/</strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View blog</button></p>
+                            <input form="main" type="text" id="blog-title" name="title" class="form-control input-lg" placeholder="Enter title here" value="<?php if(!isset($post_title)) echo $post_title; ?>">
+                            <p style="padding-left: 20px;margin-top: 10px;margin-bottom: 0px;">Link to blog post: <strong><?php if(!isset($post_link)) echo $post_link; ?></strong>  <button type="button" class="btn btn-xs btn-default">Edit</button><button type="button" class="btn btn-xs btn-default">View blog</button></p>
                         </div>
                     </div>
                         <div class="col-md-12">
@@ -79,20 +65,6 @@ include 'inc/builder/page_head.php';
     <br>
     <br>
 <button type="button" class="btn btn-sm btn-default"><i class="gi gi-camera"></i> Insert Media</button>
-            <div class="btn-group pull-right text-center">
-<a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-alt btn-primary dropdown-toggle" aria-expanded="false">Shortcodes <span class="caret"></span></a>
-<ul class="dropdown-menu dropdown-custom text-left">
-<li class="dropdown-header">Click To Add Shortcode</li>
-<li>
-<a href="javascript:void(0);" onclick="inyectarTexto('body','hello world');" >Row</a>
-<a href="javascript:void(0)"><i class="fa fa-video-camera pull-right"></i>Header 2</a>
-</li>
-<li class="divider"></li>
-<li>
-<a href="javascript:void(0)"><i class="fa fa-pencil pull-right"></i>Devider Above</a>
-</li>
-</ul>
-</div> <a href="javascript:void(0);" id="add-row">Row</a>
                     <div class="form-group">
                             <textarea form="main" name="body" id="body" class="ckeditor"></textarea>
                         </div>
@@ -107,10 +79,10 @@ include 'inc/builder/page_head.php';
                 <div class="block-title">
                     <h2>Publish</h2>
                 </div>
-                <p><i class="gi gi-pin"></i> Status: Pitch <a>Edit</a></p>
-                <p><i class="gi gi-eye_open"></i> Visability: Public <a>Edit</a></p>
-                <p><i class="gi gi-calendar"></i> Publish: Immediately <a>Edit</a></p>
-                <p><i class="gi gi-vector_path_circle"></i> SEO: N/A <a>Check</a></p>
+                <p><i class="gi gi-pin"></i> Status: <?php if(!isset($post_status)){ echo $post_status;}else{ echo "Draft";} ?> <a>Edit</a></p>
+                <p><i class="gi gi-eye_open"></i> Visability: <?php if(!isset($post_visability)){ echo $post_visability;}else{ echo "Not Published";} ?> <a>Edit</a></p>
+                <p><i class="gi gi-calendar"></i> Publish: <?php if(!isset($post_publish)){ echo $post_publish;}else{ echo "Publish Immediately";} ?> <a>Edit</a></p>
+                <p><i class="gi gi-vector_path_circle"></i> SEO: <?php if(!isset($post_seo_status)){ echo $post_seo_status;}else{ echo "Draft";} ?> <a>Check</a></p><p><i class="gi gi-vector_path_circle"></i> Category: <?php if(!isset($post_category)){ echo $post_category;}else{ echo "Default";} ?> <a>Edit</a></p>
                 <!-- END Meta Data Title -->
 
                 <!-- Meta Data Content -->
@@ -139,16 +111,15 @@ include 'inc/builder/page_head.php';
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="eta-title">Meta Title</label>
                         <div class="col-md-9">
-                            <input form="main" type="text" id="meta-title" name="meta_title" class="form-control" placeholder="Enter meta title..">
+                            <input form="main" type="text" id="meta-title" name="meta_title" class="form-control" placeholder="Enter meta title.." value="<?php if(!isset($post_seo_title)) echo $post_seo_title; ?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="meta-description">Meta Description</label>
                         <div class="col-md-9">
-                            <textarea form="main" id="meta-description" name="meta_description" class="form-control" rows="6" placeholder="Enter meta description.."></textarea>
-                            <div class="help-block">157 Characters Max</div>
-                        </div>                        
-
+                            <textarea id="meta-description" name="meta_description" class="form-control" rows="6" placeholder="Enter meta description.." value="<?php if(!isset($post_seo_description)) echo $post_seo_description; ?>"></textarea>
+                            <div class="help-block">157 Characters Max Reccomended</div>
+                        </div>
                     </div>
                 <!-- END Meta Data Content -->
             <!-- END Meta Data Block -->    </div>                
