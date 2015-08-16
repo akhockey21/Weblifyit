@@ -10,7 +10,7 @@ $user = Auth::user()->id;
 
 $page = isset($_GET['p']) ? $_GET['p'] : 'plans';
 
-
+$couponResponse = false;
 
 if (isset($_POST['couponCode']) && csrf_filter()) {
     Usermeta::update($user, 'temp_couponCode', $_POST['couponCode']);
@@ -25,12 +25,11 @@ if (isset($_POST['couponCode']) && csrf_filter()) {
     
     $couponResponse = array();
     
-     if($testCoupon['valid'] == true){
+     if($testCoupon['valid'] == 'true'){
          if($testCoupon['percent_off'] == null) $couponResponse['coupon'] = '$' . $testCoupon['amount_off'] . ' off';
-         if($testCoupon['amount_off'] == null) $couponResponse['coupon'] = '%' . $testCoupon['percent_off'] . ' off';
-         
+         if($testCoupon['amount_off'] == null) $couponResponse['coupon'] = $testCoupon['percent_off'] . '% off';
+         Usermeta::get($user, 'temp_couponCode', true);
          $couponResponse['ifvalid'] = 'valid';
-         echo json_encode($couponResponse);
      }
     
 }
@@ -76,80 +75,4 @@ switch ($page) {
 <script>$(function(){ FormsWizard.init(); });</script>
 <script src="js/pages/uiProgress.js"></script>
 <script>$(function(){ UiProgress.init(); });</script>
-<script>
-// Variable to hold request
-var request;
-
-// Bind to the submit event of our form
-$("#coupon").submit(function(event){
-
-    // Abort any pending request
-    if (request) {
-        request.abort();
-    }
-    // setup some local variables
-    var $form = $(this);
-
-    // Let's select and cache all the fields
-    var $inputs = $form.find("input, select, button, textarea");
-
-    // Serialize the data in the form
-    var serializedData = $form.serialize();
-
-    // Let's disable the inputs for the duration of the Ajax request.
-    // Note: we disable elements AFTER the form data has been serialized.
-    // Disabled form elements will not be serialized.
-    $inputs.prop("disabled", true);
-
-    // Fire off the request to /form.php
-    request = $.ajax({
-        url: "/website-settings-upgrade.php",
-        type: "post",
-        data: serializedData,
-        success: function(data) {
-            if(data["ifvalid"] == 'valid'){
-                $("#coupon-success").html(
-                    '<h3><i class="fa fa-check fa-2x text-success"></i> Sucess!' + data["coupon"] + '</h3>'
-                );
-                $("#coupon-success").show();
-                $("#coupon").hide();
-            }
-        }
-    });
-
-    NProgress.start();
-    // Callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR){
-        // Log a message to the console
-        NProgress.done();
-            if(response["ifvalid"] == 'valid'){
-                $("#coupon-success").html(
-                    '<h3><i class="fa fa-check fa-2x text-success"></i> Sucess!' + response["coupon"] + '</h3>'
-                );
-                $("#coupon-success").show();
-                $("#coupon").hide();
-            }
-        
-    });
-
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown){
-        // Log the error to the console
-        console.error(
-            "The following error occurred: "+
-            textStatus, errorThrown
-        );
-    });
-
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function () {
-        // Reenable the inputs
-        $inputs.prop("disabled", false);
-    });
-
-    // Prevent default posting of form
-    event.preventDefault();
-});
-</script>
 <?php include 'inc/template_end.php'; ?>

@@ -111,14 +111,33 @@ require 'models/domain/domain.php';
                         </table>
                     </div>
                     <h3>Coupon Code:</h3>
-                    <form id="coupon">
+                    <?php
+                if(!isset($couponResponse['ifvalid'])){
+                    ?>
+                    <form id="coupon" action="" method="post">
             <div class="input-group">
-                <input type="text" class="form-control input-lg" name="couponCode" >
+                <input type="text" class="form-control input-lg" name="couponCode">
                 <div class="input-group-btn">
                     <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Submit</button>
                 </div>
             </div>
                     </form>
+                    <?php
+                }elseif($couponResponse['ifvalid'] == true){
+                    echo '<div id="coupon-success" class="animation-fadeInQuick"><h3><i class="fa fa-check text-success"></i> Sucess!</h3><p><strong>Coupon is: </strong>' . $couponResponse['coupon'] . '</p></div>';
+                }else{ ?>
+                    <h5 class="text-danger">Sorry, coupon invalid.</h5>
+                    <form id="coupon" action="" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control input-lg" name="couponCode">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Submit</button>
+                </div>
+            </div>
+                    </form>
+                    <?php
+                }
+                        ?>
                 </div>
             </div>
         </div>
