@@ -24,7 +24,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://104.236.61.190/',
+	'url' => 'http://app.weblifyit.com/',
     
 
 	/*

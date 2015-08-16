@@ -25,7 +25,7 @@
     </ul>
 
     <div class="row" id="Domainprices">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="block">
 <div class="step ui-formwizard-content" style="display: block;">
             <h2 class="text-center"><strong>Choose Plan > Choose Domain ></strong><span style="color:gray;"> Billing Info > Complete!</span></h2>
@@ -111,12 +111,14 @@
                         </table>
                     </div>
                     <h3>Coupon Code:</h3>
+                    <form id="coupon">
             <div class="input-group">
-                <input type="text" class="form-control input-lg">
+                <input type="text" class="form-control input-lg" name="couponCode" >
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Submit</button>
+                    <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Submit</button>
                 </div>
             </div>
+                    </form>
                 </div>
             </div>
         </div>
