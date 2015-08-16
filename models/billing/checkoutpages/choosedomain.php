@@ -37,12 +37,13 @@ require 'models/domain/domain.php';
             <hr>
                 <div id="domainSearch">
             <h3 class="text-center">Your Awesome Domain Name Is Waiting...</h3>
+                    <form action="" method="post">
             <div class="input-group">
-                <input type="text" class="form-control input-lg" placeholder="Enter a Domain Name">
+                <input type="text" class="form-control input-lg" placeholder="Enter a Domain Name" name="domainSearch">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-primary btn-lg" id="domainsearchBTN">Search Domains</button>
+                    <button type="submit" class="btn btn-primary btn-lg" id="domainsearchBTN" name="submit">Search Domains</button>
                 </div>
-            </div></div>
+            </div></form></div>
                 <div class="row">
                     <div class="col-md-12">
                         <h5></h5>

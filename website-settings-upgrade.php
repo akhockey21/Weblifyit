@@ -6,12 +6,13 @@ if (!Auth::check()) redirect_to(App::url());
 * 
 */ 
 use Hazzard\Support\MessageBag;
+require_once 'models/domain/domain.php'; 
 $user = Auth::user()->id;
 
 $page = isset($_GET['p']) ? $_GET['p'] : 'plans';
 
 $couponResponse = false;
-
+/*
 if (isset($_POST['couponCode']) && csrf_filter()) {
     Usermeta::update($user, 'temp_couponCode', $_POST['couponCode']);
     $couponCode = Usermeta::get($user, 'temp_couponCode', true);
@@ -25,13 +26,25 @@ if (isset($_POST['couponCode']) && csrf_filter()) {
     
     $couponResponse = array();
     
-     if($testCoupon['valid'] == 'true'){
+     if($testCoupon['ifvalid'] == 'true'){
          if($testCoupon['percent_off'] == null) $couponResponse['coupon'] = '$' . $testCoupon['amount_off'] . ' off';
          if($testCoupon['amount_off'] == null) $couponResponse['coupon'] = $testCoupon['percent_off'] . '% off';
-         Usermeta::get($user, 'temp_couponCode', true);
-         $couponResponse['ifvalid'] = 'valid';
+         Usermeta::update($user, 'temp_couponCodeExp', $testCoupon['amount_off']);
+         
      }
     
+}
+*/
+if (isset($_POST['submit']) && csrf_filter()) {
+    if (isset($_POST['domainSearch'])) {
+        
+        if ( $nc->domainsCheck('example.com' ) ) {
+	   echo "<p>weblifyit.com is available!</p>";
+        }else{
+            echo "<p>weblifyit.com is NOT available!</p>";
+        }
+        
+    }
 }
 ?>
 <?php include 'inc/builder/config.php'; ?>
