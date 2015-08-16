@@ -7,7 +7,7 @@
 /**
  * Initial Start For THe Users Checkout Journey
  */ 
-
+require 'models/domain/domain.php';
 
 ?>
 <div id="page-content">
@@ -38,7 +38,7 @@
                 <div id="domainSearch">
             <h3 class="text-center">Your Awesome Domain Name Is Waiting...</h3>
             <div class="input-group">
-                <input type="text" class="form-control input-lg">
+                <input type="text" class="form-control input-lg" placeholder="Enter a Domain Name">
                 <div class="input-group-btn">
                     <button type="button" class="btn btn-primary btn-lg" id="domainsearchBTN">Search Domains</button>
                 </div>
