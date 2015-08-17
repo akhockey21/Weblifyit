@@ -6,12 +6,12 @@ if (!Auth::check()) redirect_to(App::url());
 * 
 */ 
 use Hazzard\Support\MessageBag;
-require_once 'models/domain/domain.php'; 
+require 'src/weblifyit/customerSetup/init.php';
 $user = Auth::user()->id;
-
 $page = isset($_GET['p']) ? $_GET['p'] : 'plans';
 
 $couponResponse = false;
+$DomainSearch = null;
 /*
 if (isset($_POST['couponCode']) && csrf_filter()) {
     Usermeta::update($user, 'temp_couponCode', $_POST['couponCode']);
@@ -34,18 +34,47 @@ if (isset($_POST['couponCode']) && csrf_filter()) {
      }
     
 }
-*/
+
+
+$DomainSearch = null;
 if (isset($_POST['submit']) && csrf_filter()) {
     if (isset($_POST['domainSearch'])) {
-        
-        if ( $nc->domainsCheck('example.com' ) ) {
-	   echo "<p>weblifyit.com is available!</p>";
+        $domainSearchInput[] = $_POST['domainSearch'];
+        if ($nc->domainsCheck('weblifyit.com') ) {
+            $DomainSearch = true;
         }else{
-            echo "<p>weblifyit.com is NOT available!</p>";
+            $DomainSearch = false;
         }
         
     }
 }
+
+
+/**
+ * Create customer billing array. escape strings and such
+ *
+ * 
+if (isset($_POST['finalsubmit']) && csrf_filter()) {
+    
+    $cc_exp = explode($_POST['cc_exp'], '/')
+    //Add all inputs neededm then 
+            $completeBillingArray = array(
+            "email" => Auth::user()->email,
+            "trial_end" => strtotime("+1 month"),
+            "source" => array(
+                'object' => 'card',
+                'number' => $_POST['cc_num'],
+                'exp_month' => $cc_exp[0],
+                'exp_year' => $cc_exp[1],
+                'cvc' => $_POST['cc_sid'],
+                'name' => $_POST['fullName']
+            )
+        );
+
+$setup = new customerSetup($user);
+$setup->weblifyitSale($completeBillingArray, $_GET['plan'], $_SESSION["couponcode"]);
+}
+*/
 ?>
 <?php include 'inc/builder/config.php'; ?>
 <?php include 'inc/builder/template_start.php'; ?>

@@ -18,7 +18,7 @@ $template = array(
     'description'       => 'Weblify.it is a full online business solution for web hosting, lead management, and online marketing.',
     // true                     enable page preloader
     // false                    disable page preloader
-    'page_preloader'    => true,
+    'page_preloader'    => false,
     // true                     enable main menu auto scrolling when opening a submenu
     // false                    disable main menu auto scrolling when opening a submenu
     'menu_scroll'       => true,

@@ -11,7 +11,14 @@ $nc_api = array('api_user' =>'akhockey21',
 $sandbox ='true'; // use the Namecheap sandbox to test
 
 $nc = new Namecheap( $nc_api, $sandbox );
+if ( $nc->domainsCheck('weblifyit.com' ) ) {
+    echo "<p>weblifyit.com is available!</p>";
 
+}else{
+
+    echo "<p>weblifyit.com is NOT available!</p>";
+
+}
 /*
 
 $registration_data = array(

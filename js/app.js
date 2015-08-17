@@ -7,6 +7,7 @@
  *  use them only in specific pages. Also, if you remove a js plugin you won't use, make
  *  sure to remove its initialization from uiInit().
  */
+NProgress.start();
 
 var App = function() {
     /* Helper variables - set in uiInit() */
@@ -725,3 +726,6 @@ var App = function() {
 
 /* Initialize app when page loads */
 $(function(){ App.init(); });
+
+$(window).load(function(){ NProgress.done(); });
+$(window).unload(function(){ NProgress.start(); });

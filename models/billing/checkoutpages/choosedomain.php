@@ -7,7 +7,6 @@
 /**
  * Initial Start For THe Users Checkout Journey
  */ 
-require 'models/domain/domain.php';
 
 ?>
 <div id="page-content">
@@ -35,6 +34,7 @@ require 'models/domain/domain.php';
             </div>
                 </div>
             <hr>
+                <?php if($DomainSearch == null){?>
                 <div id="domainSearch">
             <h3 class="text-center">Your Awesome Domain Name Is Waiting...</h3>
                     <form action="" method="post">
@@ -43,11 +43,11 @@ require 'models/domain/domain.php';
                 <div class="input-group-btn">
                     <button type="submit" class="btn btn-primary btn-lg" id="domainsearchBTN" name="submit">Search Domains</button>
                 </div>
-            </div></form></div>
+            </div></form></div><?php }elseif($DomainSearch == true){ ?>
                 <div class="row">
                     <div class="col-md-12">
                         <h5></h5>
-            <div style="display: none;" id="domain-available">
+            <div id="domain-available">
                 <h3 class="text-center">Awesome! Your Domain Is Available!</h3>
                 <p class="clearfix"><i class="fa fa-clock-o fa-5x text-success pull-left animation-pulse"></i>Sign up today and receive <span class="text-success"><strong>30% discount</strong></span> on all plans! Our web application will save you time and enable you to work faster and more efficiently.</p>
                 <p>
@@ -56,24 +56,19 @@ require 'models/domain/domain.php';
             </div>
                     </div>
                 </div>
-                <script>
-                $("#domainsearchBTN").click(function(){
-    $("#domain-available").show();
-    $("#domainSearch").hide();
-});
-                </script>
-
-            <!-- Domain NOT Available -->
-            <div class="block-section" style="display: none;">
-                <h3 class="text-center">Sorry. "Domain" Is Not Available.</h3>
-                <div class="input-group">
-                    <input type="text" class="form-control input-lg">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-lg">Generate</button>
-                    </div>
+            <?php }elseif($DomainSearch == false){?>
+                <div id="domainSearch">
+            <h3 class="text-center text-danger">Sorry that domain is unavailable. Please try again.</h3>
+                    <form action="" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control input-lg" placeholder="Enter a Domain Name" name="domainSearch">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-lg" id="domainsearchBTN" name="submit">Search Domains</button>
                 </div>
-            </div>
-        </div>
+            </div></form></div>
+ <?php } ?>
+                
+        </div> 
             </div>
 <div class="col-md-3">
 

@@ -18,7 +18,7 @@ $template = array(
     'description'       => 'Weblifyit is a complete website solution for businesses, professionals, and hobbyist.',
     // true                     enable page preloader
     // false                    disable page preloader
-    'page_preloader'    => true,
+    'page_preloader'    => false,
     // true                     enable main menu auto scrolling when opening a submenu
     // false                    disable main menu auto scrolling when opening a submenu
     'menu_scroll'       => true,
